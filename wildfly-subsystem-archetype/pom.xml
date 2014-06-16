@@ -46,6 +46,12 @@
         <module.name>${module}</module.name>
     </properties>
 
+    <scm>
+        <connection>scm:git:https://github.com/wildfly/archetypes.git</connection>
+        <developerConnection>scm:git:https://github.com/wildfly/archetypes.git</developerConnection>
+        <url>https://github.com/wildfly/archetypes/</url>
+    </scm>
+
 
     <build>
         <!-- Maven will append the version to the finalName (which is the name
