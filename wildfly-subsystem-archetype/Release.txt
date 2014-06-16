@@ -1,19 +1,19 @@
-To release this archetype for a new AS 7 version
+To release this archetype for a new WildFly version
 
 1)change the following files:
 /pom.xml: 
--set project/version to the target AS 7 version
--set project/properties/version.jboss.as to the target AS 7 version
+-set project/version to the target WildFly version
+-set project/properties/version.wildfly to the target WildFly version
 
 /archetype-pom.xml:
--set project/version/parent to the target AS 7 version
--set project/version to the target AS 7 version
+-set project/version/parent to the target WildFly version
+-set project/version to the target WildFly version
 
 /archetype.properties:
-- set archetype.version to the target AS 7 version
+- set archetype.version to the target WildFly version
 
 /create-archetype.sh:
-- Update -DarchetypeVersion to the target AS 7 version
+- Update -DarchetypeVersion to the target WildFly version
 
 2) Run './create-archetype.sh install'
 
@@ -21,4 +21,4 @@ To release this archetype for a new AS 7 version
 $ cd target/archetype
 $ mvn deploy
 
-3) Set ../jboss-as-subsystem-example/pom.xml's  project/properties/version.jboss.as to the target AS version.
+3) Set ../jboss-as-subsystem-example/pom.xml's  project/properties/version.wildfly to the target AS version.
