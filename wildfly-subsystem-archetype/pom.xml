@@ -52,6 +52,14 @@
         <url>https://github.com/wildfly/archetypes/</url>
     </scm>
 
+    <licenses>
+        <license>
+            <name>LGPL 2.1</name>
+            <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
 
     <build>
         <!-- Maven will append the version to the finalName (which is the name
