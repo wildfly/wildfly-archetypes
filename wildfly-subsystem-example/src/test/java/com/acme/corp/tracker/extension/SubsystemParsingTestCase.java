@@ -38,12 +38,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testParseSubsystem() throws Exception {
         //Parse the subsystem xml into operations
-        String subsystemXml =
-                "<subsystem xmlns=\"" + TrackerExtension.NAMESPACE + "\">" +
-                        "   <deployment-types>" +
-                        "       <deployment-type suffix=\"tst\" tick=\"12345\"/>" +
-                        "   </deployment-types>" +
-                        "</subsystem>";
+        String subsystemXml = readResource("subsystem.xml");
         List<ModelNode> operations = super.parse(subsystemXml);
 
         ///Check that we have the expected number of operations
@@ -79,12 +74,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testInstallIntoController() throws Exception {
         //Parse the subsystem xml and install into the controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + TrackerExtension.NAMESPACE + "\">" +
-                        "   <deployment-types>" +
-                        "       <deployment-type suffix=\"tst\" tick=\"12345\"/>" +
-                        "   </deployment-types>" +
-                        "</subsystem>";
+        String subsystemXml = readResource("subsystem.xml");
         KernelServices services = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
 
         //Read the whole model and make sure it looks as expected
@@ -105,12 +95,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testParseAndMarshalModel() throws Exception {
         //Parse the subsystem xml and install into the first controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + TrackerExtension.NAMESPACE + "\">" +
-                        "   <deployment-types>" +
-                        "       <deployment-type suffix=\"tst\" tick=\"12345\"/>" +
-                        "   </deployment-types>" +
-                        "</subsystem>";
+        String subsystemXml = readResource("subsystem.xml");
         KernelServices servicesA = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
         //Get the model and the persisted xml from the first controller
         ModelNode modelA = servicesA.readWholeModel();
@@ -131,12 +116,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testSubsystemRemoval() throws Exception {
         //Parse the subsystem xml and install into the first controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + TrackerExtension.NAMESPACE + "\">" +
-                        "   <deployment-types>" +
-                        "       <deployment-type suffix=\"tst\" tick=\"12345\"/>" +
-                        "   </deployment-types>" +
-                        "</subsystem>";
+        String subsystemXml = readResource("subsystem.xml");
         KernelServices services = super.createKernelServicesBuilder(null)
                 .setSubsystemXml(subsystemXml)
                 .build();
@@ -158,12 +138,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
 
     @Test
     public void testExecuteOperations() throws Exception {
-        String subsystemXml =
-                "<subsystem xmlns=\"" + TrackerExtension.NAMESPACE + "\">" +
-                        "   <deployment-types>" +
-                        "       <deployment-type suffix=\"tst\" tick=\"12345\"/>" +
-                        "   </deployment-types>" +
-                        "</subsystem>";
+        String subsystemXml = readResource("subsystem.xml");
         KernelServices services = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
 
         //Add another type

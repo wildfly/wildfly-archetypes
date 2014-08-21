@@ -10,11 +10,11 @@
 
     <xs:complexType name="subsystemType">
         <xs:choice minOccurs="0" maxOccurs="unbounded">
-            <xs:element name="deploymemt-type" type="deployment-typeType"/>
+            <xs:element name="deployment-type" type="deployment-typeType"/>
         </xs:choice>
     </xs:complexType>
     <xs:complexType name="deployment-typeType">
-        <xs:attribute name="suffix" use="required"/>
+        <xs:attribute name="name" use="required" type="xs:string"/>
         <xs:attribute name="tick" type="xs:long" use="optional" default="10000"/>
     </xs:complexType>
 </xs:schema>

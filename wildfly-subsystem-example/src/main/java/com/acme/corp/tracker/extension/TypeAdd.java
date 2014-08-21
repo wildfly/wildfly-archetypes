@@ -27,7 +27,7 @@ import org.jboss.msc.service.ServiceName;
 
 /**
  *
- * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
+ * @author Tomaz Cerar
  */
 class TypeAdd extends AbstractAddStepHandler {
 
@@ -43,6 +43,7 @@ class TypeAdd extends AbstractAddStepHandler {
             ServiceVerificationHandler verificationHandler, List<ServiceController<?>> newControllers)
             throws OperationFailedException {
         String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
+        //we use resolveModelAttribute to properly resolve any expressions
         long tick = TICK.resolveModelAttribute(context,model).asLong();
         TrackerService service = new TrackerService(suffix, tick);
         ServiceName name = TrackerService.createServiceName(suffix);

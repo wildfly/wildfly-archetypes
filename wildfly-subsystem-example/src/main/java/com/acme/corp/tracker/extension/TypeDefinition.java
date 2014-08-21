@@ -3,9 +3,12 @@ package com.acme.corp.tracker.extension;
 import static com.acme.corp.tracker.extension.TrackerExtension.TYPE;
 import static com.acme.corp.tracker.extension.TrackerExtension.TYPE_PATH;
 
-import org.jboss.as.controller.SimpleAttributeDefinition;
+import java.util.Collection;
+import java.util.Collections;
+
+import org.jboss.as.controller.AttributeDefinition;
+import org.jboss.as.controller.PersistentResourceDefinition;
 import org.jboss.as.controller.SimpleAttributeDefinitionBuilder;
-import org.jboss.as.controller.SimpleResourceDefinition;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;
 import org.jboss.dmr.ModelNode;
 import org.jboss.dmr.ModelType;
@@ -13,9 +16,9 @@ import org.jboss.dmr.ModelType;
 /**
  * @author <a href="tcerar@redhat.com">Tomaz Cerar</a>
  */
-public class TypeDefinition extends SimpleResourceDefinition {
+public class TypeDefinition extends PersistentResourceDefinition {
 
-    protected static final SimpleAttributeDefinition TICK =
+    protected static final AttributeDefinition TICK =
             new SimpleAttributeDefinitionBuilder(TrackerExtension.TICK, ModelType.LONG)
                     .setAllowExpression(true)
                     .setDefaultValue(new ModelNode(1000))
@@ -32,6 +35,12 @@ public class TypeDefinition extends SimpleResourceDefinition {
                 //Every resource that is added, normally needs a remove operation
                 TypeRemove.INSTANCE);
     }
+
+    @Override
+    public Collection<AttributeDefinition> getAttributes() {
+        return Collections.singleton(TICK);
+    }
+
 
     @Override
     public void registerAttributes(ManagementResourceRegistration resourceRegistration) {

@@ -9,7 +9,6 @@ import org.jboss.as.controller.ServiceVerificationHandler;
 import org.jboss.as.server.AbstractDeploymentChainStep;
 import org.jboss.as.server.DeploymentProcessorTarget;
 import org.jboss.dmr.ModelNode;
-import org.jboss.logging.Logger;
 import org.jboss.msc.service.ServiceController;
 
 import com.acme.corp.tracker.deployment.SubsystemDeploymentProcessor;
@@ -19,11 +18,11 @@ import com.acme.corp.tracker.deployment.SubsystemDeploymentProcessor;
  *
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
  */
-class SubsystemAdd extends AbstractBoottimeAddStepHandler {
+class TrackerSubsystemAdd extends AbstractBoottimeAddStepHandler {
 
-    static final SubsystemAdd INSTANCE = new SubsystemAdd();
+    static final TrackerSubsystemAdd INSTANCE = new TrackerSubsystemAdd();
 
-    private SubsystemAdd() {
+    private TrackerSubsystemAdd() {
     }
 
 

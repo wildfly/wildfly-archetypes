@@ -1,27 +1,40 @@
 package com.acme.corp.tracker.extension;
 
+import java.util.Arrays;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
+
+import org.jboss.as.controller.AttributeDefinition;
+import org.jboss.as.controller.PersistentResourceDefinition;
 import org.jboss.as.controller.ReloadRequiredRemoveStepHandler;
-import org.jboss.as.controller.SimpleResourceDefinition;
 import org.jboss.as.controller.operations.common.GenericSubsystemDescribeHandler;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;
-import org.jboss.as.controller.registry.OperationEntry;
-
-import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.DESCRIBE;
 
 /**
  * @author <a href="tcerar@redhat.com">Tomaz Cerar</a>
  */
-public class TrackerSubsystemDefinition extends SimpleResourceDefinition {
+public class TrackerRootDefinition extends PersistentResourceDefinition {
 
-    public static final TrackerSubsystemDefinition INSTANCE = new TrackerSubsystemDefinition();
+    public static final TrackerRootDefinition INSTANCE = new TrackerRootDefinition();
 
-    private TrackerSubsystemDefinition() {
+    private TrackerRootDefinition() {
         super(TrackerExtension.SUBSYSTEM_PATH,
                 TrackerExtension.getResourceDescriptionResolver(null),
                 //We always need to add an 'add' operation
-                SubsystemAdd.INSTANCE,
+                TrackerSubsystemAdd.INSTANCE,
                 //Every resource that is added, normally needs a remove operation
                 ReloadRequiredRemoveStepHandler.INSTANCE);
+    }
+
+    @Override
+    public Collection<AttributeDefinition> getAttributes() {
+        return Collections.emptyList();
+    }
+
+    @Override
+    protected List<? extends PersistentResourceDefinition> getChildren() {
+        return Arrays.asList(TypeDefinition.INSTANCE);
     }
 
     /**
@@ -31,7 +44,7 @@ public class TrackerSubsystemDefinition extends SimpleResourceDefinition {
     @Override
     public void registerOperations(ManagementResourceRegistration resourceRegistration) {
         super.registerOperations(resourceRegistration);
-        //We always need to add a 'describe' operation
+        //We always need to add a 'describe' operation for root resource
         resourceRegistration.registerOperationHandler(GenericSubsystemDescribeHandler.DEFINITION, GenericSubsystemDescribeHandler.INSTANCE);
     }
 }
