@@ -18,7 +18,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-javaee7-webapp-ear-archetype</artifactId>
-    <version>8.1.0-build-SNAPSHOT</version>
+    <version>8.1.0.CR1</version>
     <packaging>maven-archetype</packaging>
 
     <name>Java EE 7 EAR Webapp</name>
