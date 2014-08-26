@@ -6,7 +6,7 @@
 
     <groupId>org.jboss.archetype</groupId>
     <artifactId>wildfly-archetypes-test</artifactId>
-    <version>8.1.0.CR1</version>
+    <version>8.1.0-build-SNAPSHOT</version>
 
     <name>Archetypes test</name>
 

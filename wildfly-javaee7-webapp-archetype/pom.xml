@@ -12,7 +12,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-javaee7-webapp-archetype</artifactId>
-    <version>8.1.0.CR1</version>
+    <version>8.1.0-build-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
     <name>Java EE 7 Webapp</name>
