@@ -41,3 +41,6 @@ PutObjectStoreDirHere
 /.m2
 # ignore eap repo
 s
+# archetypes resources
+*-blank-archetype
+local-stage
