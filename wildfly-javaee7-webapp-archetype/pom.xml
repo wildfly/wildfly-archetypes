@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>8</version>
+        <relativePath />
+    </parent>
+
+    <groupId>org.wildfly.archetype</groupId>
+    <artifactId>wildfly-javaee7-webapp-archetype</artifactId>
+    <version>8.1.0-build-SNAPSHOT</version>
+    <packaging>maven-archetype</packaging>
+
+    <name>Java EE 7 Webapp</name>
+
+    <description>An archetype that generates a starter Java EE 7 webapp project for JBoss Wildfly</description>
+
+    <url>http://www.wildfly.org/</url>
+
+    <developers>
+        <developer>
+            <name>Steven Boscarine</name>
+            <email>stevenboscarine@gmail.com</email>
+        </developer>
+        <developer>
+            <id>fbricon</id>
+            <name>Fred Bricon</name>
+            <email>fbricon@gmail.com</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://community.jboss.org/people/fbricon</url>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Dan Allen</name>
+            <email>dan.j.allen@gmail.com</email>
+            <organization>JBoss, by Red Hat</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://community.jboss.org/people/dan.j.allen</url>
+        </developer>
+        <developer>
+            <name>Pete Muir</name>
+            <email>pete.muir@jboss.org</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://in.relation.to/Bloggers/Pete</url>
+        </developer>
+        <developer>
+            <name>Rafael Benevides</name>
+            <email>benevides@jboss.org</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://www.rafabene.com</url>
+        </developer>
+    </developers>
+
+
+    <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>2.1</version>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>2.1</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+
+    </build>
+
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jboss.maven.plugins</groupId>
+                        <artifactId>maven-qstools-plugin</artifactId>
+                        <version>1.4.0.Final</version>
+                        <configuration>
+                            <projectGitRepo>git://github.com/wildfly/quickstart.git</projectGitRepo>
+                            <projectPath>kitchensink</projectPath>
+                            <rootPackage>org.jboss.as.quickstarts.kitchensink</rootPackage>
+                            <branch>master</branch>
+                            <archetypeExpressionReplaceValues>
+                                <archetypeExpressionReplaceValue>jboss-kitchensink</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>kitchensink-quickstart</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>KitchensinkQuickstart</archetypeExpressionReplaceValue>
+                            </archetypeExpressionReplaceValues>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>archetypeSync</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+    </profiles>
+
+</project>
