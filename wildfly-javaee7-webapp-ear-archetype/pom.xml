@@ -24,7 +24,7 @@
     <name>Java EE 7 EAR Webapp</name>
     <description>An archetype that generates a starter Java EE 7 webapp project for JBoss Wildfly. The project is an EAR, with an EJB-JAR and WAR</description>
 
-    <url>http://wildfly.org</url>
+    <url>http://www.wildfly.org</url>
 
     <developers>
         <developer>
