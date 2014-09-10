@@ -39,7 +39,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.jboss.as>8.1.0.Final</version.jboss.as>
+        <version.jboss.as>9.0.0-build-SNAPSHOT</version.jboss.as>
         <version.junit>4.11</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>com.acme.corp.tracker</module.name>
