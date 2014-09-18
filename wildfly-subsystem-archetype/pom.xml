@@ -31,7 +31,7 @@
         <artifactId>jboss-as-parent</artifactId>
     </parent -->
 
-    <groupId>org.wildfly.archetypes</groupId>
+    <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-subsystem-src</artifactId>
     <version>8.0.0.Final</version>
 
