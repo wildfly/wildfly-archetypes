@@ -1,13 +1,20 @@
 package com.mycompany.subsystem.extension;
 
-import org.jboss.as.controller.SimpleResourceDefinition;
+import java.util.Arrays;
+import java.util.Collection;
+
+import org.jboss.as.controller.AttributeDefinition;
+import org.jboss.as.controller.PersistentResourceDefinition;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;
 
 /**
  * @author <a href="mailto:tcerar@redhat.com">Tomaz Cerar</a>
  */
-public class SubsystemDefinition extends SimpleResourceDefinition {
-    public static final SubsystemDefinition INSTANCE = new SubsystemDefinition();
+public class SubsystemDefinition extends PersistentResourceDefinition {
+
+    static final AttributeDefinition[] ATTRIBUTES = { /* you can include attributes here */ };
+
+    static final SubsystemDefinition INSTANCE = new SubsystemDefinition();
 
     private SubsystemDefinition() {
         super(SubsystemExtension.SUBSYSTEM_PATH,
@@ -21,11 +28,11 @@ public class SubsystemDefinition extends SimpleResourceDefinition {
     @Override
     public void registerOperations(ManagementResourceRegistration resourceRegistration) {
         super.registerOperations(resourceRegistration);
-        //you can register aditional operations here
+        //you can register additional operations here
     }
 
     @Override
-    public void registerAttributes(ManagementResourceRegistration resourceRegistration) {
-        //you can register attributes here
+    public Collection<AttributeDefinition> getAttributes() {
+        return Arrays.asList(ATTRIBUTES);
     }
 }

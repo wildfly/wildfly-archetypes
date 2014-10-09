@@ -1,16 +1,13 @@
 package com.mycompany.subsystem.extension;
 
-import java.util.List;
-
 import com.mycompany.subsystem.deployment.SubsystemDeploymentProcessor;
 import org.jboss.as.controller.AbstractBoottimeAddStepHandler;
 import org.jboss.as.controller.OperationContext;
 import org.jboss.as.controller.OperationFailedException;
-import org.jboss.as.controller.ServiceVerificationHandler;
+import org.jboss.as.controller.registry.Resource;
 import org.jboss.as.server.AbstractDeploymentChainStep;
 import org.jboss.as.server.DeploymentProcessorTarget;
 import org.jboss.dmr.ModelNode;
-import org.jboss.msc.service.ServiceController;
 
 /**
  * Handler responsible for adding the subsystem resource to the model
@@ -22,23 +19,17 @@ class SubsystemAdd extends AbstractBoottimeAddStepHandler {
     static final SubsystemAdd INSTANCE = new SubsystemAdd();
 
     private SubsystemAdd() {
+        super(SubsystemDefinition.ATTRIBUTES);
     }
 
     /**
      * {@inheritDoc}
      */
     @Override
-    protected void populateModel(ModelNode operation, ModelNode model) throws OperationFailedException {
-
-    }
-
-    /**
-     * {@inheritDoc}
-     */
-    @Override
-    public void performBoottime(OperationContext context, ModelNode operation, ModelNode model,
-                                ServiceVerificationHandler verificationHandler, List<ServiceController<?>> newControllers)
+    public void performBoottime(OperationContext context, ModelNode operation, Resource resource)
             throws OperationFailedException {
+
+        installServices(context, operation, resource.getModel());
 
         //Add deployment processors here
         //Remove this if you don't need to hook into the deployers, or you can add as many as you like
@@ -50,5 +41,10 @@ class SubsystemAdd extends AbstractBoottimeAddStepHandler {
             }
         }, OperationContext.Stage.RUNTIME);
 
+    }
+
+    static void installServices(OperationContext context, ModelNode operation, ModelNode model) {
+        // Add any services here
+        //context.getServiceTarget().addService(ServiceName.of("some", "name"), new MyService()).install();
     }
 }
