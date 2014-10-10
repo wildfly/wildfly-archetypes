@@ -1,31 +1,28 @@
 package com.mycompany.subsystem.extension;
 
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUBSYSTEM;
+
+import java.util.List;
+
+import javax.xml.stream.XMLStreamConstants;
+import javax.xml.stream.XMLStreamException;
+
 import org.jboss.as.controller.Extension;
 import org.jboss.as.controller.ExtensionContext;
+import org.jboss.as.controller.PathAddress;
 import org.jboss.as.controller.PathElement;
+import org.jboss.as.controller.PersistentResourceXMLDescription;
 import org.jboss.as.controller.SubsystemRegistration;
 import org.jboss.as.controller.descriptions.StandardResourceDescriptionResolver;
 import org.jboss.as.controller.operations.common.GenericSubsystemDescribeHandler;
 import org.jboss.as.controller.parsing.ExtensionParsingContext;
-import org.jboss.as.controller.parsing.ParseUtils;
 import org.jboss.as.controller.persistence.SubsystemMarshallingContext;
 import org.jboss.as.controller.registry.ManagementResourceRegistration;
-import org.jboss.as.controller.registry.OperationEntry;
 import org.jboss.dmr.ModelNode;
 import org.jboss.staxmapper.XMLElementReader;
 import org.jboss.staxmapper.XMLElementWriter;
 import org.jboss.staxmapper.XMLExtendedStreamReader;
 import org.jboss.staxmapper.XMLExtendedStreamWriter;
-
-import javax.xml.stream.XMLStreamConstants;
-import javax.xml.stream.XMLStreamException;
-import java.util.List;
-
-import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.ADD;
-import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.DESCRIBE;
-import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP;
-import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP_ADDR;
-import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUBSYSTEM;
 
 
 /**
@@ -71,25 +68,27 @@ public class SubsystemExtension implements Extension {
         subsystem.registerXMLElementWriter(parser);
     }
 
-    private static ModelNode createAddSubsystemOperation() {
-        final ModelNode subsystem = new ModelNode();
-        subsystem.get(OP).set(ADD);
-        subsystem.get(OP_ADDR).add(SUBSYSTEM, SUBSYSTEM_NAME);
-        return subsystem;
-    }
-
     /**
      * The subsystem parser, which uses stax to read and write to and from xml
      */
     private static class SubsystemParser implements XMLStreamConstants, XMLElementReader<List<ModelNode>>, XMLElementWriter<SubsystemMarshallingContext> {
+
+        private final PersistentResourceXMLDescription xmlDescription;
+
+        private SubsystemParser() {
+            this.xmlDescription = PersistentResourceXMLDescription.builder(SubsystemDefinition.INSTANCE)
+                    // use .addChild(...) to add any children
+                    .build();
+        }
 
         /**
          * {@inheritDoc}
          */
         @Override
         public void writeContent(XMLExtendedStreamWriter writer, SubsystemMarshallingContext context) throws XMLStreamException {
-            context.startSubsystemElement(SubsystemExtension.NAMESPACE, false);
-            writer.writeEndElement();
+            ModelNode model = new ModelNode();
+            model.get(SubsystemDefinition.INSTANCE.getPathElement().getKeyValuePair()).set(context.getModelNode());
+            xmlDescription.persist(writer, model, SubsystemExtension.NAMESPACE);
         }
 
         /**
@@ -97,9 +96,7 @@ public class SubsystemExtension implements Extension {
          */
         @Override
         public void readElement(XMLExtendedStreamReader reader, List<ModelNode> list) throws XMLStreamException {
-            // Require no content
-            ParseUtils.requireNoContent(reader);
-            list.add(createAddSubsystemOperation());
+            xmlDescription.parse(reader, PathAddress.EMPTY_ADDRESS, list);
         }
     }
 

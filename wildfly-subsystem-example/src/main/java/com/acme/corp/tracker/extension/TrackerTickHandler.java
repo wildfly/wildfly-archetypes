@@ -10,7 +10,7 @@ import org.jboss.dmr.ModelNode;
 /**
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
  */
-class TrackerTickHandler extends AbstractWriteAttributeHandler<Void> {
+class TrackerTickHandler extends AbstractWriteAttributeHandler<Long> {
 
     public static final TrackerTickHandler INSTANCE = new TrackerTickHandler();
 
@@ -35,13 +35,13 @@ class TrackerTickHandler extends AbstractWriteAttributeHandler<Void> {
      */
 
     protected boolean applyUpdateToRuntime(OperationContext context, ModelNode operation, String attributeName,
-                                           ModelNode resolvedValue, ModelNode currentValue, HandbackHolder<Void> handbackHolder) throws OperationFailedException {
-        if (attributeName.equals(TrackerExtension.TICK)) {
-            final String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
-            TrackerService service = (TrackerService) context.getServiceRegistry(true).getRequiredService(TrackerService.createServiceName(suffix)).getValue();
-            service.setTick(resolvedValue.asLong());
-            context.stepCompleted();
-        }
+                                           ModelNode resolvedValue, ModelNode currentValue, HandbackHolder<Long> handbackHolder) throws OperationFailedException {
+
+        final String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
+        TrackerService service = (TrackerService) context.getServiceRegistry(true).getRequiredService(TrackerService.createServiceName(suffix)).getValue();
+        // Store the current value for use in case of rollback in revertUpdateToRuntime
+        handbackHolder.setHandback(service.getTick());
+        service.setTick(resolvedValue.asLong());
 
         return false;
     }
@@ -59,7 +59,9 @@ class TrackerTickHandler extends AbstractWriteAttributeHandler<Void> {
      *                       implementation
      */
     protected void revertUpdateToRuntime(OperationContext context, ModelNode operation, String attributeName,
-                                         ModelNode valueToRestore, ModelNode valueToRevert, Void handback) {
-        // no-op
+                                         ModelNode valueToRestore, ModelNode valueToRevert, Long handback) {
+        final String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
+        TrackerService service = (TrackerService) context.getServiceRegistry(true).getRequiredService(TrackerService.createServiceName(suffix)).getValue();
+        service.setTick(handback);
     }
 }

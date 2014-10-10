@@ -24,5 +24,11 @@ class SubsystemRemove extends AbstractRemoveStepHandler {
         //context.removeService(ServiceName.of("some", "name"));
     }
 
+    @Override
+    protected void recoverServices(OperationContext context, ModelNode operation, ModelNode model) throws OperationFailedException {
+        // Restore any service removed in performRuntime by calling the same method the add handler uses.
+        SubsystemAdd.installServices(context, operation, model);
+    }
+
 
 }

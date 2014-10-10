@@ -39,7 +39,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.jboss.as>9.0.0-build-SNAPSHOT</version.jboss.as>
+        <version.wildfly.core>1.0.0.Alpha9</version.wildfly.core>
         <version.junit>4.11</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>com.acme.corp.tracker</module.name>
@@ -130,21 +130,21 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.wildfly</groupId>
+                <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-controller</artifactId>
-                <version>${version.jboss.as}</version>
+                <version>${version.wildfly.core}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
+                <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-server</artifactId>
-                <version>${version.jboss.as}</version>
+                <version>${version.wildfly.core}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
+                <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-subsystem-test</artifactId>
                 <type>pom</type>
                 <scope>test</scope>
-                <version>${version.jboss.as}</version>
+                <version>${version.wildfly.core}</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
@@ -157,15 +157,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-controller</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-subsystem-test</artifactId>
             <type>pom</type>
             <scope>test</scope>

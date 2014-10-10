@@ -33,14 +33,14 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-subsystem-src</artifactId>
-    <version>8.0.0.Final</version>
+    <version>9.0.0.Final-SNAPSHOT</version>
 
     <name>WildFly: Subsystem Artifact</name>
 
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly>8.0.0.Final</version.wildfly>
+        <version.wildfly.core>1.0.0.Alpha9</version.wildfly.core>
         <version.junit>4.11</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>${module}</module.name>
@@ -145,21 +145,21 @@
     <dependencyManagement>
         <dependencies>
             <dependency>
-                <groupId>org.wildfly</groupId>
+                <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-controller</artifactId>
-                <version>${version.wildfly}</version>
+                <version>${version.wildfly.core}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
+                <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-server</artifactId>
-                <version>${version.wildfly}</version>
+                <version>${version.wildfly.core}</version>
             </dependency>
             <dependency>
-                <groupId>org.wildfly</groupId>
+                <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-subsystem-test</artifactId>
                 <type>pom</type>
                 <scope>test</scope>
-                <version>${version.wildfly}</version>
+                <version>${version.wildfly.core}</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
@@ -172,15 +172,15 @@
 
     <dependencies>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-controller</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-server</artifactId>
         </dependency>
         <dependency>
-            <groupId>org.wildfly</groupId>
+            <groupId>org.wildfly.core</groupId>
             <artifactId>wildfly-subsystem-test</artifactId>
             <type>pom</type>
             <scope>test</scope>
