@@ -1,17 +1,13 @@
 package com.acme.corp.tracker.extension;
 
-import java.util.List;
-
+import com.acme.corp.tracker.deployment.SubsystemDeploymentProcessor;
 import org.jboss.as.controller.AbstractBoottimeAddStepHandler;
 import org.jboss.as.controller.OperationContext;
 import org.jboss.as.controller.OperationFailedException;
-import org.jboss.as.controller.ServiceVerificationHandler;
+import org.jboss.as.controller.registry.Resource;
 import org.jboss.as.server.AbstractDeploymentChainStep;
 import org.jboss.as.server.DeploymentProcessorTarget;
 import org.jboss.dmr.ModelNode;
-import org.jboss.msc.service.ServiceController;
-
-import com.acme.corp.tracker.deployment.SubsystemDeploymentProcessor;
 
 /**
  * Handler responsible for adding the subsystem resource to the model
@@ -28,8 +24,7 @@ class TrackerSubsystemAdd extends AbstractBoottimeAddStepHandler {
 
     /** {@inheritDoc} */
     @Override
-    public void performBoottime(OperationContext context, ModelNode operation, ModelNode model,
-            ServiceVerificationHandler verificationHandler, List<ServiceController<?>> newControllers)
+    public void performBoottime(OperationContext context, ModelNode operation, Resource resource)
             throws OperationFailedException {
 
         //Add deployment processors here
