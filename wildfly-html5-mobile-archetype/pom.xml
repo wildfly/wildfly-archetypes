@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>16</version>
+        <relativePath />
+    </parent>
+
+    <groupId>org.wildfly.archetype</groupId>
+    <artifactId>wildfly-html5-mobile-archetype</artifactId>
+    <version>9.0.0-build-SNAPSHOT</version>
+    <packaging>maven-archetype</packaging>
+
+    <name>Java EE 7 HTML5 Mobile Web Application</name>
+
+    <description>An archetype that generates a Java EE 7 application using HTML5, and JAX-RS to support both desktop and mobile web browsers</description>
+
+    <url>http://jboss.org/jbossas</url>
+
+    <developers>
+        <developer>
+            <name>Steven Boscarine</name>
+            <email>stevenboscarine@gmail.com</email>
+        </developer>
+        <developer>
+            <id>fbricon</id>
+            <name>Fred Bricon</name>
+            <email>fbricon@gmail.com</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://community.jboss.org/people/fbricon</url>
+            <timezone>+1</timezone>
+        </developer>
+        <developer>
+            <name>Dan Allen</name>
+            <email>dan.j.allen@gmail.com</email>
+            <organization>JBoss, by Red Hat</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://community.jboss.org/people/dan.j.allen</url>
+        </developer>
+        <developer>
+            <name>Pete Muir</name>
+            <email>pete.muir@jboss.org</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://in.relation.to/Bloggers/Pete</url>
+        </developer>
+        <developer>
+            <name>Jay Balunas</name>
+            <email>jbalunas@jboss.org</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://in.relation.to/Bloggers/Jay</url>
+        </developer>
+    </developers>
+
+    <build>
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+                <version>2.1</version>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-archetype-plugin</artifactId>
+                    <version>2.1</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+
+    <profiles>
+        <profile>
+            <activation>
+                <activeByDefault>true</activeByDefault>
+            </activation>
+            <build>
+                <plugins>
+                    <plugin>
+                        <groupId>org.jboss.maven.plugins</groupId>
+                        <artifactId>maven-qstools-plugin</artifactId>
+                        <version>1.4.1.Final</version>
+                        <configuration>
+                            <projectGitRepo>git://github.com/wildfly/quickstart.git</projectGitRepo>
+                            <projectPath>kitchensink-html5-mobile</projectPath>
+                            <rootPackage>org.jboss.as.quickstarts.html5_mobile</rootPackage>
+                            <branch>master</branch>
+                            <replaceValueWithExpression>
+                                <html5mobi>tableSuffix</html5mobi>
+                            </replaceValueWithExpression>
+                            <archetypeExpressionReplaceValues>
+                                <archetypeExpressionReplaceValue>jboss-as-kitchensink-html5-mobile</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>jboss-kitchensink-html5-mobile</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>JBoss WFK Quickstart: kitchensink-html5-mobile</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>KitchensinkHTML5MobileQuickstart</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>KitchensinkHTML5Mobile</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>kitchensink-html5-mobile-quickstart</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>kitchensink-quickstart</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>kitchensink-html5-mobile</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>Kitchensink</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>kitchensink</archetypeExpressionReplaceValue>
+                            </archetypeExpressionReplaceValues>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <phase>generate-sources</phase>
+                                <goals>
+                                    <goal>archetypeSync</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+    </profiles>
+
+</project>

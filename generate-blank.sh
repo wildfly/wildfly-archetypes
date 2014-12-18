@@ -8,7 +8,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # DEFINE
 
-ARCHETYPES="wildfly-javaee7-webapp-archetype wildfly-javaee7-webapp-ear-archetype"
+ARCHETYPES="wildfly-javaee7-webapp-archetype wildfly-javaee7-webapp-ear-archetype wildfly-html5-mobile-archetype"
 
 # SCRIPT
 
