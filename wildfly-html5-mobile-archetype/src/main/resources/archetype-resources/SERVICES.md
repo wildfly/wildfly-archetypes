@@ -4,7 +4,7 @@ Author: Jay Balunas, Marius Bogoevici
 
 This example supports various RESTFul end points which also includes JSONP support for cross domain requests.
 
-By default the base URL for services is `/wildfly-${artifactId}/rest`.
+By default the base URL for services is `/${artifactId}/rest`.
 
 MemberService End Points
 ------------------------

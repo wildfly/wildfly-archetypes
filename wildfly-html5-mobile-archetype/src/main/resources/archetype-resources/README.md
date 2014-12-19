@@ -2,7 +2,7 @@ ${artifactId}: Example Application Using Multiple HTML5, Mobile & JAX-RS Technol
 =========================================================================================================
 Author: Jay Balunas
 Level: Beginner 
-Technologies: CDI, HTML5, REST
+Technologies: CDI, HTML5, REST, JPA
 Summary: Based on ${artifactId}, but uses HTML5, making it suitable for mobile and tablet computers
 Target Product: WFK
 Source: https://github.com/jboss-jdf/wildfly-quickstart
@@ -56,7 +56,7 @@ You can now deploy the artifact by executing the following command:
 
     mvn wildfly:deploy
 
-The client application will be running at the following URL <http://localhost:8080/wildfly-${artifactId}/>.
+The client application will be running at the following URL <http://localhost:8080/${artifactId}/>.
 
 To undeploy run this command:
 

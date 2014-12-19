@@ -19,7 +19,7 @@
 
     <description>An archetype that generates a Java EE 7 application using HTML5, and JAX-RS to support both desktop and mobile web browsers</description>
 
-    <url>http://jboss.org/jbossas</url>
+    <url>http://www.wildfly.org/</url>
 
     <developers>
         <developer>
@@ -38,8 +38,6 @@
         <developer>
             <name>Dan Allen</name>
             <email>dan.j.allen@gmail.com</email>
-            <organization>JBoss, by Red Hat</organization>
-            <organizationUrl>http://redhat.com/jboss</organizationUrl>
             <url>http://community.jboss.org/people/dan.j.allen</url>
         </developer>
         <developer>
@@ -55,6 +53,15 @@
             <organization>Red Hat, Inc.</organization>
             <organizationUrl>http://redhat.com/jboss</organizationUrl>
             <url>http://in.relation.to/Bloggers/Jay</url>
+        </developer>
+        <developer>
+            <id>rafabene</id>
+            <name>Rafael Benevides</name>
+            <email>benevides@rehat.com</email>
+            <organization>Red Hat, Inc.</organization>
+            <organizationUrl>http://redhat.com/jboss</organizationUrl>
+            <url>http://www.rafabene.com</url>
+            <timezone>-3</timezone>
         </developer>
     </developers>
 
@@ -99,8 +106,8 @@
                             </replaceValueWithExpression>
                             <archetypeExpressionReplaceValues>
                                 <archetypeExpressionReplaceValue>jboss-as-kitchensink-html5-mobile</archetypeExpressionReplaceValue>
-                                <archetypeExpressionReplaceValue>jboss-kitchensink-html5-mobile</archetypeExpressionReplaceValue>
-                                <archetypeExpressionReplaceValue>JBoss WFK Quickstart: kitchensink-html5-mobile</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>wildfly-kitchensink-html5-mobile</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>WildFly Quickstarts: HTML5/Mobile</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>KitchensinkHTML5MobileQuickstart</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>KitchensinkHTML5Mobile</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>kitchensink-html5-mobile-quickstart</archetypeExpressionReplaceValue>

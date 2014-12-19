@@ -51,7 +51,7 @@
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
         <version.jboss.bom>8.0.0.Final</version.jboss.bom>
-        <version.wildfly>8.1.0.Final</version.wildfly>
+        <version.wildfly>9.0.0.Alpha1</version.wildfly>
         <version.arquillian.container>8.0.0.Final</version.arquillian.container>
 
 
@@ -61,7 +61,7 @@
         <version.ear.plugin>2.6</version.ear.plugin>
         <version.ejb.plugin>2.3</version.ejb.plugin>
         <version.surefire.plugin>2.16</version.surefire.plugin>
-        <version.war.plugin>2.1.1</version.war.plugin>
+        <version.war.plugin>2.5</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.7</maven.compiler.target>
