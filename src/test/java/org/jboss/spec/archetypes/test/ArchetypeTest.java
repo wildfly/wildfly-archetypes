@@ -114,9 +114,10 @@ public class ArchetypeTest {
         properties.put("artifactId", artifactId);
         properties.put("version", "0.0.1-SNAPSHOT");
         Verifier verifier = new org.apache.maven.it.Verifier(outputDir);
-        verifier.setAutoclean(cleanArchetypes);
+        verifier.setAutoclean(false);
         verifier.setSystemProperties(properties);
         verifier.setLogFileName(artifactId + "-generate.txt");
+
         verifier.executeGoal(goal);
 
         log.info("Building project from Archetype: " + model);
