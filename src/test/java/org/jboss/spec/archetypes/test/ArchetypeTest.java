@@ -54,7 +54,7 @@ public class ArchetypeTest {
         log.info(String.format("Running tests... onlyMavenCentral: %s - cleanArchetypes: %s", onlyMavenCentral, cleanArchetypes));
         File baseDirFile = new File(baseDir);
         for (File file : baseDirFile.listFiles()) {
-            if (file.isDirectory() && isMavenProject(file) && file.getName().startsWith("wildfly-javaee7")) {
+            if (file.isDirectory() && isMavenProject(file) && ( file.getName().startsWith("wildfly-javaee7") ||  file.getName().startsWith("wildfly-html5"))) {
                 Reader reader = new FileReader(new File(file, "pom.xml"));
                 try {
                     MavenXpp3Reader xpp3Reader = new MavenXpp3Reader();
@@ -76,7 +76,7 @@ public class ArchetypeTest {
      * @throws VerificationException
      */
     private void installArchetype(File baseDir, Model model) throws VerificationException {
-        log.info("Installing Archetype " + model);
+        log.info("Installing Archetype *****: " + model);
         Verifier installer = new Verifier(baseDir.getAbsolutePath());
         if (onlyMavenCentral) {
             installer.addCliOption("-s " + testOutputDirectory + File.separator + "settings-clear.xml");

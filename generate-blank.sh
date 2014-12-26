@@ -74,6 +74,8 @@ EOF
    mv src/main/resources/META-INF/maven/archetype-metadata-blank.xml src/main/resources/META-INF/maven/archetype-metadata.xml
 
    perl -pi -e "s/${ARCHETYPE_NAME}/${ARCHETYPE_BLANK_NAME}/g" `find . -name pom.xml`
+   
+   perl -pi -e "s/<activeByDefault>true<\/activeByDefault>/<activeByDefault>false<\/activeByDefault>/g" `find . -name pom.xml`
 
 }
   
