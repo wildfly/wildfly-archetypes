@@ -75,7 +75,7 @@ EOF
 
    perl -pi -e "s/${ARCHETYPE_NAME}/${ARCHETYPE_BLANK_NAME}/g" `find . -name pom.xml`
    
-   perl -pi -e "s/<activeByDefault>true<\/activeByDefault>/<activeByDefault>false<\/activeByDefault>/g" `find . -name pom.xml`
+   perl -pi -e "s/<activeByDefault>true<\/activeByDefault>/<activeByDefault>false<\/activeByDefault>/g" $ARCHETYPE_BLANK_DIR/pom.xml
 
 }
   
