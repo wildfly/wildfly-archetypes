@@ -94,8 +94,8 @@
                 <plugins>
                     <plugin>
                         <groupId>org.jboss.maven.plugins</groupId>
-                        <artifactId>maven-qstools-plugin</artifactId>
-                        <version>1.4.1.Final</version>
+                        <artifactId>qstools</artifactId>
+                        <version>1.5.2.Final</version>
                         <configuration>
                             <projectGitRepo>git://github.com/wildfly/quickstart.git</projectGitRepo>
                             <projectPath>kitchensink-html5-mobile</projectPath>
@@ -104,9 +104,11 @@
                             <replaceValueWithExpression>
                                 <html5mobi>tableSuffix</html5mobi>
                             </replaceValueWithExpression>
+                            <ignoredArchetypeExpressionReplaceValues>
+                              <ignoredArchetypeExpressionReplaceValue>https://github.com/wildfly/quickstart/tree/master/</ignoredArchetypeExpressionReplaceValue>
+                            </ignoredArchetypeExpressionReplaceValues>
                             <archetypeExpressionReplaceValues>
-                                <archetypeExpressionReplaceValue>jboss-as-kitchensink-html5-mobile</archetypeExpressionReplaceValue>
-                                <archetypeExpressionReplaceValue>wildfly-kitchensink-html5-mobile</archetypeExpressionReplaceValue>
+<archetypeExpressionReplaceValue>wildfly-kitchensink-html5-mobile</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>WildFly Quickstarts: HTML5/Mobile</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>KitchensinkHTML5MobileQuickstart</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>KitchensinkHTML5Mobile</archetypeExpressionReplaceValue>
