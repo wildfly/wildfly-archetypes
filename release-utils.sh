@@ -8,7 +8,7 @@ DIR="$( cd -P "$( dirname "$SOURCE" )" && pwd )"
 
 # DEFINE
 
-ARCHETYPES="wildfly-javaee7-webapp-archetype wildfly-javaee7-webapp-blank-archetype wildfly-javaee7-webapp-ear-archetype  wildfly-javaee7-webapp-ear-blank-archetype wildfly-html5-mobile-archetype"
+ARCHETYPES="wildfly-javaee7-webapp-archetype wildfly-javaee7-webapp-blank-archetype wildfly-javaee7-webapp-ear-archetype  wildfly-javaee7-webapp-ear-blank-archetype wildfly-html5-mobile-archetype wildfly-html5-mobile-blank-archetype"
 
 SNAPSHOT_REPO_ID="jboss-snapshots-repository"
 RELEASE_REPO_ID="jboss-releases-repository"
