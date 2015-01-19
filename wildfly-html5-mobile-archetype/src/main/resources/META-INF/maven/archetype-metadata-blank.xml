@@ -34,10 +34,8 @@
             <directory>src/main/webapp</directory>
             <includes>
                 <include>**/*.xml</include>
+                <include>**/wro.properties</include>
             </includes>
-            <excludes>
-                <exclude>**/wro.xml</exclude>
-            </excludes>
         </fileSet>
         <fileSet encoding="UTF-8">
             <directory>src/main/webapp/resources</directory>
