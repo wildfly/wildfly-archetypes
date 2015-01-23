@@ -6,7 +6,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-archetypes-test</artifactId>
-    <version>9.0.0-build-SNAPSHOT</version>
+    <version>8.2.0.Final</version>
 
     <name>Archetypes test</name>
 
