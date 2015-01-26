@@ -101,6 +101,7 @@
                             <projectPath>kitchensink</projectPath>
                             <rootPackage>org.jboss.as.quickstarts.kitchensink</rootPackage>
                             <branch>master</branch>
+                            <applyPatch>cheatsheet.diff</applyPatch>
                             <archetypeExpressionReplaceValues>
                                 <archetypeExpressionReplaceValue>jboss-kitchensink</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>kitchensink-quickstart</archetypeExpressionReplaceValue>

@@ -104,6 +104,7 @@
                             <replaceValueWithExpression>
                                 <html5mobi>tableSuffix</html5mobi>
                             </replaceValueWithExpression>
+                            <applyPatch>cheatsheet.diff</applyPatch>
                             <ignoredArchetypeExpressionReplaceValues>
                               <ignoredArchetypeExpressionReplaceValue>https://github.com/wildfly/quickstart/tree/master/</ignoredArchetypeExpressionReplaceValue>
                             </ignoredArchetypeExpressionReplaceValues>
