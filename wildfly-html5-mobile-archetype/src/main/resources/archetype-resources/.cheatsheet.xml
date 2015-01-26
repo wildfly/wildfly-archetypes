@@ -1,7 +1,3 @@
-#set( $symbol_pound = '#' )
-#set( $symbol_dollar = '$' )
-#set( $symbol_escape = '\' )
-#set($packagePath=$package.replace(".","/"))
 <?xml version="1.0" encoding="UTF-8"?> 
 <!--
     JBoss, Home of Professional Open Source
@@ -344,35 +340,35 @@
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=36)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=36)"/>
   </subitem>
   <subitem
             label="Members are exposed as a RESTful service using JAX-RS. We can use JAXB to map the object to XML and to do this we need to add @XmlRootElement."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=37)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=37)"/>
   </subitem>
   <subitem
             label="Bean Validation allows constraints to be defined once (on the entity) and applied everywhere. Here we constrain the person's name to a certain size and regular expression. "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=47,toLine=49)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=47,toLine=49)"/>
   </subitem>
   <subitem
             label="Hibernate Validator also offers some extra validations such as @Email. "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=54,toLine=54)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=54,toLine=54)"/>
   </subitem>
   <subitem
             label="@Digits, @NotNull and @Size are further examples of constraints. "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/model/Member.java,fromLine=57,toLine=59)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/model/Member.java,fromLine=57,toLine=59)"/>
   </subitem>
   
   </item>
@@ -388,28 +384,28 @@
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/data/MemberRepository.java,fromLine=29)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/data/MemberRepository.java,fromLine=29)"/>
   </subitem>
   <subitem
             label="The entity manager is injected, to allow interaction with JPA."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/data/MemberRepository.java,fromLine=32)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/data/MemberRepository.java,fromLine=32)"/>
   </subitem>
   <subitem
             label="The JPA criteria api is used to load a member by his or her unique identifier, email address."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/data/MemberRepository.java,fromLine=40,toLine=47)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/data/MemberRepository.java,fromLine=40,toLine=47)"/>
   </subitem>
   <subitem
             label="The criteria api can also be used to load lists of entities ."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/data/MemberRepository.java,fromLine=51,toLine=58)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/data/MemberRepository.java,fromLine=51,toLine=58)"/>
   </subitem>
     
   </item>
@@ -425,21 +421,21 @@
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/service/MemberRegistration.java,fromLine=28)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/service/MemberRegistration.java,fromLine=28)"/>
   </subitem>
   <subitem
             label="Here we inject a JDK logger, defined in the Resources class."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/service/MemberRegistration.java,fromLine=31)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/service/MemberRegistration.java,fromLine=31)"/>
   </subitem>
   <subitem
             label="An event is sent every time a member is updated. This allows other pieces of code (in this quickstart the member list is refreshed) to react to changes in the member list without any coupling to this class. "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/service/MemberRegistration.java,fromLine=43)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/service/MemberRegistration.java,fromLine=43)"/>
   </subitem>  
     
   </item>
@@ -455,70 +451,70 @@
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=53)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=53)"/>
   </subitem>
   <subitem
             label="Again, we inject a JDK logger, defined in the Resources class."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=57)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=57)"/>
   </subitem>
   <subitem
             label="We inject a JSR-303 Validator to use it for validating the JPA entity attributes before passing it down to other classes."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=60)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=60)"/>
   </subitem>
   <subitem
             label="We also inject instances of MemberRepository and MemberRegistration to act as delegates in this RESTful service."
             skip="true">
      <command
            required="false"
-           serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=63,toLine=65)"/>
+           serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=63,toLine=65)"/>
   </subitem>
   <subitem
             label="The listAllMembers method processes all HTTP GET requests to the &quot;/members&quot; URI, providing a list of all Member instances, in a JSON response."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=69,toLine=73)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=69,toLine=73)"/>
   </subitem>
   <subitem
             label="The lookupMemberById method processes HTTP GET requests to a URI with path template &quot;/members/{id}&quot;. It provides a single Member instance (whose id matches the provided id in the URI), as response of type JSON."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=75,toLine=84)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=75,toLine=84)"/>
   </subitem>
   <subitem
             label="The createMember method processes all HTTP POST requests to the &quot;/members&quot; URI. It consumes a POST request with a body containing a JSON object representing a Member instance. The JAX-RS provider de-serializes the POST body into a Member. It validates the provided Member, registers it if the Member is valid, and creates a HTTP response, It provides the newly registered Member instance as a JSON object, in the response."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=90,toLine=121)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=90,toLine=121)"/>
   </subitem>
   <subitem
             label="The validateMember method is a private method whose responsibility is to validate the provided Member instance for violations of the declared constraints, and also to verify if the supplied email of a Member is unique. It uses the JSR-303 validator instance to validate the Member. Any constraint violations reported by the validator are rethrown as a ConstraintViolationException."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=137,toLine=149)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=137,toLine=149)"/>
   </subitem>
   <subitem
             label="The createViolationResponse is used to construct a meaningful HTTP response when violations of declared constraints are found by the JSR-303 validator. Every violation is serialized with the name of the attribute that failed violation, and a message describing the violation."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=158,toLine=168)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=158,toLine=168)"/>
   </subitem>
   <subitem
             label="The emailAlreadyExists method verifies for uniqueness of the email address in the supplied Member. It uses the MemberRepository to determine if an existing member with the same email can be found."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/rest/MemberService.java,fromLine=177,toLine=185)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/rest/MemberService.java,fromLine=177,toLine=185)"/>
   </subitem>
     
   </item>
@@ -534,14 +530,14 @@
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/util/Resources.java,fromLine=40,toLine=42)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/util/Resources.java,fromLine=40,toLine=42)"/>
   </subitem>
   <subitem
             label="We expose a JDK logger for injection. In order to save a bit more boiler plate, we automatically set the logger category as the class name! "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${package}/util/Resources.java,fromLine=44,toLine=47)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/main/java/${packagePath}/util/Resources.java,fromLine=44,toLine=47)"/>
   </subitem>
   <subitem
             label="If you want to define your own datasource, take a look at the Admin Guide for WildFly"
@@ -653,56 +649,56 @@
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${package}/test/MemberRegistrationTest.java,fromLine=49)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${packagePath}/test/MemberRegistrationTest.java,fromLine=49)"/>
   </subitem>
   <subitem
             label="The @Deployment annotation identifies the createTestArchive static method to Arquillian as the one to use to determine which resources and classes to deploy "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${package}/test/MemberRegistrationTest.java,fromLine=51)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${packagePath}/test/MemberRegistrationTest.java,fromLine=51)"/>
   </subitem>
   <subitem
             label="We add just the classes needed for the test, nothing more "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${package}/test/MemberRegistrationTest.java,fromLine=55,toLine=56)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${packagePath}/test/MemberRegistrationTest.java,fromLine=55,toLine=56)"/>
   </subitem>
   <subitem
             label="We also add persistence.xml as our test is going to use the database "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${package}/test/MemberRegistrationTest.java,fromLine=57)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${packagePath}/test/MemberRegistrationTest.java,fromLine=57)"/>
   </subitem>
   <subitem
             label="Of course, we must add beans.xml to enable CDI."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${package}/test/MemberRegistrationTest.java,fromLine=58)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${packagePath}/test/MemberRegistrationTest.java,fromLine=58)"/>
   </subitem>
   <subitem
             label="Finally, we add a test datasource, so that our test data doesn&apos;t overwrite the production data."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${package}/test/MemberRegistrationTest.java,fromLine=59)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${packagePath}/test/MemberRegistrationTest.java,fromLine=59)"/>
   </subitem>
   <subitem
             label="Arquillian allows us to inject beans into the test case."
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${package}/test/MemberRegistrationTest.java,fromLine=62,toLine=63)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${packagePath}/test/MemberRegistrationTest.java,fromLine=62,toLine=63)"/>
   </subitem>
   <subitem
             label="The test method works as you would expect - creates a new member, registers them, and then verifies that the member was created "
             skip="true">
     <command
       required="false"
-      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${package}/test/MemberRegistrationTest.java,fromLine=68,toLine=76)"/>
+      serialization="org.jboss.tools.project.examples.cheatsheet.openFileInEditor(path=/${currentProject}/src/test/java/${packagePath}/test/MemberRegistrationTest.java,fromLine=68,toLine=76)"/>
   </subitem>
   
   </item>

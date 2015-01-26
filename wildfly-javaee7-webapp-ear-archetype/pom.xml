@@ -108,7 +108,7 @@
                     <plugin>
                         <groupId>org.jboss.maven.plugins</groupId>
                         <artifactId>qstools</artifactId>
-                        <version>1.5.2.Final</version>
+                        <version>1.5.3.Final</version>
                         <configuration>
                             <projectGitRepo>git://github.com/wildfly/quickstart.git</projectGitRepo>
                             <projectPath>kitchensink-ear</projectPath>

@@ -95,13 +95,12 @@
                     <plugin>
                         <groupId>org.jboss.maven.plugins</groupId>
                         <artifactId>qstools</artifactId>
-                        <version>1.5.2.Final</version>
+                        <version>1.5.3.Final</version>
                         <configuration>
                             <projectGitRepo>git://github.com/wildfly/quickstart.git</projectGitRepo>
                             <projectPath>kitchensink</projectPath>
                             <rootPackage>org.jboss.as.quickstarts.kitchensink</rootPackage>
                             <branch>master</branch>
-                            <applyPatch>cheatsheet.diff</applyPatch>
                             <archetypeExpressionReplaceValues>
                                 <archetypeExpressionReplaceValue>jboss-kitchensink</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>kitchensink-quickstart</archetypeExpressionReplaceValue>
