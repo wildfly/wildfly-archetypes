@@ -19,7 +19,7 @@
     See the License for the specific language governing permissions and
     limitations under the License.
 -->
-<cheatsheet title="CDI + JSF + EJB + JTA + Bean Validation + JAX-RS + Arquillian: Kitchensink quickstart">
+<cheatsheet title="CDI + JSF + EJB + JTA + Bean Validation + JAX-RS + Arquillian: ${artifactId} quickstart">
   <intro>
     <description>
 This quickstart shows off all the new features of Java EE 7, and makes a great starting point for your project.
@@ -686,7 +686,7 @@ We discussed both of these files in detail in The <b>greeter example in depth</b
         skip="true"
         title="Creating your own application ">
      <description>
-      What we didn&apos;t tell you about the <b>Kitchensink quickstart</b> is that it is generated from a Maven archetype. 
+      What we didn&apos;t tell you about the <b>${artifactId} quickstart</b> is that it is generated from a Maven archetype. 
       Using this archetype offers you the perfect opportunity to generate your own project.
       <br/><br/>
       In order to perform that, you should select <b>Help&gt;JBoss Central</b> and click the <b>Java EE Web Project</b> wizard.

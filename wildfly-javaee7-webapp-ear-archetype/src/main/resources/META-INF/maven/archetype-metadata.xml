@@ -97,6 +97,7 @@
                         <include>**/*.html</include>
                         <include>**/*.css</include>
                         <include>**/*.png</include>
+                        <include>**/*.jpg</include>
                         <include>**/*.xhtml</include>
                     </includes>
                 </fileSet>

@@ -103,9 +103,10 @@
                             <branch>master</branch>
                             <applyPatch>cheatsheet.diff</applyPatch>
                             <archetypeExpressionReplaceValues>
-                                <archetypeExpressionReplaceValue>jboss-kitchensink</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>wildfly-kitchensink</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>kitchensink-quickstart</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>KitchensinkQuickstart</archetypeExpressionReplaceValue>
+                                <archetypeExpressionReplaceValue>Kitchensink</archetypeExpressionReplaceValue>
                             </archetypeExpressionReplaceValues>
                         </configuration>
                         <executions>

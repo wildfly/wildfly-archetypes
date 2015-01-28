@@ -39,7 +39,7 @@
     <fileSet encoding="UTF-8" filtered="true">
       <directory>src/test/resources</directory>
       <excludes>
-         <include>**/*.xml</include>
+         <exclude>**/*.xml</exclude>
       </excludes>
     </fileSet>
     <fileSet encoding="UTF-8" filtered="true">
