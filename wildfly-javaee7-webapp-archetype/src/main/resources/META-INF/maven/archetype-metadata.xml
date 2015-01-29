@@ -34,6 +34,7 @@
       <directory>src/main/webapp</directory>
       <includes>
         <include>**/*.html</include>
+        <include>**/*.xhtml</include>
         <include>**/*.xml</include>
       </includes>
     </fileSet>
@@ -42,7 +43,6 @@
       <includes>
         <include>**/*.png</include>
         <include>**/*.jpg</include>
-        <include>**/*.xhtml</include>
         <include>**/*.css</include>
       </includes>
     </fileSet>
