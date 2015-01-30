@@ -34,15 +34,16 @@
       <directory>src/main/webapp</directory>
       <includes>
         <include>**/*.html</include>
-        <include>**/*.xhtml</include>
         <include>**/*.xml</include>
-      </includes>
+        <include>**/default.xhtml</include>
+        </includes>
     </fileSet>
     <fileSet encoding="UTF-8">
       <directory>src/main/webapp</directory>
       <includes>
         <include>**/*.png</include>
         <include>**/*.jpg</include>
+        <include>**/*.xhtml</include>
         <include>**/*.css</include>
       </includes>
     </fileSet>
