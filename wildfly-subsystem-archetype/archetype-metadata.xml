@@ -6,7 +6,7 @@
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
     <requiredProperties>
         <requiredProperty key="name">
-            <defaultValue>WildFly 8 subsystem project</defaultValue>
+            <defaultValue>WildFly 10 subsystem project</defaultValue>
         </requiredProperty>
         <requiredProperty key="module"/>
     </requiredProperties>

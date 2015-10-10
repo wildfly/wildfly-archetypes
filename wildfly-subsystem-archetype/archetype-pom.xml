@@ -5,12 +5,12 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-subsystem</artifactId>
-    <version>8.0.0.Final</version>
+    <version>10.0.0.CR2</version>
     <packaging>maven-archetype</packaging>
 
-    <name>WildFly 8 Subsystem</name>
+    <name>WildFly 10 Subsystem</name>
 
-    <description>An archetype that generates a skeleton project for implementing a WildFly 8 subsystem</description>
+    <description>An archetype that generates a skeleton project for implementing a WildFly 10 subsystem</description>
 
     <url>http://wildfly.org</url>
 
