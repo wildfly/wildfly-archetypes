@@ -39,7 +39,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly.core>1.0.0.Alpha9</version.wildfly.core>
+        <version.wildfly.core>2.0.0.CR5</version.wildfly.core>
         <version.junit>4.11</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>com.acme.corp.tracker</module.name>
@@ -55,8 +55,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>3.1</version>
                 <configuration>
-                    <source>1.7</source>
-                    <target>1.7</target>
+                    <source>1.8</source>
+                    <target>1.8</target>
                 </configuration>
             </plugin>
             <plugin>
