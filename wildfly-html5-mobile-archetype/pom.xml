@@ -95,12 +95,12 @@
                     <plugin>
                         <groupId>org.jboss.maven.plugins</groupId>
                         <artifactId>qstools</artifactId>
-                        <version>1.5.3.Final</version>
+                        <version>1.6.2.Final</version>
                         <configuration>
                             <projectGitRepo>git://github.com/wildfly/quickstart.git</projectGitRepo>
                             <projectPath>kitchensink-html5-mobile</projectPath>
                             <rootPackage>org.jboss.as.quickstarts.html5_mobile</rootPackage>
-                            <branch>master</branch>
+                            <branch>9.x</branch>
                             <replaceValueWithExpression>
                                 <html5mobi>tableSuffix</html5mobi>
                             </replaceValueWithExpression>

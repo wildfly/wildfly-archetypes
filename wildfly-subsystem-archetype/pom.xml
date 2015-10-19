@@ -40,7 +40,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly.core>1.0.0.Alpha9</version.wildfly.core>
+        <version.wildfly.core>1.0.0.Final</version.wildfly.core>
         <version.junit>4.11</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>${module}</module.name>

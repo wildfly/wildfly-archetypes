@@ -24,11 +24,12 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <!-- parent>
-        <groupId>org.jboss</groupId>
-        <artifactId>jboss-parent</artifactId>
-        <artifactId>14</artifactId>
-    </parent -->
+    <parent>
+            <groupId>org.jboss</groupId>
+            <artifactId>jboss-parent</artifactId>
+            <version>19</version>
+            <relativePath />
+        </parent>
 
     <groupId>com.acme.corp</groupId>
     <artifactId>acme-subsystem</artifactId>
@@ -39,7 +40,7 @@
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly.core>1.0.0.Alpha9</version.wildfly.core>
+        <version.wildfly.core>1.0.0.Final</version.wildfly.core>
         <version.junit>4.11</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>com.acme.corp.tracker</module.name>
@@ -62,10 +63,8 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.16</version>
+                <version>${version.surefire.plugin}</version>
                 <configuration>
-                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                    <enableAssertions>true</enableAssertions>
                     <argLine>-Xmx512m</argLine>
                     <systemProperties>
                         <property>
@@ -73,15 +72,12 @@
                             <value>${jboss.home}</value>
                         </property>
                     </systemProperties>
-                    <includes>
-                        <include>**/*TestCase.java</include>
-                    </includes>
                     <forkMode>once</forkMode>
                 </configuration>
             </plugin>
             <plugin>
                 <artifactId>maven-assembly-plugin</artifactId>
-                <version>2.4</version>
+                <version>${version.assembly.plugin}</version>
                 <configuration>
                     <filters>
                         <filter>src/assemble/filter.properties</filter>
@@ -95,7 +91,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <inherited>false</inherited>
-                <version>1.6</version>
+                <version>${version.antrun.plugin}</version>
                 <executions>
                     <execution>
                         <id>build-dist</id>

@@ -3,6 +3,12 @@
     xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>19</version>
+        <relativePath/>
+    </parent>
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-archetypes-test</artifactId>
@@ -13,33 +19,25 @@
     <description>This is a test only pom.xml</description>
 
     <properties>
-        <junit.version>4.10</junit.version>
-        <maven.version>3.0.5</maven.version>
+        <junit.version>4.11</junit.version>
+        <maven.version>3.2.3</maven.version>
     </properties>
-
-
     <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>2.13</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <outPutDirectory>${project.build.directory}</outPutDirectory>
-                        <testOutputDirectory>${project.build.testOutputDirectory}</testOutputDirectory>
-                        <basedir>${project.basedir}</basedir>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-        </plugins>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${version.surefire.plugin}</version>
+                    <configuration>
+                        <systemPropertyVariables>
+                            <outPutDirectory>${project.build.directory}</outPutDirectory>
+                            <testOutputDirectory>${project.build.testOutputDirectory}</testOutputDirectory>
+                            <basedir>${project.basedir}</basedir>
+                        </systemPropertyVariables>
+                    </configuration>
+                </plugin>
+            </plugins>
+        </pluginManagement>
     </build>
 
     <dependencies>
@@ -58,7 +56,7 @@
         <dependency>
             <groupId>org.apache.maven.shared</groupId>
             <artifactId>maven-verifier</artifactId>
-            <version>1.4</version>
+            <version>1.6</version>
             <scope>test</scope>
         </dependency>
         <dependency>

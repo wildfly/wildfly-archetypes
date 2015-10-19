@@ -108,13 +108,13 @@
                     <plugin>
                         <groupId>org.jboss.maven.plugins</groupId>
                         <artifactId>qstools</artifactId>
-                        <version>1.5.3.Final</version>
+                        <version>1.6.2.Final</version>
                         <configuration>
                             <projectGitRepo>git://github.com/wildfly/quickstart.git</projectGitRepo>
                             <projectPath>kitchensink-ear</projectPath>
                             <rootPackage>org.jboss.as.quickstarts.kitchensink_ear</rootPackage>
                             <multiModuleProject>true</multiModuleProject>
-                            <branch>master</branch>
+                            <branch>9.x</branch>
                             <archetypeExpressionReplaceValues>
                                 <archetypeExpressionReplaceValue>wildfly-kitchensink-ear</archetypeExpressionReplaceValue>
                                 <archetypeExpressionReplaceValue>kitchensink-ear-quickstart</archetypeExpressionReplaceValue>
