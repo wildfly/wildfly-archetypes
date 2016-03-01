@@ -18,12 +18,11 @@ import org.jboss.dmr.ModelType;
  */
 public class TypeDefinition extends PersistentResourceDefinition {
 
-    protected static final AttributeDefinition TICK =
-            new SimpleAttributeDefinitionBuilder(TrackerExtension.TICK, ModelType.LONG)
-                    .setAllowExpression(true)
-                    .setDefaultValue(new ModelNode(1000))
-                    .setAllowNull(false)
-                    .build();
+    protected static final AttributeDefinition TICK = new SimpleAttributeDefinitionBuilder(TrackerExtension.TICK, ModelType.LONG)
+            .setAllowExpression(true)
+            .setDefaultValue(new ModelNode(1000))
+            .setAllowNull(false)
+            .build();
 
     public static final TypeDefinition INSTANCE = new TypeDefinition();
 

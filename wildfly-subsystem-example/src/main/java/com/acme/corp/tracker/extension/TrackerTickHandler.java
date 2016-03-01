@@ -3,8 +3,6 @@ package com.acme.corp.tracker.extension;
 import org.jboss.as.controller.AbstractWriteAttributeHandler;
 import org.jboss.as.controller.OperationContext;
 import org.jboss.as.controller.OperationFailedException;
-import org.jboss.as.controller.PathAddress;
-import org.jboss.as.controller.descriptions.ModelDescriptionConstants;
 import org.jboss.dmr.ModelNode;
 
 /**
@@ -37,7 +35,7 @@ class TrackerTickHandler extends AbstractWriteAttributeHandler<Long> {
     protected boolean applyUpdateToRuntime(OperationContext context, ModelNode operation, String attributeName,
                                            ModelNode resolvedValue, ModelNode currentValue, HandbackHolder<Long> handbackHolder) throws OperationFailedException {
 
-        final String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
+        final String suffix = context.getCurrentAddressValue();
         TrackerService service = (TrackerService) context.getServiceRegistry(true).getRequiredService(TrackerService.createServiceName(suffix)).getValue();
         // Store the current value for use in case of rollback in revertUpdateToRuntime
         handbackHolder.setHandback(service.getTick());
@@ -60,7 +58,7 @@ class TrackerTickHandler extends AbstractWriteAttributeHandler<Long> {
      */
     protected void revertUpdateToRuntime(OperationContext context, ModelNode operation, String attributeName,
                                          ModelNode valueToRestore, ModelNode valueToRevert, Long handback) {
-        final String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
+        final String suffix = context.getCurrentAddressValue();
         TrackerService service = (TrackerService) context.getServiceRegistry(true).getRequiredService(TrackerService.createServiceName(suffix)).getValue();
         service.setTick(handback);
     }

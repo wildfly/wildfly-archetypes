@@ -18,9 +18,9 @@ public class TrackerService implements Service<TrackerService> {
 
     private AtomicLong tick = new AtomicLong(10000);
 
-    private Set<String> deployments = Collections.synchronizedSet(new HashSet<String>());
+    private Set<String> deployments = Collections.synchronizedSet(new HashSet<>());
 
-    private Set<String> coolDeployments = Collections.synchronizedSet(new HashSet<String>());
+    private Set<String> coolDeployments = Collections.synchronizedSet(new HashSet<>());
 
     private final String suffix;
 

@@ -5,14 +5,11 @@ import static com.acme.corp.tracker.extension.TypeDefinition.TICK;
 import org.jboss.as.controller.AbstractAddStepHandler;
 import org.jboss.as.controller.OperationContext;
 import org.jboss.as.controller.OperationFailedException;
-import org.jboss.as.controller.PathAddress;
-import org.jboss.as.controller.descriptions.ModelDescriptionConstants;
 import org.jboss.dmr.ModelNode;
 import org.jboss.msc.service.ServiceController.Mode;
 import org.jboss.msc.service.ServiceName;
 
 /**
- *
  * @author Tomaz Cerar
  */
 class TypeAdd extends AbstractAddStepHandler {
@@ -27,10 +24,10 @@ class TypeAdd extends AbstractAddStepHandler {
     @Override
     protected void performRuntime(OperationContext context, ModelNode operation, ModelNode model)
             throws OperationFailedException {
-        String suffix = PathAddress.pathAddress(operation.get(ModelDescriptionConstants.ADDRESS)).getLastElement().getValue();
+        String suffix = context.getCurrentAddressValue();
         // we use resolveModelAttribute to properly resolve any expressions
         // and to use the default value if otherwise undefined
-        long tick = TICK.resolveModelAttribute(context,model).asLong();
+        long tick = TICK.resolveModelAttribute(context, model).asLong();
         TrackerService service = new TrackerService(suffix, tick);
         ServiceName name = TrackerService.createServiceName(suffix);
         context.getServiceTarget()

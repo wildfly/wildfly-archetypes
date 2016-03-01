@@ -4,6 +4,7 @@ import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUB
 
 import org.jboss.as.controller.Extension;
 import org.jboss.as.controller.ExtensionContext;
+import org.jboss.as.controller.ModelVersion;
 import org.jboss.as.controller.PathElement;
 import org.jboss.as.controller.SubsystemRegistration;
 import org.jboss.as.controller.descriptions.StandardResourceDescriptionResolver;
@@ -12,6 +13,7 @@ import org.jboss.as.controller.parsing.ExtensionParsingContext;
 
 /**
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
+ * @author <a href="tcerar@redhat.com">Tomaz Cerar</a>
  */
 public class TrackerExtension implements Extension {
 
@@ -45,7 +47,7 @@ public class TrackerExtension implements Extension {
 
     @Override
     public void initialize(ExtensionContext context) {
-        final SubsystemRegistration subsystem = context.registerSubsystem(SUBSYSTEM_NAME, 1, 0);
+        final SubsystemRegistration subsystem = context.registerSubsystem(SUBSYSTEM_NAME, ModelVersion.create(1, 0, 0));
         subsystem.registerSubsystemModel(TrackerRootDefinition.INSTANCE);
         subsystem.registerXMLElementWriter(new TrackerParser1_0());
     }

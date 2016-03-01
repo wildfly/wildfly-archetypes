@@ -16,7 +16,7 @@ import org.jboss.vfs.VirtualFile;
 /**
  * An example deployment unit processor that does nothing. To add more deployment
  * processors copy this class, and add to the {@link AbstractDeploymentChainStep}
- * {@link com.acme.corp.tracker.extension.SubsystemAdd#performBoottime(org.jboss.as.controller.OperationContext, org.jboss.dmr.ModelNode, org.jboss.dmr.ModelNode, org.jboss.as.controller.ServiceVerificationHandler, java.util.List)}
+ * {@link com.acme.corp.tracker.extension.TrackerSubsystemAdd#performBoottime(org.jboss.as.controller.OperationContext, org.jboss.dmr.ModelNode, org.jboss.dmr.ModelNode)}
  *
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
  */
@@ -63,8 +63,7 @@ public class SubsystemDeploymentProcessor implements DeploymentUnitProcessor {
         String suffix = name.substring(last + 1);
         ServiceController<?> container = registry.getService(TrackerService.createServiceName(suffix));
         if (container != null) {
-            TrackerService service = (TrackerService) container.getValue();
-            return service;
+            return (TrackerService) container.getValue();
         }
         return null;
     }

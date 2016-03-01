@@ -34,7 +34,7 @@ public class TrackerRootDefinition extends PersistentResourceDefinition {
 
     @Override
     protected List<? extends PersistentResourceDefinition> getChildren() {
-        return Arrays.asList(TypeDefinition.INSTANCE);
+        return Collections.singletonList(TypeDefinition.INSTANCE);
     }
 
     /**
