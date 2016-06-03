@@ -37,7 +37,7 @@ cp -f archetype-metadata.xml $ARCHETYPE_DIR/src/main/resources/META-INF/maven/ar
 touch $ARCHETYPE_DIR/src/main/resources/META-INF/maven/archetype-metadata.xml
 cp archetype-test.properties $ARCHETYPE_DIR/src/test/resources/projects/basic/archetype.properties
 
-mv  $ARCHETYPE_RESOURCES_DIR/src/main/resources/com/mycompany/subsystem/* $ARCHETYPE_RESOURCES_DIR/src/main/resources/
+mv  $ARCHETYPE_RESOURCES_DIR/src/main/resources/com/mycompany/subsystem/extension/* $ARCHETYPE_RESOURCES_DIR/src/main/resources/
 
 #rsync -az --exclude .svn eclipse-dot-files/ $ARCHETYPE_RESOURCES_DIR/
 # fix the archetype plugin being an idiot
@@ -56,7 +56,7 @@ if [ ! -z $1 ] && [ "$1" = "generate" ]; then
     echo Generating project from archetype...
     cd target
     mvn archetype:generate -B -DarchetypeCatalog=local \
-        -DarchetypeArtifactId=wildlfly-subsystem -DarchetypeGroupId=org.wildfly.archetype -DarchetypeVersion=10.0.0.CR2 \
+        -DarchetypeArtifactId=wildlfly-subsystem -DarchetypeGroupId=org.wildfly.archetype -DarchetypeVersion=10.0.0.Final-SNAPSHOT \
         -DartifactId=example-subsystem -DgroupId=com.acme -Dpackage=com.acme.example -Dversion=1.0.0-SNAPSHOT -Dname="WildFly 10 subsystem project" \
         -Dmodule=org.test.subsystem
 fi

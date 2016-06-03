@@ -1,6 +1,6 @@
 package com.mycompany.subsystem.extension;
 
-import com.mycompany.subsystem.deployment.SubsystemDeploymentProcessor;
+import com.mycompany.subsystem.extension.deployment.SubsystemDeploymentProcessor;
 import org.jboss.as.controller.AbstractBoottimeAddStepHandler;
 import org.jboss.as.controller.OperationContext;
 import org.jboss.as.controller.OperationFailedException;
