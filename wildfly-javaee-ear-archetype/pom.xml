@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Licensed under the Apache License, Version 2.0 (the "License"); you
+    may not use this file except in compliance with the License. You may obtain
+    a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless
+    required by applicable law or agreed to in writing, software distributed
+    under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
+    OR CONDITIONS OF ANY KIND, either express or implied. See the License for
+    the specific language governing permissions and limitations under the License. -->
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+
+
+    <parent>
+        <groupId>org.jboss</groupId>
+        <artifactId>jboss-parent</artifactId>
+        <version>32</version>
+        <!--If no relativePath is specified, there will be this error message:
+            "'parent.relativePath' of POM org.wildfly.archetype:wildfly-javaee-webapp-ear-archetype:16.0.0.Final (...\wildfly-archetypes\wildfly-javaee-webapp-ear-archetype\pom.xml) points at org.wildfly.archetype:wildfly-archetypes-test instead of org.jboss:jboss-parent"
+            The reason is that the default is "..\pom.xml", which resolves to the root pom.xml of the archetypes project - and of course the groupId does not match.-->
+        <relativePath></relativePath>
+    </parent>
+	
+
+    <groupId>org.wildfly.archetype</groupId>
+    <artifactId>wildfly-javaee-ear-archetype</artifactId>
+    <version>16.0.0.Final</version>
+    <packaging>maven-archetype</packaging>
+
+    <name>Java EE EAR Webapp</name>
+    <description>An archetype that generates a starter Java EE project for JBoss WildFly 16. The project is an EAR, with an EJB-JAR and WAR. It is prepared for Arquillian driven unit tests.</description>
+
+    <url>http://www.wildfly.org</url>
+
+    <developers>
+        <developer>
+            <name>Wolfgang Knauf</name>
+            <email>wolfgang.knauf@gmx.de</email>
+        </developer>
+    </developers>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <build>
+        <testResources>
+            <testResource>
+                <directory>src/test/resources</directory>
+                <filtering>true</filtering>
+            </testResource>
+        </testResources>
+
+        <extensions>
+            <extension>
+                <groupId>org.apache.maven.archetype</groupId>
+                <artifactId>archetype-packaging</artifactId>
+				<!--Defined in "jboss-parent" pom (3.0.1). -->
+                <!--<version>2.1</version>-->
+				<version>${version.archetype.plugin}</version>
+            </extension>
+        </extensions>
+
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-archetype-plugin</artifactId>
+					<!--Defined in "jboss-parent" pom (3.0.1). -->
+                    <!--<version>2.1</version>-->
+					<version>${version.archetype.plugin}</version>
+                    <extensions>true</extensions>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
+</project>

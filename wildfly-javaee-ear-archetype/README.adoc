@@ -1,0 +1,24 @@
+WildFly archetype for blank EAR project
+---------------------------------------
+
+[[introduction]]
+==== Introduction
+
+This archetype creates a blank EAR project with EJB and Web module. 
+It is prepared for running Arquillian unit tests.
+More details can be found in the file "src/main/resources/archetype-resources/README.txt", which is end-user doc and added to the resulting project.
+
+[[build]]
+==== Build
+To build the archetype, run:
+[source,options="nowrap"]
+----
+$ mvn clean install
+----
+
+[[newwildflyversion]]
+==== New WildFly version
+To update this archetype to a new WildFly version, just update the version properties in "src/main/resources/archetype-resources/pom.xml".
+Check whether dependencies have changed.
+
+Also test whether the Arquillian unit test "SampleIT" still works. Test it using both profiles "arq-remote" and "arq-managed".
