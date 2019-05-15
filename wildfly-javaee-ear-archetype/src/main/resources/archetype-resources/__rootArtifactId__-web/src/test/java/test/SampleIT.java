@@ -46,12 +46,7 @@ public class SampleIT {
         WebArchive war = ShrinkWrap.create(ZipImporter.class, "${rootArtifactId}-web.war").importFrom(f).as(WebArchive.class);
         ear.addAsModule(war);
 
-        // Add the datasource definition:
-        f = new File("../${rootArtifactId}-ear/src/main/application/META-INF/${rootArtifactId}-ds.xml");
-        ear.addAsManifestResource(f, "${rootArtifactId}-ds.xml");
-
-        // The manifest file is auto created by the Maven EAR plugin - we don't have it
-        // here.
+        // The manifest file is auto created by the Maven EAR plugin - we don't have it here.
 
         // Add the package containing the test classes:
         war.addPackage("${package}.test");

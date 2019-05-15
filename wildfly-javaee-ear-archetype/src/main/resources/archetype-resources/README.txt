@@ -9,17 +9,13 @@ Run the maven goals "wildfly:undeploy"
 ==========================
 
 DataSource:
-This sample creates a datasource named "${rootArtifactId}" which is defined 
-in "${rootArtifactId}-ear\src\main\application\META-INF\${rootArtifactId}-ds.xml"
+This sample includes a "persistence.xml" file in the EJB project. This file defines
+a persistence unit "${rootArtifactId}PersistenceUnit" which uses the JavaEE default database.
 
-This will result in a warning on deployment:
-WFLYJCA0091: -ds.xml file deployments are deprecated. Support may be removed in a future version.
-See https://issues.jboss.org/browse/WFLY-4296
+In production environment, you should define a database in WildFly config and point to this database
+in "persistence.xml".
 
-In the ejb project, the "persistence.xml" file points to this datasource.
-
-Remove the "...-ds.xml" file if not needed and modify "persistence.xml" to point to your "real" datasource.
-
+If you don't use entity beans, you can delete "persistence.xml".
 ==========================
 
 Testing:
@@ -52,7 +48,7 @@ You can delete this test file if no tests are necessary.
 
 Why integration tests instead of the "maven-surefire-plugin" testrunner?
 The Arquillian test runner deploys the EAR file to the WildFly server and thus you have to build it yourself with the ShrinkWrap API.
-The goal "verify" (which triggers the maven-surefire-plugin) is executed later in the maven build lifecyle so that the target 
+The goal "verify" (which triggers the maven-surefire-plugin) is executed later in the maven build lifecyle than the "test" goal so that the target 
 artifacts ("${rootArtifactId}-ejb.jar" and "${rootArtifactId}-web.war") are already built. You can build
-the final EAR by including those files. The "maven-failsafe-plugin" is executed before the JAR/WAR files
-are created, so those JAR/WAR files would have to be built in the "@Deployment" method. 
+the final EAR by including those files. The "maven-surefire-plugin" is executed before the JAR/WAR files
+are created, so those JAR/WAR files would have to be built in the "@Deployment" method, too. 

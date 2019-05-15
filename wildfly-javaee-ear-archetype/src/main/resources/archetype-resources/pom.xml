@@ -21,7 +21,7 @@
     <groupId>${groupId}</groupId>
     <artifactId>${rootArtifactId}</artifactId>
     <version>${version}</version>
-	
+    
     <packaging>pom</packaging>
     <name>${rootArtifactId}</name>
     <description>Insert description for your project here.</description>
@@ -60,7 +60,7 @@
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
-	
+    
     <dependencyManagement>
         <dependencies>
 
@@ -82,7 +82,7 @@
                 <type>war</type>
                 <scope>compile</scope>
             </dependency>
-			
+            
             <!-- JBoss distributes a complete set of Java EE 7 APIs including
                 a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
                 a collection) of artifacts. We use this here so that we always get the correct 
@@ -109,7 +109,7 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-				<version>${version.wildfly.maven.plugin}</version>
+                <version>${version.wildfly.maven.plugin}</version>
                 <inherited>true</inherited>
                 <configuration>
                     <skip>true</skip>
@@ -128,7 +128,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
-		
+        
         <profile>
             <!-- An optional Arquillian testing profile that executes tests in your JBoss EAP instance.
                  This profile will start a new JBoss EAP instance, and execute the test, shutting it down when done.
@@ -198,7 +198,7 @@
                                 <!-- Defines the container qualifier in "arquillian.xml" -->
                                 <arquillian.launch>remote</arquillian.launch>
                             </systemPropertyVariables>
-						</configuration>
+                        </configuration>
                     </plugin>
                 </plugins>
             </build>
