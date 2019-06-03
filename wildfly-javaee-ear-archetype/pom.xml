@@ -14,7 +14,7 @@
     <parent>
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
-        <version>32</version>
+        <version>35</version>
         <!--If no relativePath is specified, there will be this error message:
             "'parent.relativePath' of POM org.wildfly.archetype:wildfly-javaee-webapp-ear-archetype:16.0.0.Final (...\wildfly-archetypes\wildfly-javaee-webapp-ear-archetype\pom.xml) points at org.wildfly.archetype:wildfly-archetypes-test instead of org.jboss:jboss-parent"
             The reason is that the default is "..\pom.xml", which resolves to the root pom.xml of the archetypes project - and of course the groupId does not match.-->
@@ -24,7 +24,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-javaee-ear-archetype</artifactId>
-    <version>16.0.0.Final</version>
+    <version>17.0.0.Final-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
     <name>Java EE EAR Webapp</name>
@@ -59,9 +59,6 @@
             <extension>
                 <groupId>org.apache.maven.archetype</groupId>
                 <artifactId>archetype-packaging</artifactId>
-				<!--Defined in "jboss-parent" pom (3.0.1). -->
-                <!--<version>2.1</version>-->
-				<version>${version.archetype.plugin}</version>
             </extension>
         </extensions>
 
@@ -70,9 +67,6 @@
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-archetype-plugin</artifactId>
-					<!--Defined in "jboss-parent" pom (3.0.1). -->
-                    <!--<version>2.1</version>-->
-					<version>${version.archetype.plugin}</version>
                     <extensions>true</extensions>
                 </plugin>
             </plugins>
