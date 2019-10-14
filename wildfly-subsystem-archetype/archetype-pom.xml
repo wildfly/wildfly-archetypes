@@ -5,7 +5,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-subsystem</artifactId>
-    <version>17.0.0.Final-SNAPSHOT</version>
+    <version>18.0.0.Final-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
     <name>WildFly Subsystem</name>

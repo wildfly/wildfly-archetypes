@@ -33,14 +33,14 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-subsystem-src</artifactId>
-    <version>17.0.0.Final-SNAPSHOT</version>
+    <version>18.0.0.Final-SNAPSHOT</version>
 
     <name>WildFly Archetypes: Subsystem Archetype</name>
 
     <packaging>jar</packaging>
 
     <properties>
-        <version.wildfly.core>9.0.1.Final</version.wildfly.core>
+        <version.wildfly.core>10.0.0.Final</version.wildfly.core>
         <version.junit>4.12</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>${module}</module.name>
