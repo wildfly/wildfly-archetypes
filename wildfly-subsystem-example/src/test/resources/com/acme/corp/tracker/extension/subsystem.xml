@@ -1,3 +1,0 @@
-<subsystem xmlns="urn:com.acme.corp.tracker:1.0">
-    <deployment-type name="tst" tick="12345"/>
-</subsystem>

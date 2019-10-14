@@ -12,66 +12,17 @@
 
 
     <groupId>org.wildfly.archetype</groupId>
-    <artifactId>wildfly-archetypes-test</artifactId>
-    <version>10.0.0-SNAPSHOT</version>
+    <artifactId>wildfly-archetypes</artifactId>
+    <version>17.0.0.Final-SNAPSHOT</version>
 
-    <name>Archetypes test</name>
     <packaging>pom</packaging>
 
-    <description>This is a test only pom.xml</description>
-
-    <properties>
-        <junit.version>4.12</junit.version>
-        <maven.version>3.2.5</maven.version>
-        <maven.compiler.target>1.8</maven.compiler.target>
-        <maven.compiler.source>1.8</maven.compiler.source>
-    </properties>
-
-
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>${version.surefire.plugin}</version>
-                <configuration>
-                    <systemPropertyVariables>
-                        <outPutDirectory>${project.build.directory}</outPutDirectory>
-                        <testOutputDirectory>${project.build.testOutputDirectory}</testOutputDirectory>
-                        <basedir>${project.basedir}</basedir>
-                    </systemPropertyVariables>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <name>WildFly Archetypes: Aggregator</name>
+    <description>Aggregator for WildFly Maven archetypes</description>
+    
     <modules>
-        <module>wildfly-subsystem-example</module>
+        <module>wildfly-javaee-ear-archetype</module>
+        <module>wildfly-javaee-webapp-archetype</module>
         <module>wildfly-subsystem-archetype</module>
     </modules>
-
-    <dependencies>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <version>${junit.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven</groupId>
-            <artifactId>maven-core</artifactId>
-            <version>${maven.version}</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>org.apache.maven.shared</groupId>
-            <artifactId>maven-verifier</artifactId>
-            <version>1.4</version>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>commons-logging</groupId>
-            <artifactId>commons-logging</artifactId>
-            <version>1.1.2</version>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 </project>

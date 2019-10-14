@@ -44,3 +44,4 @@ s
 # archetypes resources
 *-blank-archetype
 local-stage
+.DS_Store
