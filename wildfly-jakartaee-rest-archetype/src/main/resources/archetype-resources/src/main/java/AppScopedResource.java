@@ -1,4 +1,4 @@
-package it.jlx;
+package ${package};
 
 import java.util.Date;
 

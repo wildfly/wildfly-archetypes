@@ -45,3 +45,5 @@ s
 *-blank-archetype
 local-stage
 .DS_Store
+
+.vscode
