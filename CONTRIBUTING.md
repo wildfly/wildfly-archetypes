@@ -45,7 +45,7 @@ Here are the steps in detail:
 
 8. Test the changes using JBoss Developer Studio.
 
-    1. In JDBS, choose File` --> `New` --> `Maven Project` and click `Next`.
+    1. In JDBS, choose `File` --> `New` --> `Maven Project` and click `Next`.
     2. Select the Project Name and Location. Do NOT check `Create a simple project (skip archetype selection)`. Click `Next`.
     3. Choose catalog `Default Local` and check `Include snapshot archetypes`. Select your modified archetype snapshot and click `Next`.
     4. Enter the groupId, artifactId, and other information, then click 'Finish'.
