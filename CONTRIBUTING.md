@@ -115,7 +115,7 @@ License Information and Contributor Agreement
 ### Properties files
 
        # JBoss, Home of Professional Open Source
-       # Copyright 2012, Red Hat, Inc. and/or its affiliates, and individual
+       # Copyright <Year>, Red Hat, Inc. and/or its affiliates, and individual
        # contributors by the @authors tag. See the copyright.txt in the 
        # distribution for a full listing of individual contributors.
        #
