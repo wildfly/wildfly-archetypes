@@ -28,5 +28,5 @@ It will be installed to your local maven repository at "%USERHOME%/.m2/repositor
 ==== Create project from archetype
 To create a new project from this archetype, use this maven command (replace dummy values for "groupId", "artifactId" and "version" with correct values):
 ----
-$ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sampleproject -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-webapp-archetype -DarchetypeVersion=19.0.0.Final
+$ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sampleproject -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-webapp-archetype -DarchetypeVersion=19.1.0.Final-SNAPSHOT
 ----
