@@ -12,7 +12,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-subsystem</artifactId>
-    <version>20.0.0.Final</version>
+    <version>21.0.0.Beta1-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
     <name>WildFly Subsystem</name>

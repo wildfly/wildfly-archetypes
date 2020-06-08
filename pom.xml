@@ -13,7 +13,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-archetypes</artifactId>
-    <version>20.0.0.Final</version>
+    <version>21.0.0.Beta1-SNAPSHOT</version>
 
     <packaging>pom</packaging>
 
