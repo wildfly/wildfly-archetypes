@@ -43,21 +43,21 @@
         <version.wildfly.maven.plugin>2.0.2.Final</version.wildfly.maven.plugin>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <version.jboss.bom>21.0.0.Beta1-SNAPSHOT</version.jboss.bom>
+        <version.jboss.bom>21.0.0.Final</version.jboss.bom>
 
         <!-- other plugin versions -->
         <version.compiler.plugin>3.8.1</version.compiler.plugin>
         <version.ear.plugin>3.0.2</version.ear.plugin>
-        <version.ejb.plugin>3.0.1</version.ejb.plugin>
+        <version.ejb.plugin>3.1.0</version.ejb.plugin>
         <version.surefire.plugin>2.22.2</version.surefire.plugin>
         <version.failsafe.plugin>2.22.2</version.failsafe.plugin>
-        <version.war.plugin>3.2.3</version.war.plugin>
+        <version.war.plugin>3.3.1</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
         <maven.compiler.target>1.8</maven.compiler.target>
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
-    
+
     <dependencyManagement>
         <dependencies>
 
@@ -120,7 +120,6 @@
             </plugin>
         </plugins>
     </build>
-
 
     <profiles>
         <profile>
