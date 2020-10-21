@@ -16,6 +16,7 @@ In file "pom.xml":
 * update to latest "org.jboss:jboss-parent" version found at https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/
 
 In file "src/main/resources/archetype-resources/pom.xml":
+
 * update the version property named "version.jboss.bom"
 * check whether dependencies have changed.
 * check the plugin versions and update if necessary:
@@ -42,5 +43,5 @@ It will be installed to your local maven repository at "%USERHOME%/.m2/repositor
 ==== Create project from archetype
 To create a new project from this archetype, use this maven command (replace dummy values for "groupId", "artifactId" and "version" with correct values):
 ----
-$ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sample-jakartaee-ear-archetype -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=21.0.0.Beta1-SNAPSHOT
+$ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sample-jakartaee-ear-archetype -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=21.0.0.Final-SNAPSHOT
 ----

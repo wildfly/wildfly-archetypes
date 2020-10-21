@@ -50,6 +50,23 @@
         <maven.compiler.source>1.8</maven.compiler.source>
     </properties>
 
+    <!--This repository is required to resolve the WildFly 21.0.0 dependency "org.picketbox:picketbox:jar:5.0.3.Final-redhat-00006" -->
+    <repositories>
+        <repository>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+            <id>jboss-enterprise-maven-repository</id>
+            <name>JBoss Enterprise Maven Repository</name>
+            <url>https://maven.repository.redhat.com/ga/</url>
+        </repository>
+    </repositories>
+	
     <dependencyManagement>
         <dependencies>
             <!-- JBoss distributes a complete set of Jakarta EE 8 APIs including
