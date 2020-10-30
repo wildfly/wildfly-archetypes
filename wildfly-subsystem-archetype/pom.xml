@@ -35,7 +35,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-subsystem-src</artifactId>
-    <version>21.0.0.Final-SNAPSHOT</version>
+    <version>21.0.0.Final</version>
 
     <name>WildFly Archetypes: Subsystem Archetype</name>
 
