@@ -178,8 +178,7 @@
 
     <profiles>
         <profile>
-            <!-- All the modules that require nothing but JBoss Enterprise
-                 Application Platform or JBoss EAP -->
+            <!-- All the modules that require nothing but WildFly /JBoss EAP -->
             <id>default</id>
             <activation>
                 <activeByDefault>true</activeByDefault>
@@ -187,8 +186,8 @@
         </profile>
         
         <profile>
-            <!-- An optional Arquillian testing profile that executes tests in your JBoss EAP instance.
-                 This profile will start a new JBoss EAP instance, and execute the test, shutting it down when done.
+            <!-- An optional Arquillian testing profile that executes tests in your WildFly / JBoss EAP instance.
+                 This profile will start a new WildFly / JBoss EAP instance, and execute the test, shutting it down when done.
                  Run with: mvn clean verify -Parq-managed -->
             <id>arq-managed</id>
             <dependencies>
@@ -225,7 +224,7 @@
         </profile>
 
         <profile>
-            <!-- An optional Arquillian testing profile that executes tests in a remote JBoss EAP instance.
+            <!-- An optional Arquillian testing profile that executes tests in a remote WildFly / JBoss EAP instance.
                  Run with: mvn clean verify -Parq-remote -->
             <id>arq-remote</id>
             <dependencies>
