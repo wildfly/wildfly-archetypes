@@ -43,7 +43,7 @@
 
     <properties>
         <version.wildfly.core>11.1.1.Final</version.wildfly.core>
-        <version.junit>4.12</version.junit>
+        <version.junit>4.13.1</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>${module}</module.name>
     </properties>
