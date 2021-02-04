@@ -43,11 +43,11 @@
         <version.wildfly.maven.plugin>2.0.2.Final</version.wildfly.maven.plugin>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <version.jboss.bom>21.0.0.Final</version.jboss.bom>
+        <version.jboss.bom>22.0.0.Final</version.jboss.bom>
 
         <!-- other plugin versions -->
         <version.compiler.plugin>3.8.1</version.compiler.plugin>
-        <version.ear.plugin>3.0.2</version.ear.plugin>
+        <version.ear.plugin>3.2.0</version.ear.plugin>
         <version.ejb.plugin>3.1.0</version.ejb.plugin>
         <version.surefire.plugin>2.22.2</version.surefire.plugin>
         <version.failsafe.plugin>2.22.2</version.failsafe.plugin>
@@ -74,19 +74,6 @@
             <url>https://repository.jboss.org/nexus/content/groups/public/</url>
             <layout>default</layout>
         </repository>
-        <repository>
-            <releases>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-                <updatePolicy>never</updatePolicy>
-            </snapshots>
-            <id>jboss-enterprise-maven-repository</id>
-            <name>JBoss Enterprise Maven Repository</name>
-            <url>https://maven.repository.redhat.com/ga/</url>
-        </repository>
     </repositories>
     <pluginRepositories>
         <pluginRepository>
@@ -99,17 +86,6 @@
             <id>jboss-public-repository-group</id>
             <name>JBoss Public Repository Group</name>
             <url>https://repository.jboss.org/nexus/content/groups/public/</url>
-        </pluginRepository>
-        <pluginRepository>
-            <releases>
-                <enabled>true</enabled>
-            </releases>
-            <snapshots>
-                <enabled>true</enabled>
-            </snapshots>
-            <id>jboss-enterprise-maven-repository</id>
-            <name>JBoss Enterprise Maven Repository</name>
-            <url>https://maven.repository.redhat.com/ga/</url>
         </pluginRepository>
     </pluginRepositories>
 
