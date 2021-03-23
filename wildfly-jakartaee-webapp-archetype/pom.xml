@@ -20,7 +20,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-jakartaee-webapp-archetype</artifactId>
-    <version>23.0.0.Final</version>
+    <version>24.0.0.Final-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
     <name>WildFly Archetypes: Jakarta EE Webapp</name>
