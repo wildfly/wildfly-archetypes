@@ -56,7 +56,7 @@ if [ ! -z $1 ] && [ "$1" = "generate" ]; then
     echo Generating project from archetype...
     cd target
     mvn archetype:generate -B -DarchetypeCatalog=local \
-        -DarchetypeArtifactId=wildfly-subsystem -DarchetypeGroupId=org.wildfly.archetype -DarchetypeVersion=24.0.0.Final \
+        -DarchetypeArtifactId=wildfly-subsystem -DarchetypeGroupId=org.wildfly.archetype -DarchetypeVersion=25.0.0.Final-SNAPSHOT \
         -DartifactId=example-subsystem -DgroupId=com.acme -Dpackage=com.acme.example -Dversion=1.0.0-SNAPSHOT -Dname="WildFly subsystem project" \
         -Dmodule=org.test.subsystem
 fi
