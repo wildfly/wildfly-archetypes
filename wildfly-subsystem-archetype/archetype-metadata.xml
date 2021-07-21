@@ -25,7 +25,7 @@
                 <include>schema/*.xsd</include>
             </includes>
         </fileSet>
-        <fileSet filtered="true" encoding="UTF-8" packaged="true">
+        <fileSet filtered="true" encoding="UTF-8" packaged="false">
             <directory>src/main/resources</directory>
             <includes>
                 <include>**/*.properties</include>
