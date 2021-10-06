@@ -43,7 +43,7 @@
         <version.wildfly.maven.plugin>2.0.2.Final</version.wildfly.maven.plugin>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <version.jboss.bom>24.0.0.SP1</version.jboss.bom>
+        <version.jboss.bom>25.0.0.Final</version.jboss.bom>
 
         <!-- other plugin versions -->
         <version.compiler.plugin>3.8.1</version.compiler.plugin>
@@ -51,7 +51,7 @@
         <version.ejb.plugin>3.1.0</version.ejb.plugin>
         <version.surefire.plugin>2.22.2</version.surefire.plugin>
         <version.failsafe.plugin>2.22.2</version.failsafe.plugin>
-        <version.war.plugin>3.3.1</version.war.plugin>
+        <version.war.plugin>3.3.2</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
         <maven.compiler.release>11</maven.compiler.release>
