@@ -1,5 +1,5 @@
 WildFly archetype for a subsystem project
----------------------------------------
+-----------------------------------------
 
 [[introduction]]
 ==== Introduction
