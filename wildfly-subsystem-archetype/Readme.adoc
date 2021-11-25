@@ -1,0 +1,45 @@
+WildFly archetype for a subsystem project
+-----------------------------------------
+
+[[introduction]]
+==== Introduction
+
+This archetype creates a subsystem project. 
+
+See https://docs.wildfly.org/25/Extending_WildFly.html
+
+==== New WildFly version
+To update this archetype to a new WildFly version:
+In file "pom.xml":
+
+* update the archetype version
+* update to latest "org.jboss:jboss-parent" version found at https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/
+
+In file "src/main/resources/archetype-resources/pom.xml":
+
+* update the version property named "version.wildfly.core" to the version bundled with WildFly (found in "%WILDFLY_HOME%/modules/system/layers/base/org/jboss/as/controller/main").
+* check the plugin versions and update if necessary:
+** maven-compiler-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/
+** maven-surefire-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/
+
+In file "src/main/resources/archetype-resources/Readme.txt", update the version in the link to the WildFly documentation.
+
+[[build]]
+==== Build
+To build the archetype, you need at least Java 11. Run this command:
+[source,options="nowrap"]
+----
+$ mvn clean install
+----
+It will be installed to your local maven repository at "%USERHOME%/.m2/repository/org/wildfly/archetype/wildfly-subsystem/", and an entry will be added to "%USERHOME%/.m2/repository/archetype-catalog.xml".
+
+[[createproject]]
+==== Create project from archetype
+To create a new project from this archetype, use this maven command (replace dummy values for "groupId", "artifactId", "version", "module" and "package" with correct values):
+----
+$ mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=25.0.0.Final-SNAPSHOT
+----
+
+[[testing]]
+==== Test the archetype
+See the steps described in "src/main/resources/archetype-resources/Readme.txt"
