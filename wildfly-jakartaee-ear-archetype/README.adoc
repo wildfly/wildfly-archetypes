@@ -52,9 +52,9 @@ $ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sample-jakartaee-
 After having built the archetype, check whether both profiles "arq-remote" and "arq-managed" work. This is done by using scripts found in the directory "testing".
 
 * Profile "arq-managed": set variable JBOSS_HOME, then execute "runtest_managed.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
-* Profile "arq-renote": start WildFly server, then execute "runtest_remote.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
+* Profile "arq-remote": start WildFly server, then execute "runtest_remote.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
 
-Both files create a project from the archetype (in "testing/arq-managed" or "testing/arq-remote"), copy an Arquillian unit test class and and EJB in this project, then build and deploy it to WildFly and execute
+Both files create a project from the archetype (in "testing/arq-managed" or "testing/arq-remote"), copy an Arquillian unit test class and an EJB in this project, then build and deploy it to WildFly and execute
 the test using the Arquillian profile "arq-managed" or "arq-remote").
 
 After the test is executed, check the server log for error outputs. In case of success, the outputs "Test is invoked..." and "doTest is invoked..." will be printed in the server console.
