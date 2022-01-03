@@ -6,7 +6,7 @@ WildFly archetype for a subsystem project
 
 This archetype creates a subsystem project. 
 
-See https://docs.wildfly.org/25/Extending_WildFly.html
+See https://docs.wildfly.org/26/Extending_WildFly.html
 
 ==== New WildFly version
 To update this archetype to a new WildFly version:
@@ -21,6 +21,7 @@ In file "src/main/resources/archetype-resources/pom.xml":
 * check the plugin versions and update if necessary:
 ** maven-compiler-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/
 ** maven-surefire-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/
+** maven-antrun-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/
 
 In file "src/main/resources/archetype-resources/Readme.txt", update the version in the link to the WildFly documentation.
 
