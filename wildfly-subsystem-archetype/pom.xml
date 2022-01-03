@@ -20,7 +20,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-subsystem</artifactId>
-    <version>26.0.0.Final-SNAPSHOT</version>
+    <version>26.0.0.Final</version>
     <packaging>maven-archetype</packaging>
 
     <name>WildFly Archetypes: Subsystem Archetype</name>
