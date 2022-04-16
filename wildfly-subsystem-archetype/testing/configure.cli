@@ -1,0 +1,17 @@
+# Batch script to enable the elytron JAAS integration for the quickstart application in the JBoss EAP server
+
+connect
+
+# Start batching commands
+batch
+
+/extension=org.test.subsystem:add
+/subsystem=mysubsystem:add
+
+# Run the batch commands
+run-batch
+
+# Reload the server configuration
+reload
+
+
