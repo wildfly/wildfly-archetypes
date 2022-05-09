@@ -4,7 +4,7 @@ import javax.enterprise.context.ApplicationScoped;
 import javax.faces.annotation.FacesConfig;
 
 /**This bean is required to activate JSF 2.3.
- * See https://github.com/eclipse-ee4j/mojarra#user-content-activating-cdi-in-jakarta-faces-30
+ * See https://github.com/eclipse-ee4j/mojarra/blob/2.3/README.md#user-content-activating-cdi-in-jakarta-faces-23
  * 
  * Remove this class if you don't need JSF.
  */

@@ -38,9 +38,28 @@ It will be installed to your local maven repository at "%USERHOME%/.m2/repositor
 ==== Create project from archetype
 To create a new project from this archetype, use this maven command (replace dummy values for "groupId", "artifactId", "version", "module" and "package" with correct values):
 ----
-$ mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=27.0.0.Final-SNAPSHOT
+$ mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=26.1.0.Final-SNAPSHOT
 ----
 
 [[testing]]
 ==== Test the archetype
+After having built the archetype, check whether the subsystem can be loaded in WildFly. This is done by using scripts "runtest.bat" or "runtest.sh" found in the directory "testing". 
+The scripts require current archetype version as argument.
+
+The script
+
+* creates a project from the subsystem archetype
+* adds some debugging code and builds the test project
+* copies the resulting subsystem to "%JBOSS_HOME%/modules/system/layers/base"
+* starts a local WildFly server
+* registers the subsystem using a CLI script
+* waits for the user to check that the debugging output of the subsystem was printed
+* finally unregisters the subsystem and stops WildFly
+
+Prerequisites
+
+* the environment variable JBOSS_HOME must point to the WildFly server corresponding to the archetyp version.
+* Windows: the git tool "patch.exe" must be found in the path
+* Linux: "GNU patch" must be installed
+
 See the steps described in "src/main/resources/archetype-resources/Readme.txt"

@@ -5,7 +5,7 @@
 
     <groupId>${groupId}</groupId>
     <artifactId>${artifactId}</artifactId>
-    <version>27.0.0.Final-SNAPSHOT</version>
+    <version>${version}</version>
     <packaging>jar</packaging>
 
     <name>${name}</name>
@@ -14,14 +14,14 @@
 
 
     <properties>
-		<version.wildfly.core>18.0.0.Final</version.wildfly.core>
+		<version.wildfly.core>18.1.0.Final</version.wildfly.core>
 		<version.junit>4.13.1</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>${module}</module.name>
 		
 		
         <!-- other plugin versions -->
-        <version.compiler.plugin>3.8.1</version.compiler.plugin>
+        <version.compiler.plugin>3.9.0</version.compiler.plugin>
         <version.surefire.plugin>2.22.2</version.surefire.plugin>
 		<version.antrun.plugin>3.0.0</version.antrun.plugin>
     </properties>

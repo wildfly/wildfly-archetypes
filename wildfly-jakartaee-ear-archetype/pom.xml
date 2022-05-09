@@ -20,7 +20,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-jakartaee-ear-archetype</artifactId>
-    <version>27.0.0.Final-SNAPSHOT</version>
+    <version>26.1.0.Final-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
     <name>WildFly Archetypes: Jakarta EE EAR Webapp</name>
