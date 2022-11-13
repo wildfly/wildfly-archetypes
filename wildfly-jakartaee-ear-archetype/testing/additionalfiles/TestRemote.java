@@ -1,5 +1,5 @@
 package foo.bar.multi;
-import javax.ejb.Remote;
+import jakarta.ejb.Remote;
 
 /**
  * Remote interface of the Arquillian unit test bean.
