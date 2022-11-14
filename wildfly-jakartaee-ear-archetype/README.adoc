@@ -33,7 +33,7 @@ Also test whether the Arquillian unit test "SampleIT" still works, see below.
 
 [[build]]
 ==== Build
-To build the archetype, you need at least Java 11. Run this command:
+To build the archetype, you need at least Java 17. Run this command:
 [source,options="nowrap"]
 ----
 $ mvn clean install
