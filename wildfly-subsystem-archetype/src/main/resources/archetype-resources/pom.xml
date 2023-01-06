@@ -14,7 +14,7 @@
 
 
     <properties>
-		<version.wildfly.core>18.1.0.Final</version.wildfly.core>
+		<version.wildfly.core>19.0.0.Final</version.wildfly.core>
 		<version.junit>4.13.1</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>${module}</module.name>
@@ -23,7 +23,10 @@
         <!-- other plugin versions -->
         <version.compiler.plugin>3.9.0</version.compiler.plugin>
         <version.surefire.plugin>2.22.2</version.surefire.plugin>
-		<version.antrun.plugin>3.0.0</version.antrun.plugin>
+		<version.antrun.plugin>3.1.0</version.antrun.plugin>
+		
+        <!-- maven-compiler-plugin -->
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
 
@@ -36,8 +39,7 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${version.compiler.plugin}</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <!-- put your configurations here -->
                 </configuration>
             </plugin>
             <plugin>

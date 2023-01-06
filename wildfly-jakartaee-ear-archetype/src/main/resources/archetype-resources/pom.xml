@@ -40,21 +40,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- JBoss dependency versions -->
-        <version.wildfly.maven.plugin>3.0.0.Final</version.wildfly.maven.plugin>
+        <version.wildfly.maven.plugin>4.0.0.Final</version.wildfly.maven.plugin>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <version.jboss.bom>26.1.0.Final</version.jboss.bom>
+        <version.jboss.bom>27.0.0.Final</version.jboss.bom>
 
         <!-- other plugin versions -->
         <version.compiler.plugin>3.9.0</version.compiler.plugin>
-        <version.ear.plugin>3.2.0</version.ear.plugin>
-        <version.ejb.plugin>3.1.0</version.ejb.plugin>
+        <version.ear.plugin>3.3.0</version.ear.plugin>
+        <version.ejb.plugin>3.2.1</version.ejb.plugin>
         <version.surefire.plugin>2.22.2</version.surefire.plugin>
         <version.failsafe.plugin>2.22.2</version.failsafe.plugin>
         <version.war.plugin>3.3.2</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
     <!-- the JBoss community and Red Hat GA Maven repositories -->
@@ -117,7 +117,7 @@
                 (you can read this as the WildFly stack of the Jakarta EE 8 APIs -->
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
-                <artifactId>wildfly-jakartaee8-with-tools</artifactId>
+                <artifactId>wildfly-ee-with-tools</artifactId>
                 <version>${version.jboss.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>

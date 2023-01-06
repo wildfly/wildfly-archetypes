@@ -1,6 +1,6 @@
 package foo.bar.multi;
 
-import javax.ejb.Stateless;
+import jakarta.ejb.Stateless;
 
 /**
  * This bean is invoked by the Arquillian unit test.

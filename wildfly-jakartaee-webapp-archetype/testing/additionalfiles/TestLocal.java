@@ -1,5 +1,5 @@
 package foo.bar.multi;
-import javax.ejb.Local;
+import jakarta.ejb.Local;
 
 /**
  * Local interface of the Arquillian unit test bean.

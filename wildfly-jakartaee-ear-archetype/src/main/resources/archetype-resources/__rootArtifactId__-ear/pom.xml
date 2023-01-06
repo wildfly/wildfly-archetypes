@@ -53,7 +53,7 @@
                 <version>${version.ear.plugin}</version>
                 <configuration>
                     <!-- Tell Maven we are using Jakarta EE -->
-                    <version>8</version>
+                    <version>10</version>
                     <!-- Use Jakarta EE ear libraries as needed. Jakarta EE ear libraries
                         are in easy way to package any libraries needed in the ear, and automatically
                         have any modules (EJB-JARs and WARs) use them -->
