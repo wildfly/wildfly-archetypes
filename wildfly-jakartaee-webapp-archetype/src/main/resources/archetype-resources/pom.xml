@@ -46,7 +46,7 @@
         <version.war.plugin>3.3.2</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
     </properties>
 
     <!-- the JBoss community and Red Hat GA Maven repositories -->

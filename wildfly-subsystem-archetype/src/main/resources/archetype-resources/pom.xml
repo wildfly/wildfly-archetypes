@@ -26,7 +26,7 @@
 		<version.antrun.plugin>3.1.0</version.antrun.plugin>
 		
         <!-- maven-compiler-plugin -->
-        <maven.compiler.release>17</maven.compiler.release>
+        <maven.compiler.release>11</maven.compiler.release>
     </properties>
 
 
@@ -39,6 +39,8 @@
                 <artifactId>maven-compiler-plugin</artifactId>
                 <version>${version.compiler.plugin}</version>
                 <configuration>
+                    <source>11</source>
+                    <target>11</target>
                     <!-- put your configurations here -->
                 </configuration>
             </plugin>
