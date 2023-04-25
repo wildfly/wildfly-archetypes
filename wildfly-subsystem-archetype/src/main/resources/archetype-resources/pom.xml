@@ -14,16 +14,16 @@
 
 
     <properties>
-		<version.wildfly.core>19.0.0.Final</version.wildfly.core>
-		<version.junit>4.13.1</version.junit>
+        <version.wildfly.core>20.0.1.Final</version.wildfly.core>
+        <version.junit>4.13.2</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>${module}</module.name>
 		
 		
         <!-- other plugin versions -->
         <version.compiler.plugin>3.9.0</version.compiler.plugin>
-        <version.surefire.plugin>2.22.2</version.surefire.plugin>
-		<version.antrun.plugin>3.1.0</version.antrun.plugin>
+        <version.surefire.plugin>3.0.0</version.surefire.plugin>
+        <version.antrun.plugin>3.1.0</version.antrun.plugin>
 		
         <!-- maven-compiler-plugin -->
         <maven.compiler.release>11</maven.compiler.release>

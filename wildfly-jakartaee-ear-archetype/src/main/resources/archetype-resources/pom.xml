@@ -40,17 +40,17 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- JBoss dependency versions -->
-        <version.wildfly.maven.plugin>4.0.0.Final</version.wildfly.maven.plugin>
+        <version.wildfly.maven.plugin>4.1.0.Final</version.wildfly.maven.plugin>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <version.jboss.bom>27.0.1.Final</version.jboss.bom>
+        <version.jboss.bom>28.0.0.Final</version.jboss.bom>
 
         <!-- other plugin versions -->
         <version.compiler.plugin>3.9.0</version.compiler.plugin>
         <version.ear.plugin>3.3.0</version.ear.plugin>
         <version.ejb.plugin>3.2.1</version.ejb.plugin>
-        <version.surefire.plugin>2.22.2</version.surefire.plugin>
-        <version.failsafe.plugin>2.22.2</version.failsafe.plugin>
+        <version.surefire.plugin>3.0.0</version.surefire.plugin>
+        <version.failsafe.plugin>3.0.0</version.failsafe.plugin>
         <version.war.plugin>3.3.2</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
