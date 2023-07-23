@@ -1,6 +1,6 @@
 This project was created from the archetype "wildfly-subsystem-archetype".
 
-Documentation on Subsystems can be found here: https://docs.wildfly.org/28/Extending_WildFly.html
+Documentation on Subsystems can be found here: https://docs.wildfly.org/29/Extending_WildFly.html
 
 To deploy it:
 
