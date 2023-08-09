@@ -21,7 +21,7 @@
     <version>${version}</version>
     
     <packaging>war</packaging>
-    <name>login-form</name>
+    <name>${artifactId}</name>
     <description>Insert description for your project here.</description>
 
     <properties>
