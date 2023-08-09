@@ -1,7 +1,7 @@
 #set( $symbol_pound = '#' )
 #set( $symbol_dollar = '$' )
 #set( $symbol_escape = '\' )
-package org.wildfly.security.examples.test;
+package ${package};
 
 import static org.junit.Assert.assertEquals;
 
@@ -22,7 +22,7 @@ import org.junit.runner.RunWith;
  */
 @RunAsClient
 @RunWith(Arquillian.class)
-public class SampleIT {
+public class ${defaultClassPrefix}ApplicationIT {
 
     @Test
     public void testHelloEndpoint() {
