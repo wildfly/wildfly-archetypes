@@ -23,6 +23,6 @@ public class ${defaultClassPrefix}Endpoint {
 	public Response sayHello(final @PathParam("name") String name) {
 		String response = service.hello(name);
 		
-		return Response.ok(service.hello(name)).build();
+		return Response.ok(response).build();
 	}
 }
