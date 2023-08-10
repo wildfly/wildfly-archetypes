@@ -40,10 +40,7 @@
             var request = new XMLHttpRequest();
             var result = document.getElementById('result');             
             request.onreadystatechange=function() {
-                console.log('State Change! ' + request.readyState);
-                if (request.readyState == 1) {
-                    result.innerText = 'Calling Restful Web Service.';
-                } else if (request.readyState == 4) {
+                if (request.readyState == 4) {
                     if (request.status == 200) {
                         result.innerText = request.responseText;
                     } else {
