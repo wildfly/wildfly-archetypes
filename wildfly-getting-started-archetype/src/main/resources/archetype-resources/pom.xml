@@ -156,9 +156,8 @@
     </dependencies>
 	
     <build>
-        <!-- Tell Maven that the resulting file should not have a file name containing the version - 
-			 a non versioned name is required e.g. when building a deployable artifact using the ShrinkWrap API -->
-		<finalName>${project.artifactId}</finalName>
+        <!-- deploys the quickstart on root web context -->
+		<finalName>ROOT</finalName>
 
         <plugins>
             <!--Configuration of the maven-compiler-plugin -->
@@ -194,8 +193,6 @@
                         <!-- layers may be used to customize the server to provision-->
                         <layer>cloud-server</layer>
                     </layers>
-                    <!-- deploys the quickstart on root web context -->
-                    <runtimeName>ROOT.war</runtimeName>
                 </configuration>
 				<executions>
 					<execution>
