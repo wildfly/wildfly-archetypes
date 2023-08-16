@@ -77,3 +77,9 @@ jobs:
         ./runtest_remote.sh $ARCHETYPE_VERSION
          $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
         echo "### Remote Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+    - name: Run WildFly Subsystem Archetype Tests
+      run: |-
+        cd wildfly-subsystem-archetype/testing
+        ./runtest.sh $ARCHETYPE_VERSION
+        echo "## WildFly Subsystem Archetype" >> $GITHUB_STEP_SUMMARY
+        echo "### Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
