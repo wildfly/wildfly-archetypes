@@ -16,9 +16,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 
 /**
- * Sample integration test: demonstrates how to create the WAR file using the ShrinkWrap API.
- * 
- * Delete this file if no integration test is required.
+ * Run integration tests against the server and the deployed application.
  */
 @RunAsClient
 @RunWith(Arquillian.class)
