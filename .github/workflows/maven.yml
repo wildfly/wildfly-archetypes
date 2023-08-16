@@ -18,7 +18,6 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
-
     steps:
     - uses: actions/checkout@v3
     - name: Set up JDK 17
@@ -26,6 +25,41 @@ jobs:
       with:
         java-version: '17'
         distribution: 'temurin'
-        cache: maven
+    - name: Cache local Maven repository
+      uses: actions/cache@v3
+      with:
+        path: ~/.m2/repository
+        key: ${{ runner.os }}-maven-${{ hashFiles('pom.xml', '*/pom.xml') }}
+        restore-keys: |
+          ${{ runner.os }}-maven-
     - name: Build with Maven
-      run: mvn -B verify --file pom.xml
+      run: |-
+        mvn -B install verify --file pom.xml
+        echo "## Testing with Maven :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+    - name: Determine Archetype & WildFly versions
+      run: |-
+        ARCHETYPE_VERSION=$(grep "<version>" pom.xml | tail -n 1 | sed -e 's,.*<version>\([^<]*\)</version>.*,\1,g')
+        WILDFLY_VERSION=$(grep "<version.jboss.bom>" wildfly-jakartaee-webapp-archetype/src/main/resources/archetype-resources/pom.xml | sed -e 's,.*<version.jboss.bom>\([^<]*\)</version.jboss.bom>.*,\1,g')
+        echo "ARCHETYPE_VERSION=$ARCHETYPE_VERSION" >> "$GITHUB_ENV"
+        echo "WILDFLY_VERSION=$WILDFLY_VERSION" >> "$GITHUB_ENV"
+        echo "## Testing archetypes ${ARCHETYPE_VERSION} with WildFly ${WILDFLY_VERSION}" >> $GITHUB_STEP_SUMMARY
+    - name: Download WildFly
+      run: |-
+        wget -q https://github.com/wildfly/wildfly/releases/download/${WILDFLY_VERSION}/wildfly-${WILDFLY_VERSION}.zip
+        unzip -q wildfly-${WILDFLY_VERSION}.zip
+        JBOSS_HOME=$(pwd)/wildfly-${WILDFLY_VERSION}
+        echo "JBOSS_HOME=$JBOSS_HOME" >> "$GITHUB_ENV"
+    - name: Run Jakarta EE Webapp Archetype Managed Tests
+      run: |-
+        cd wildfly-jakartaee-webapp-archetype/testing
+        ./runtest_managed.sh $ARCHETYPE_VERSION
+        echo "## Jakarta EE Webapp archetype" >> $GITHUB_STEP_SUMMARY
+        echo "### Managed Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+    - name: Run Jakarta EE Webapp Archetype Remote Tests
+      run: |-
+        cd wildfly-jakartaee-webapp-archetype/testing
+        $JBOSS_HOME/bin/standalone.sh &
+        sleep 20
+        ./runtest_remote.sh $ARCHETYPE_VERSION
+         $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
+        echo "### Remote Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
