@@ -32,9 +32,9 @@ public class SampleIT {
         EnterpriseArchive ear = ShrinkWrap.create(EnterpriseArchive.class, "${rootArtifactId}-ear.ear");
 
         // Current directory is the root of the "${rootArtifactId}-web" project. Go up one level
-        // and enter the "${rootArtifactId}-ejb" project.
+        // and enter the "ejb" project.
         // The ejb jar is found in the "target" directory:
-        File f = new File("../${rootArtifactId}-ejb/target/${rootArtifactId}-ejb.jar");
+        File f = new File("../ejb/target/${rootArtifactId}-ejb.jar");
         JavaArchive ejbJar = ShrinkWrap.create(ZipImporter.class, "${rootArtifactId}-ejb.jar").importFrom(f).as(JavaArchive.class);
         ear.addAsModule(ejbJar);
 
