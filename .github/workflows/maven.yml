@@ -35,7 +35,8 @@ jobs:
     - name: Build with Maven
       run: |-
         mvn -B install verify --file pom.xml
-        echo "## Testing with Maven :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+        echo "## Testing with Maven " >> $GITHUB_STEP_SUMMARY
+        echo "* :white_check_mark: Tests"  >> $GITHUB_STEP_SUMMARY
     - name: Determine Archetype & WildFly versions
       run: |-
         ARCHETYPE_VERSION=$(grep "<version>" pom.xml | tail -n 1 | sed -e 's,.*<version>\([^<]*\)</version>.*,\1,g')
@@ -49,45 +50,40 @@ jobs:
         unzip -q wildfly-${WILDFLY_VERSION}.zip
         JBOSS_HOME=$(pwd)/wildfly-${WILDFLY_VERSION}
         echo "JBOSS_HOME=$JBOSS_HOME" >> "$GITHUB_ENV"
-    - name: Run Jakarta EE Webapp Archetype Managed Tests
+    - name: Run Jakarta EE Webapp Archetype Tests
       run: |-
+        echo "* Jakarta EE Webapp Archetype" >> $GITHUB_STEP_SUMMARY
+
         cd wildfly-jakartaee-webapp-archetype/testing
         ./runtest_managed.sh $ARCHETYPE_VERSION
-        echo "## Jakarta EE Webapp archetype" >> $GITHUB_STEP_SUMMARY
-        echo "### Managed Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
-    - name: Run Jakarta EE Webapp Archetype Remote Tests
-      run: |-
-        cd wildfly-jakartaee-webapp-archetype/testing
-        $JBOSS_HOME/bin/standalone.sh &
+        echo "  * :white_check_mark: Managed Tests" >> $GITHUB_STEP_SUMMARY
 
+        $JBOSS_HOME/bin/standalone.sh &
+        until `$JBOSS_HOME/bin/jboss-cli.sh -c ":read-attribute(name=server-state)" 2> /dev/null | grep -q running`; do
+          sleep 1
+        done        
+        ./runtest_remote.sh $ARCHETYPE_VERSION
+        $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
+        echo "  * :white_check_mark: Remote Tests" >> $GITHUB_STEP_SUMMARY
+    - name: Run Jakarta EE EAR Archetype Tests
+      run: |-
+        echo "* Jakarta EE EAR Archetype" >> $GITHUB_STEP_SUMMARY
+
+        cd wildfly-jakartaee-ear-archetype/testing
+        ./runtest_managed.sh $ARCHETYPE_VERSION
+        echo "  * :white_check_mark: Managed Tests" >> $GITHUB_STEP_SUMMARY
+
+        $JBOSS_HOME/bin/standalone.sh &
         until `$JBOSS_HOME/bin/jboss-cli.sh -c ":read-attribute(name=server-state)" 2> /dev/null | grep -q running`; do
           sleep 1
         done
-        
         ./runtest_remote.sh $ARCHETYPE_VERSION
-         $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
-        echo "### Remote Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
-    - name: Run Jakarta EE EAR Archetype Managed Tests
-      run: |-
-        cd wildfly-jakartaee-ear-archetype/testing
-        ./runtest_managed.sh $ARCHETYPE_VERSION
-        echo "## Jakarta EE EAR archetype" >> $GITHUB_STEP_SUMMARY
-        echo "### Managed Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
-    - name: Run Jakarta EE EAR Archetype Remote Tests
-      run: |-
-        cd wildfly-jakartaee-ear-archetype/testing
-        $JBOSS_HOME/bin/standalone.sh &
-
-        until `$JBOSS_HOME/bin/jboss-cli.sh -c ":read-attribute(name=server-state)" 2> /dev/null | grep -q running`; do
-          sleep 1
-        done
-
-        ./runtest_remote.sh $ARCHETYPE_VERSION
-         $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
-        echo "### Remote Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+        $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
+        echo "  * :white_check_mark: Remote Tests" >> $GITHUB_STEP_SUMMARY
     - name: Run WildFly Subsystem Archetype Tests
       run: |-
+        echo "* WildFly Subsystem Archetype" >> $GITHUB_STEP_SUMMARY
+
         cd wildfly-subsystem-archetype/testing
         ./runtest.sh $ARCHETYPE_VERSION
-        echo "## WildFly Subsystem Archetype" >> $GITHUB_STEP_SUMMARY
-        echo "### Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+        echo "  * :white_check_mark: Remote Tests" >> $GITHUB_STEP_SUMMARY
