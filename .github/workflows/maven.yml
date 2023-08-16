@@ -39,7 +39,7 @@ jobs:
         echo "* :white_check_mark: Tests"  >> $GITHUB_STEP_SUMMARY
     - name: Determine Archetype & WildFly versions
       run: |-
-        ARCHETYPE_VERSION=$(grep "<version>" pom.xml | tail -n 1 | sed -e 's,.*<version>\([^<]*\)</version>.*,\1,g')
+        ARCHETYPE_VERSION=$(mvn -B help:evaluate -Dexpression=project.version -DforceStdout -q)
         WILDFLY_VERSION=$(grep "<version.jboss.bom>" wildfly-jakartaee-webapp-archetype/src/main/resources/archetype-resources/pom.xml | sed -e 's,.*<version.jboss.bom>\([^<]*\)</version.jboss.bom>.*,\1,g')
         echo "ARCHETYPE_VERSION=$ARCHETYPE_VERSION" >> "$GITHUB_ENV"
         echo "WILDFLY_VERSION=$WILDFLY_VERSION" >> "$GITHUB_ENV"
