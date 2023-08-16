@@ -63,3 +63,17 @@ jobs:
         ./runtest_remote.sh $ARCHETYPE_VERSION
          $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
         echo "### Remote Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+    - name: Run Jakarta EE EAR Archetype Managed Tests
+      run: |-
+        cd wildfly-jakartaee-ear-archetype/testing
+        ./runtest_managed.sh $ARCHETYPE_VERSION
+        echo "## Jakarta EE EAR archetype" >> $GITHUB_STEP_SUMMARY
+        echo "### Managed Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
+    - name: Run Jakarta EE EAR Archetype Remote Tests
+      run: |-
+        cd wildfly-jakartaee-ear-archetype/testing
+        $JBOSS_HOME/bin/standalone.sh &
+        sleep 20
+        ./runtest_remote.sh $ARCHETYPE_VERSION
+         $JBOSS_HOME/bin/jboss-cli.sh --connect command=:shutdown
+        echo "### Remote Tests :white_check_mark:" >> $GITHUB_STEP_SUMMARY
