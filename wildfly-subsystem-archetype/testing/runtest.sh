@@ -82,7 +82,10 @@ sleep 20
 echo "Configuring subsystem..."
 echo "This might cause errors if a previous test run did not cleanup and e.g. the subsystem already exists."
 $JBOSS_HOME/bin/jboss-cli.sh --file=configure.cli
-
+if [ $retVal -ne 0 ]; then
+  echo "[ERROR] Configuration failed"
+  exit $retVal
+fi
 
 echo "Subsystem was registered - check WildFly console for error messages."
 echo "If all went well, there will be an output 'mysubsystem was successfully initialized'".
@@ -99,6 +102,3 @@ $JBOSS_HOME/bin/jboss-cli.sh --file=restore-configuration-and-stop.cli
 
 # Delete the subsystem files
 rm -r $JBOSS_HOME/modules/system/layers/base/org/test
-
-
-echo "You are done."

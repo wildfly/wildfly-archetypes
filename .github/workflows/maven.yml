@@ -34,7 +34,7 @@ jobs:
     - name: Determine Archetype & WildFly versions
       run: |-
         ARCHETYPE_VERSION=$(mvn -B help:evaluate -Dexpression=project.version -DforceStdout -q)
-        WILDFLY_VERSION=$(grep "<version.jboss.bom>" wildfly-jakartaee-webapp-archetype/src/main/resources/archetype-resources/pom.xml | sed -e 's,.*<version.jboss.bom>\([^<]*\)</version.jboss.bom>.*,\1,g')
+        WILDFLY_VERSION=$(mvn -B help:evaluate -Dexpression=version.wildfly.bom -DforceStdout -q)
         echo "ARCHETYPE_VERSION=$ARCHETYPE_VERSION" >> "$GITHUB_ENV"
         echo "WILDFLY_VERSION=$WILDFLY_VERSION" >> "$GITHUB_ENV"
         echo "## Testing archetypes ${ARCHETYPE_VERSION} with WildFly ${WILDFLY_VERSION}" >> $GITHUB_STEP_SUMMARY

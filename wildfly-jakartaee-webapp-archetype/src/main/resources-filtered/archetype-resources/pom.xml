@@ -18,12 +18,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>${groupId}</groupId>
-    <artifactId>${rootArtifactId}</artifactId>
-    <version>${version}</version>
+    <groupId>\${groupId}</groupId>
+    <artifactId>\${rootArtifactId}</artifactId>
+    <version>\${version}</version>
     
     <packaging>war</packaging>
-    <name>${rootArtifactId}</name>
+    <name>\${rootArtifactId}</name>
     <description>Insert description for your project here.</description>
 
     <properties>
@@ -34,19 +34,19 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- JBoss dependency versions -->
-        <version.wildfly.maven.plugin>4.2.0.Final</version.wildfly.maven.plugin>
+        <version.wildfly.maven.plugin>${version.wildfly.maven.plugin}</version.wildfly.maven.plugin>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <version.jboss.bom>29.0.0.Final</version.jboss.bom>
+        <version.wildfly.bom>${version.wildfly.bom}</version.wildfly.bom>
 
         <!-- other plugin versions -->
-        <version.compiler.plugin>3.9.0</version.compiler.plugin>
-        <version.surefire.plugin>3.0.0</version.surefire.plugin>
-        <version.failsafe.plugin>3.1.2</version.failsafe.plugin>
-        <version.war.plugin>3.4.0</version.war.plugin>
+        <version.compiler.plugin>${version.compiler.plugin}</version.compiler.plugin>
+        <version.surefire.plugin>${version.surefire.plugin}</version.surefire.plugin>
+        <version.failsafe.plugin>${version.failsafe.plugin}</version.failsafe.plugin>
+        <version.war.plugin>${version.war.plugin}</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>${maven.compiler.release}</maven.compiler.release>
     </properties>
 
     <!-- the JBoss community and Red Hat GA Maven repositories -->
@@ -91,7 +91,7 @@
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-ee-with-tools</artifactId>
-                <version>${version.jboss.bom}</version>
+                <version>\${version.wildfly.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -183,14 +183,14 @@
     <build>
         <!-- Tell Maven that the resulting file should not have a file name containing the version - 
 			 a non versioned name is required e.g. when building a deployable artifact using the ShrinkWrap API -->
-		<finalName>${project.artifactId}</finalName>
+		<finalName>\${project.artifactId}</finalName>
 
         <plugins>
             <!--Configuration of the maven-compiler-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${version.compiler.plugin}</version>
+                <version>\${version.compiler.plugin}</version>
                 <configuration>
                     <!-- put your configurations here -->
                 </configuration>
@@ -199,7 +199,7 @@
 			<!--Build configuration for the WAR plugin: -->
 			<plugin>
 				<artifactId>maven-war-plugin</artifactId>
-				<version>${version.war.plugin}</version>
+				<version>\${version.war.plugin}</version>
 				<configuration>
 					<!-- Jakarta EE doesn't require web.xml, Maven needs to catch up! -->
 					<failOnMissingWebXml>false</failOnMissingWebXml>
@@ -210,7 +210,7 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>${version.wildfly.maven.plugin}</version>
+                <version>\${version.wildfly.maven.plugin}</version>
             </plugin>
         </plugins>
     </build>
@@ -242,7 +242,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${version.failsafe.plugin}</version>
+                        <version>\${version.failsafe.plugin}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -279,7 +279,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${version.failsafe.plugin}</version>
+                        <version>\${version.failsafe.plugin}</version>
                         <executions>
                             <execution>
                                 <goals>

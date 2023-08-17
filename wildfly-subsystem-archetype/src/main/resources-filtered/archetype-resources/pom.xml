@@ -3,51 +3,51 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>${groupId}</groupId>
-    <artifactId>${artifactId}</artifactId>
-    <version>${version}</version>
+    <groupId>\${groupId}</groupId>
+    <artifactId>\${artifactId}</artifactId>
+    <version>\${version}</version>
     <packaging>jar</packaging>
 
-    <name>${name}</name>
+    <name>\${name}</name>
 
     <description>This is your WildFly subsystem</description>
 
 
     <properties>
-        <version.wildfly.core>21.1.0.Final</version.wildfly.core>
+        <version.wildfly.core>${version.wildfly.core}</version.wildfly.core>
         <version.junit>4.13.2</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <module.name>${module}</module.name>
+        <module.name>\${module}</module.name>
 		
 		
         <!-- other plugin versions -->
-        <version.compiler.plugin>3.11.0</version.compiler.plugin>
-        <version.surefire.plugin>3.1.2</version.surefire.plugin>
-        <version.antrun.plugin>3.1.0</version.antrun.plugin>
+        <version.compiler.plugin>${version.compiler.plugin}</version.compiler.plugin>
+        <version.surefire.plugin>${version.surefire.plugin}</version.surefire.plugin>
+        <version.antrun.plugin>${version.antrun.plugin}</version.antrun.plugin>
 		
         <!-- maven-compiler-plugin -->
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>${maven.compiler.release}</maven.compiler.release>
     </properties>
 
 
     <build>
         <!-- Maven will append the version to the finalName (which is the name
            given to the generated war, and hence the context root) -->
-        <finalName>${project.artifactId}</finalName>
+        <finalName>\${project.artifactId}</finalName>
         <plugins>
             <plugin>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${version.compiler.plugin}</version>
+                <version>\${version.compiler.plugin}</version>
                 <configuration>
-                    <source>11</source>
-                    <target>11</target>
+                    <source>\${maven.compiler.release}</source>
+                    <target>\${maven.compiler.release}</target>
                     <!-- put your configurations here -->
                 </configuration>
             </plugin>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-surefire-plugin</artifactId>
-                <version>${version.surefire.plugin}</version>
+                <version>\${version.surefire.plugin}</version>
                 <!--
                 <configuration>
                     <redirectTestOutputToFile>true</redirectTestOutputToFile>
@@ -69,7 +69,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <inherited>false</inherited>
-				<version>${version.antrun.plugin}</version>
+				<version>\${version.antrun.plugin}</version>
                 <executions>
                     <execution>
                         <id>build-dist</id>
@@ -90,7 +90,7 @@
                                 <property name="module.dir" value="target/module/${module.path}/main"/>
 
                                 <copy file="src/main/resources/module/main/module.xml" tofile="${module.dir}/module.xml"/>
-                                <copy file="target/${project.artifactId}.jar" todir="${module.dir}/"/>
+                                <copy file="target/\${project.artifactId}.jar" todir="${module.dir}/"/>
                                 <echo>Module ${module.name} has been created in the target/module directory. Copy to your WildFly installation.</echo>
                             </target>
                         </configuration>
@@ -105,25 +105,25 @@
             <dependency>
                 <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-controller</artifactId>
-                <version>${version.wildfly.core}</version>
+                <version>\${version.wildfly.core}</version>
             </dependency>
             <dependency>
                 <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-server</artifactId>
-                <version>${version.wildfly.core}</version>
+                <version>\${version.wildfly.core}</version>
             </dependency>
             <dependency>
                 <groupId>org.wildfly.core</groupId>
                 <artifactId>wildfly-subsystem-test</artifactId>
                 <type>pom</type>
                 <scope>test</scope>
-                <version>${version.wildfly.core}</version>
+                <version>\${version.wildfly.core}</version>
             </dependency>
             <dependency>
                 <groupId>junit</groupId>
                 <artifactId>junit</artifactId>
                 <scope>test</scope>
-                <version>${version.junit}</version>
+                <version>\${version.junit}</version>
             </dependency>
         </dependencies>
     </dependencyManagement>
