@@ -27,9 +27,9 @@
     <description>Insert description for your project here.</description>
 
     <modules>
-        <module>${rootArtifactId}-ejb</module>
-        <module>${rootArtifactId}-web</module>
-        <module>${rootArtifactId}-ear</module>
+        <module>ejb</module>
+        <module>web</module>
+        <module>ear</module>
     </modules>
 
     <properties>
