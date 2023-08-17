@@ -42,7 +42,7 @@
         <!-- other plugin versions -->
         <version.compiler.plugin>3.9.0</version.compiler.plugin>
         <version.surefire.plugin>3.0.0</version.surefire.plugin>
-        <version.failsafe.plugin>3.0.0</version.failsafe.plugin>
+        <version.failsafe.plugin>3.1.2</version.failsafe.plugin>
         <version.war.plugin>3.3.2</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
