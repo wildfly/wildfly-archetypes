@@ -47,4 +47,6 @@ cp ../additionalfiles/ArchetypeIT.java ./multi/src/test/java/foo/bar/multi/test/
 cd multi
 echo "run test"
 mvn verify -Parq-remote
+retVal=$?
 cd ../..
+exit $retVal

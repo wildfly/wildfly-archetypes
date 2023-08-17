@@ -53,7 +53,7 @@ mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dversi
 retVal=$?
 if [ $retVal -ne 0 ]; then
   echo "[ERROR] Maven project creation failed. Errorcode: $retVal"
-  exit 1
+  exit $retVal
 fi
 
 
@@ -75,9 +75,9 @@ cp -r example-subsystem/target/module/org $JBOSS_HOME/modules/system/layers/base
 
 
 echo "WildFly server is starting..."
-konsole -e $JBOSS_HOME/bin/standalone.sh &
+$JBOSS_HOME/bin/standalone.sh &
 
-read -n1 -r -p "Press enter when WildFly was started to continue the test" key
+sleep 20
 
 echo "Configuring subsystem..."
 echo "This might cause errors if a previous test run did not cleanup and e.g. the subsystem already exists."
@@ -86,8 +86,12 @@ $JBOSS_HOME/bin/jboss-cli.sh --file=configure.cli
 
 echo "Subsystem was registered - check WildFly console for error messages."
 echo "If all went well, there will be an output 'mysubsystem was successfully initialized'".
-echo
-read -n1 -r -p "After you checked this, press enter to unregister the subsystem and do cleanup." key
+
+grep "mysubsystem was successfully initialized" $JBOSS_HOME/standalone/log/server.log
+if [ $retVal -ne 0 ]; then
+  echo "[ERROR] The subsystem was not properly initialized"
+  exit $retVal
+fi
 
 
 echo "Unregistering subsystem and stopping WildFly..."

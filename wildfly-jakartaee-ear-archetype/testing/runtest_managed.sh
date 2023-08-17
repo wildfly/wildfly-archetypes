@@ -34,7 +34,7 @@ retVal=$?
 if [ $retVal -ne 0 ]; then
   echo "[ERROR] Maven project creation failed. Errorcode: $retVal"
   cd ..
-  exit
+  exit $retVal
 fi
 
 
@@ -47,4 +47,6 @@ cp ../additionalfiles/ArchetypeIT.java ./multi/multi-web/src/test/java/foo/bar/m
 cd multi
 echo "run test"
 mvn verify -Parq-managed
+retVal=$?
 cd ../..
+exit $retVal
