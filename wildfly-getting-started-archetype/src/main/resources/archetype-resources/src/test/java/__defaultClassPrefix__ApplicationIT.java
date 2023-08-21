@@ -24,8 +24,7 @@ public class ${defaultClassPrefix}ApplicationIT {
 
     @Test
     public void testHelloEndpoint() {
-        Client client = ClientBuilder.newClient();
-        try {
+        try (Client client = ClientBuilder.newClient()) {
             Response response = client
                     .target(URI.create("http://localhost:8080/"))
                     .path("/hello/World")
@@ -35,8 +34,6 @@ public class ${defaultClassPrefix}ApplicationIT {
             assertEquals(200, response.getStatus());
             assertEquals("Hello 'World'.", response.readEntity(String.class));
 
-        } finally {
-            client.close();
         }
     }
 }
