@@ -49,7 +49,7 @@ if [ -d "example-subsystem" ]; then
 fi
 
 echo "generate project from archetype."
-mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=$archetypeVersion -DinteractiveMode=false
+mvn archetype:generate -DarchetypeCatalog=local -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=$archetypeVersion -DinteractiveMode=false
 retVal=$?
 if [ $retVal -ne 0 ]; then
   echo "[ERROR] Maven project creation failed. Errorcode: $retVal"
