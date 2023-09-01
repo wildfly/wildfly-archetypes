@@ -45,7 +45,7 @@ if exist example-subsystem (
 )
 
 @ECHO generate project from archetype.
-call mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=%archetypeVersion% -DinteractiveMode=false
+call mvn archetype:generate -DarchetypeCatalog=local -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=%archetypeVersion% -DinteractiveMode=false
 if %ERRORLEVEL% NEQ 0 (
   @echo [ERROR] Maven project creation failed. Errorlevel: %ERRORLEVEL%
   goto :exit
