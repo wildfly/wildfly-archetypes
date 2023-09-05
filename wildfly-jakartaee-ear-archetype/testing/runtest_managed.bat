@@ -27,7 +27,7 @@ mkdir arq-managed
 cd arq-managed
 
 @ECHO generate project from archetype.
-call mvn archetype:generate -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=%archetypeVersion% -DinteractiveMode=false
+call mvn archetype:generate -DarchetypeCatalog=local -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=%archetypeVersion% -DinteractiveMode=false
 if %ERRORLEVEL% NEQ 0 (
   @echo [ERROR] Maven project creation failed. Errorlevel: %ERRORLEVEL%
   cd..
@@ -35,10 +35,10 @@ if %ERRORLEVEL% NEQ 0 (
 )
 
 @ECHO copy additional files required for test.
-copy ..\additionalfiles\TestBean.java .\multi\multi-ejb\src\main\java\foo\bar\multi\
-copy ..\additionalfiles\TestLocal.java .\multi\multi-ejb\src\main\java\foo\bar\multi\
-copy ..\additionalfiles\TestRemote.java .\multi\multi-ejb\src\main\java\foo\bar\multi\
-copy ..\additionalfiles\ArchetypeIT.java .\multi\multi-web\src\test\java\foo\bar\multi\test\
+copy ..\additionalfiles\TestBean.java .\multi\ejb\src\main\java\foo\bar\multi\
+copy ..\additionalfiles\TestLocal.java .\multi\ejb\src\main\java\foo\bar\multi\
+copy ..\additionalfiles\TestRemote.java .\multi\ejb\src\main\java\foo\bar\multi\
+copy ..\additionalfiles\ArchetypeIT.java .\multi\web\src\test\java\foo\bar\multi\test\
 
 cd multi
 @ECHO run test

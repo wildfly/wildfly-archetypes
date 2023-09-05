@@ -18,12 +18,12 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
     <modelVersion>4.0.0</modelVersion>
-    <groupId>${groupId}</groupId>
-    <artifactId>${rootArtifactId}</artifactId>
-    <version>${version}</version>
+    <groupId>\${groupId}</groupId>
+    <artifactId>\${rootArtifactId}</artifactId>
+    <version>\${version}</version>
     
     <packaging>pom</packaging>
-    <name>${rootArtifactId}</name>
+    <name>\${rootArtifactId}</name>
     <description>Insert description for your project here.</description>
 
     <modules>
@@ -40,21 +40,21 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
         <!-- JBoss dependency versions -->
-        <version.wildfly.maven.plugin>4.2.0.Final</version.wildfly.maven.plugin>
+        <version.wildfly.maven.plugin>${version.wildfly.maven.plugin}</version.wildfly.maven.plugin>
 
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
-        <version.jboss.bom>29.0.0.Final</version.jboss.bom>
+        <version.wildfly.bom>${version.wildfly.bom}</version.wildfly.bom>
 
         <!-- other plugin versions -->
-        <version.compiler.plugin>3.9.0</version.compiler.plugin>
-        <version.ear.plugin>3.3.0</version.ear.plugin>
-        <version.ejb.plugin>3.2.1</version.ejb.plugin>
-        <version.surefire.plugin>3.0.0</version.surefire.plugin>
-        <version.failsafe.plugin>3.0.0</version.failsafe.plugin>
-        <version.war.plugin>3.3.2</version.war.plugin>
+        <version.compiler.plugin>${version.compiler.plugin}</version.compiler.plugin>
+        <version.ear.plugin>${version.ear.plugin}</version.ear.plugin>
+        <version.ejb.plugin>${version.ejb.plugin}</version.ejb.plugin>
+        <version.surefire.plugin>${version.surefire.plugin}</version.surefire.plugin>
+        <version.failsafe.plugin>${version.failsafe.plugin}</version.failsafe.plugin>
+        <version.war.plugin>${version.war.plugin}</version.war.plugin>
 
         <!-- maven-compiler-plugin -->
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>${maven.compiler.release}</maven.compiler.release>
     </properties>
 
     <!-- the JBoss community and Red Hat GA Maven repositories -->
@@ -94,18 +94,18 @@
             <!-- Define the version of the EJB jar so that we don't need
                 to repeat ourselves in every module -->
             <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>${rootArtifactId}-ejb</artifactId>
-                <version>${project.version}</version>
+                <groupId>\${project.groupId}</groupId>
+                <artifactId>\${rootArtifactId}-ejb</artifactId>
+                <version>\${project.version}</version>
                 <type>ejb</type>
             </dependency>
 
             <!-- Define the version of the WAR so that we don't need to repeat
                 ourselves in every module -->
             <dependency>
-                <groupId>${project.groupId}</groupId>
-                <artifactId>${rootArtifactId}-web</artifactId>
-                <version>${project.version}</version>
+                <groupId>\${project.groupId}</groupId>
+                <artifactId>\${rootArtifactId}-web</artifactId>
+                <version>\${project.version}</version>
                 <type>war</type>
                 <scope>compile</scope>
             </dependency>
@@ -118,7 +118,7 @@
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-ee-with-tools</artifactId>
-                <version>${version.jboss.bom}</version>
+                <version>\${version.wildfly.bom}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -130,7 +130,7 @@
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
-                <version>${version.compiler.plugin}</version>
+                <version>\${version.compiler.plugin}</version>
                 <configuration>
                     <!-- put your configurations here -->
                 </configuration>
@@ -142,7 +142,7 @@
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
                 <artifactId>wildfly-maven-plugin</artifactId>
-                <version>${version.wildfly.maven.plugin}</version>
+                <version>\${version.wildfly.maven.plugin}</version>
                 <inherited>true</inherited>
                 <configuration>
                     <skip>true</skip>
@@ -177,7 +177,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${version.failsafe.plugin}</version>
+                        <version>\${version.failsafe.plugin}</version>
                         <executions>
                             <execution>
                                 <goals>
@@ -214,7 +214,7 @@
                     <plugin>
                         <groupId>org.apache.maven.plugins</groupId>
                         <artifactId>maven-failsafe-plugin</artifactId>
-                        <version>${version.failsafe.plugin}</version>
+                        <version>\${version.failsafe.plugin}</version>
                         <executions>
                             <execution>
                                 <goals>

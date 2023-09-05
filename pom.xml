@@ -19,10 +19,88 @@
 
     <name>WildFly Archetypes: Aggregator</name>
     <description>Aggregator for WildFly Maven archetypes</description>
-    
+
+    <!--
+        To simplify the maintenance of the archetypes all versions of the
+        dependencies and plugins that are references by the generated project
+        are defined in the parent pom and evaluated when the archetype are built.
+
+        This project defines pluginManagment and dependencyManagemet to trigger 
+        dependencies updates even though this project and its submodules does not
+        actually use these dependencies.
+    -->
+    <properties>
+        <version.wildfly.bom>29.0.0.Final</version.wildfly.bom>
+        <version.wildfly.core>21.1.0.Final</version.wildfly.core>
+        <version.wildfly.maven.plugin>4.2.0.Final</version.wildfly.maven.plugin>
+
+        <version.compiler.plugin>3.9.0</version.compiler.plugin>
+        <version.surefire.plugin>3.0.0</version.surefire.plugin>
+        <version.failsafe.plugin>3.1.2</version.failsafe.plugin>
+        <version.war.plugin>3.4.0</version.war.plugin>
+        <version.ear.plugin>3.3.0</version.ear.plugin>
+        <version.ejb.plugin>3.2.1</version.ejb.plugin>
+        <version.antrun.plugin>3.1.0</version.antrun.plugin>
+
+        <maven.compiler.release>11</maven.compiler.release>
+    </properties>
+
     <modules>
         <module>wildfly-jakartaee-ear-archetype</module>
         <module>wildfly-jakartaee-webapp-archetype</module>
         <module>wildfly-subsystem-archetype</module>
     </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.core</groupId>
+                <artifactId>wildfly-controller</artifactId>
+                <version>${version.wildfly.core}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-ee-with-tools</artifactId>
+                <version>${version.wildfly.bom}</version>
+                <type>pom</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
+
+    <build>
+        <pluginManagement>
+            <plugins>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-compiler-plugin</artifactId>
+                    <version>${version.compiler.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.wildfly.plugins</groupId>
+                    <artifactId>wildfly-maven-plugin</artifactId>
+                    <version>${version.wildfly.maven.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-failsafe-plugin</artifactId>
+                    <version>${version.failsafe.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ear-plugin</artifactId>
+                    <version>${version.ear.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-ejb-plugin</artifactId>
+                    <version>${version.ejb.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-war-plugin</artifactId>
+                    <version>${version.war.plugin}</version>
+                </plugin>
+            </plugins>
+        </pluginManagement>
+    </build>
 </project>
