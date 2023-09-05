@@ -20,6 +20,13 @@
     <name>WildFly Archetypes: Aggregator</name>
     <description>Aggregator for WildFly Maven archetypes</description>
 
+    <scm>
+        <connection>scm:git:git@github.com:wildfly/wildfly-archetypes.git</connection>
+        <developerConnection>scm:git:git@github.com:wildfly/wildfly-archetypes.git</developerConnection>
+        <url>https://github.com/wildfly/wildfly-archetypes</url>
+        <tag>HEAD</tag>
+    </scm>
+
     <!--
         To simplify the maintenance of the archetypes all versions of the
         dependencies and plugins that are references by the generated project
