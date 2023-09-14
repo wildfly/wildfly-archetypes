@@ -18,7 +18,6 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-getting-started-archetype</artifactId>
-    <version>28.0.0.Final-SNAPSHOT</version>
     <packaging>maven-archetype</packaging>
 
     <name>WildFly Archetypes: Getting Started</name>
