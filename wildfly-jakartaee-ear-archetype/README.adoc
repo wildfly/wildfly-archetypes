@@ -9,31 +9,13 @@ It is prepared for running Arquillian unit tests.
 More details can be found in the file "src/main/resources/archetype-resources/README.txt", which is end-user doc and added to the resulting project.
 
 [[newwildflyversion]]
-==== New WildFly version
-To update this archetype to a new WildFly version:
-In file "pom.xml":
+==== Component Dependencies
 
-* update the version
-* update to latest "org.jboss:jboss-parent" version found at https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/
-
-In file "src/main/resources/archetype-resources/pom.xml":
-
-* update the version property named "version.jboss.bom"
-* check whether dependencies have changed.
-* check the plugin versions and update if necessary:
-** wildfly-maven-plugin: https://repo.maven.apache.org/maven2/org/wildfly/plugins/wildfly-maven-plugin/
-** maven-compiler-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/
-** maven-ear-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-ear-plugin/
-** maven-ejb-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-ejb-plugin/
-** maven-surefire-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/
-** maven-failsafe-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-failsafe-plugin/
-** maven-war-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-war-plugin/
-
-Also test whether the Arquillian unit test "SampleIT" still works, see below.
+The versions of all dependencies and plugins that are used by this archetype are configured in the parent's `pom.xml`.
 
 [[build]]
 ==== Build
-To build the archetype, you need at least Java 17. Run this command:
+To build the archetype, you need at least Java 11. Run this command:
 [source,options="nowrap"]
 ----
 $ mvn clean install
@@ -44,7 +26,7 @@ It will be installed to your local maven repository at "%USERHOME%/.m2/repositor
 ==== Create project from archetype
 To create a new project from this archetype, use this maven command (replace dummy values for "groupId", "artifactId" and "version" with correct values):
 ----
-$ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sample-jakartaee-ear-archetype -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=28.0.0.Final-SNAPSHOT
+$ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sample-jakartaee-ear-archetype -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=30.0.0.Final-SNAPSHOT
 ----
 
 [[testing]]

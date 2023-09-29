@@ -8,26 +8,13 @@ This archetype creates a subsystem project.
 
 See https://docs.wildfly.org/26/Extending_WildFly.html
 
-==== New WildFly version
-To update this archetype to a new WildFly version:
-In file "pom.xml":
+==== Component Dependencies
 
-* update the archetype version
-* update to latest "org.jboss:jboss-parent" version found at https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/
-
-In file "src/main/resources/archetype-resources/pom.xml":
-
-* update the version property named "version.wildfly.core" to the version bundled with WildFly (found in "%WILDFLY_HOME%/modules/system/layers/base/org/jboss/as/controller/main").
-* check the plugin versions and update if necessary:
-** maven-compiler-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/
-** maven-surefire-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/
-** maven-antrun-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-antrun-plugin/
-
-In file "src/main/resources/archetype-resources/Readme.txt", update the version in the link to the WildFly documentation.
+The versions of all dependencies and plugins that are used by this archetype are configured in the parent's `pom.xml`.
 
 [[build]]
 ==== Build
-To build the archetype, you need at least Java 17. Run this command:
+To build the archetype, you need at least Java 11. Run this command:
 [source,options="nowrap"]
 ----
 $ mvn clean install
@@ -38,7 +25,7 @@ It will be installed to your local maven repository at "%USERHOME%/.m2/repositor
 ==== Create project from archetype
 To create a new project from this archetype, use this maven command (replace dummy values for "groupId", "artifactId", "version", "module" and "package" with correct values):
 ----
-$ mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=28.0.0.Final-SNAPSHOT
+$ mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dversion=1.0-SNAPSHOT -Dmodule=org.test.subsystem -Dpackage=com.acme.example -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-subsystem -DarchetypeVersion=30.0.0.Final-SNAPSHOT
 ----
 
 [[testing]]

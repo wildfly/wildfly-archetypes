@@ -29,22 +29,24 @@ mkdir arq-remote
 cd arq-remote
 
 echo "generate project from archetype."
-mvn archetype:generate -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=$archetypeVersion -DinteractiveMode=false
+mvn archetype:generate -DarchetypeCatalog=local -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=$archetypeVersion -DinteractiveMode=false
 retVal=$?
 if [ $retVal -ne 0 ]; then
   echo "[ERROR] Maven project creation failed. Errorcode: $retVal"
   cd ..
-  exit
+  exit $retVal
 fi
 
 
 echo "copy additional files required for test."
-cp ../additionalfiles/TestBean.java ./multi/multi-ejb/src/main/java/foo/bar/multi/
-cp ../additionalfiles/TestLocal.java ./multi/multi-ejb/src/main/java/foo/bar/multi/
-cp ../additionalfiles/TestRemote.java ./multi/multi-ejb/src/main/java/foo/bar/multi/
-cp ../additionalfiles/ArchetypeIT.java ./multi/multi-web/src/test/java/foo/bar/multi/test/
+cp ../additionalfiles/TestBean.java ./multi/ejb/src/main/java/foo/bar/multi/
+cp ../additionalfiles/TestLocal.java ./multi/ejb/src/main/java/foo/bar/multi/
+cp ../additionalfiles/TestRemote.java ./multi/ejb/src/main/java/foo/bar/multi/
+cp ../additionalfiles/ArchetypeIT.java ./multi/web/src/test/java/foo/bar/multi/test/
 
 cd multi
 echo "run test"
 mvn verify -Parq-remote
+retVal=$?
 cd ../..
+exit $retVal

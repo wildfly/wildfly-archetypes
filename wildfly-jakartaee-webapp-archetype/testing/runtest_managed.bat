@@ -27,7 +27,7 @@ mkdir arq-managed
 cd arq-managed
 
 @ECHO generate project from archetype.
-call mvn archetype:generate -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-webapp-archetype -DarchetypeVersion=%archetypeVersion% -DinteractiveMode=false
+call mvn archetype:generate -DarchetypeCatalog=local -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-webapp-archetype -DarchetypeVersion=%archetypeVersion% -DinteractiveMode=false
 if %ERRORLEVEL% NEQ 0 (
   @echo [ERROR] Maven project creation failed. Errorlevel: %ERRORLEVEL%
   cd..
