@@ -34,24 +34,26 @@
     <link rel="stylesheet" href="wildfly.css">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon"/>
     <script>
-        function submitClicked() {        	
-        	var name = document.getElementById('nameInput').value;
-            name = escape(name);
-            var request = new XMLHttpRequest();
-            var result = document.getElementById('result');             
-            request.onreadystatechange=function() {
-                if (request.readyState == 4) {
-                    if (request.status == 200) {
-                        result.innerText = request.responseText;
-                    } else {
-                        result.innerText = 'Unexpected response ' + request.status;
-                    }
-                }
-            }
-
-            request.open('get', '/hello/' + name);
-            request.send(null);                     	
-        }
+        (() => {
+            "use script";
+            window.addEventListener("load", () => {
+                const button = document.querySelector("button[type='submit']");
+                button.addEventListener("click", (event) => {
+                    event.preventDefault();
+                    let name = document.querySelector('#nameInput');
+                    name = encodeURIComponent(name.value);
+                    const result = document.querySelector('#result');
+                    fetch(`/hello/${name}`)
+                        .then(response => {
+                            if (response.status === 200) {
+                                response.text().then(content => result.textContent = content);
+                            } else {
+                                result.textContent = `Unexpected response ${response.status}`;
+                            }
+                        });
+                });
+            });
+        })();
     </script>
 </head>
 <body>
@@ -63,13 +65,13 @@
         <h1>Getting Started</h1>
         <div id="interactive">
             <form name="nameForm">
-                Name:
+                <label for="nameInput">Name: </label>
                 <input type="text" id="nameInput">
-                <button type="button" onclick="submitClicked()">Say Hello</button>
+                <button type="submit">Say Hello</button>
             </form>
             <p id="result">
             </p>
-        </div>  
+        </div>
     </div>
 </div>
 <footer>
