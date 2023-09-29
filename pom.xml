@@ -38,7 +38,7 @@
     <properties>
         <version.wildfly.bom>29.0.1.Final</version.wildfly.bom>
         <version.wildfly.core>21.1.1.Final</version.wildfly.core>
-        <version.wildfly.maven.plugin>4.2.0.Final</version.wildfly.maven.plugin>
+        <version.wildfly.maven.plugin>5.0.0.Alpha2</version.wildfly.maven.plugin>
 
         <version.compiler.plugin>3.9.0</version.compiler.plugin>
         <version.surefire.plugin>3.0.0</version.surefire.plugin>
