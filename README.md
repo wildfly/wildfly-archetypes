@@ -15,6 +15,7 @@ To update the archetypes to new versions:
 
 * update to latest "org.jboss:jboss-parent" version found at https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/
 * update the version property named "version.wildfly.bom"
+* update the version property named "version.wildfly.core" to the version bundled with WildFly (found in "%WILDFLY_HOME%/modules/system/layers/base/org/jboss/as/controller/main").
 * check whether dependencies have changed.
 * check the plugin versions and update if necessary:
   * wildfly-maven-plugin: https://repo.maven.apache.org/maven2/org/wildfly/plugins/wildfly-maven-plugin/
