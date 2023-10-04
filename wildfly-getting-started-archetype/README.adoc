@@ -1,0 +1,65 @@
+WildFly getting started archetype
+-----------------------------
+
+[[introduction]]
+==== Introduction
+
+This archetype creates a new WAR project which contains a simple Restful web
+service and a HTML page to call the web service.
+
+The generated project is configured to dynamically provision a WildFly server
+and run the web application on the provisoned server so no manual installation
+is required.
+ 
+It is prepared for running Arquillian unit tests.
+More details can be found in the file "src/main/resources/archetype-resources/README.txt", which is end-user doc and added to the resulting project.
+
+[[newwildflyversion]]
+==== New WildFly version
+To update this archetype to a new WildFly version:
+In file "pom.xml":
+
+* update the version
+* update to latest "org.jboss:jboss-parent" version found at https://repo.maven.apache.org/maven2/org/jboss/jboss-parent/
+
+In file "src/main/resources/archetype-resources/pom.xml":
+
+* update the version property named "version.jboss.bom"
+* check whether dependencies have changed.
+* check the plugin versions and update if necessary:
+** wildfly-maven-plugin: https://repo.maven.apache.org/maven2/org/wildfly/plugins/wildfly-maven-plugin/
+** maven-compiler-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-compiler-plugin/
+** maven-surefire-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-surefire-plugin/
+** maven-failsafe-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-failsafe-plugin/
+** maven-war-plugin: https://repo.maven.apache.org/maven2/org/apache/maven/plugins/maven-war-plugin/
+
+Also test whether the Arquillian unit test "SampleIT" still works, see below.
+
+[[build]]
+==== Build
+To build the archetype, you need at least Java 11. Run this command:
+[source,options="nowrap"]
+----
+$ mvn clean install
+----
+It will be installed to your local maven repository at "%USERHOME%/.m2/repository/org/wildfly/archetype/wildfly-getting-started-archetype/", and an entry will be added to "%USERHOME%/.m2/repository/archetype-catalog.xml".
+
+[[createproject]]
+==== Create project from archetype
+To create a new project from this archetype, use this maven command (replace dummy values for "groupId", "artifactId" and "version" with correct values):
+----
+$ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sampleproject -Dversion=1.0-SNAPSHOT -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-getting-started-archetype -DarchetypeVersion=28.0.0.Final-SNAPSHOT
+----
+
+[[testing]]
+==== Test the archetype
+After having built the archetype, check whether both profiles "arq-remote" and "arq-managed" work. This is done by using scripts found in the directory "testing".
+
+* Profile "arq-managed": set variable JBOSS_HOME, then execute "runtest_managed.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
+* Profile "arq-remote": start WildFly server, then execute "runtest_remote.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
+
+Both files create a project from the archetype (in "testing/arq-managed" or "testing/arq-remote"), copy an Arquillian unit test class and an EJB in this project, then build and deploy it to WildFly and execute
+the test using the Arquillian profile "arq-managed" or "arq-remote").
+
+After the test is executed, check the server log for error outputs. In case of success, the outputs "Test is invoked..." and "doTest is invoked..." will be printed in the server console.
+

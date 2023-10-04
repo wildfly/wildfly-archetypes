@@ -52,6 +52,7 @@
     </properties>
 
     <modules>
+        <module>wildfly-getting-started-archetype</module>
         <module>wildfly-jakartaee-ear-archetype</module>
         <module>wildfly-jakartaee-webapp-archetype</module>
         <module>wildfly-subsystem-archetype</module>
