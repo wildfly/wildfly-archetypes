@@ -4,7 +4,7 @@ WildFly archetype for a subsystem project
 [[introduction]]
 ==== Introduction
 
-This archetype creates a subsystem project. 
+This archetype creates a subsystem project.
 
 See https://docs.wildfly.org/26/Extending_WildFly.html
 
@@ -30,7 +30,7 @@ $ mvn archetype:generate -DgroupId=com.acme -DartifactId=example-subsystem -Dver
 
 [[testing]]
 ==== Test the archetype
-After having built the archetype, check whether the subsystem can be loaded in WildFly. This is done by using scripts "runtest.bat" or "runtest.sh" found in the directory "testing". 
+After having built the archetype, check whether the subsystem can be loaded in WildFly. This is done by using scripts "runtest.bat" or "runtest.sh" found in the directory "testing".
 The scripts require current archetype version as argument.
 
 The script

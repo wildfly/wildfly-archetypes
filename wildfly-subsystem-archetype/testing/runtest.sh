@@ -7,10 +7,10 @@
 # 5) registers the subsystem using a CLI script
 # 6) waits for the user to check that the debugging output of the subsystem was printed
 # 7) finally unregisters the subsystem and stops WildFly
-# Prerequesites: 
+# Prerequesites:
 # -the environment variable JBOSS_HOME must point to the WildFly server corresponding to the archetyp version.
 # -the git tool "patch.exe" must be found in the path
-# The current archetype version must be the first argument to the script call. 
+# The current archetype version must be the first argument to the script call.
 
 
 # check that JBOSS_HOME is set:

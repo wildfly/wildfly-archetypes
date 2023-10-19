@@ -17,4 +17,4 @@ extension-commands --errors
 reload
 
 # Stop the server
-shutdown 
+shutdown

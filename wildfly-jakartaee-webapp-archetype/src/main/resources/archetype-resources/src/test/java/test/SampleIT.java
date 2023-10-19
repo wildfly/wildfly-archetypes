@@ -13,7 +13,7 @@ import org.junit.runner.RunWith;
 
 /**
  * Sample integration test: demonstrates how to create the WAR file using the ShrinkWrap API.
- * 
+ *
  * Delete this file if no integration test is required.
  */
 @RunWith(Arquillian.class)
@@ -21,7 +21,7 @@ public class SampleIT {
 
     /**
      * Creates the WAR file that is deployed to the server.
-     * 
+     *
      * @return WAR archive
      */
     @Deployment
@@ -32,7 +32,7 @@ public class SampleIT {
             throw new RuntimeException("File " + f.getAbsolutePath() + " does not exist.");
         }
         WebArchive war = ShrinkWrap.create(ZipImporter.class, "${rootArtifactId}.war").importFrom(f).as(WebArchive.class);
-        
+
         // Add the package containing the test classes:
         war.addPackage("${package}.test");
 
@@ -44,7 +44,7 @@ public class SampleIT {
 
     /**
      * A sample test...
-     * 
+     *
      */
     @Test
     public void test() {

@@ -21,15 +21,15 @@
     <groupId>\${groupId}</groupId>
     <artifactId>\${rootArtifactId}</artifactId>
     <version>\${version}</version>
-    
+
     <packaging>war</packaging>
     <name>\${rootArtifactId}</name>
     <description>Insert description for your project here.</description>
 
     <properties>
-        <!-- Explicitly declaring the source encoding eliminates the following 
+        <!-- Explicitly declaring the source encoding eliminates the following
             message: -->
-        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
+        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered
             resources, i.e. build is platform dependent! -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -83,8 +83,8 @@
     <dependencyManagement>
         <dependencies>
             <!-- JBoss distributes a complete set of Jakarta EE 8 APIs including
-                a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
-                a collection) of artifacts. We use this here so that we always get the correct 
+                a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or
+                a collection) of artifacts. We use this here so that we always get the correct
                 versions of artifacts. Here we use the wildfly-jakartaee-8.0-with-tools stack
                 (you can read this as the WildFly stack of the Jakarta EE 8 APIs, with some extras
                 tools for your project, such as Arquillian for testing) -->
@@ -97,7 +97,7 @@
             </dependency>
         </dependencies>
     </dependencyManagement>
-	
+
     <dependencies>
 
         <!-- Import the CDI API, we use provided scope as the API is included in WildFly / JBoss EAP -->
@@ -107,8 +107,8 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Bean Validation Implementation 
-           Provides portable constraints such as @Email 
+        <!-- Bean Validation Implementation
+           Provides portable constraints such as @Email
            Hibernate Validator is shipped in WildFly / JBoss EAP -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -156,29 +156,29 @@
             <artifactId>jakarta.annotation-api</artifactId>
             <scope>provided</scope>
         </dependency>
- 
+
         <!-- Test scope dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- Optional, but highly recommended -->
-        <!-- Arquillian allows you to test enterprise code such as EJBs and 
+        <!-- Arquillian allows you to test enterprise code such as EJBs and
             Transactional(JTA) JPA from JUnit/TestNG -->
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
-      
+
     </dependencies>
-	
+
     <build>
-        <!-- Tell Maven that the resulting file should not have a file name containing the version - 
-			 a non versioned name is required e.g. when building a deployable artifact using the ShrinkWrap API -->
-		<finalName>\${project.artifactId}</finalName>
+        <!-- Tell Maven that the resulting file should not have a file name containing the version -
+             a non versioned name is required e.g. when building a deployable artifact using the ShrinkWrap API -->
+        <finalName>\${project.artifactId}</finalName>
 
         <plugins>
             <!--Configuration of the maven-compiler-plugin -->
@@ -190,17 +190,17 @@
                     <!-- put your configurations here -->
                 </configuration>
             </plugin>
-			
-			<!--Build configuration for the WAR plugin: -->
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>\${version.war.plugin}</version>
-				<configuration>
-					<!-- Jakarta EE doesn't require web.xml, Maven needs to catch up! -->
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin>
-			
+
+            <!--Build configuration for the WAR plugin: -->
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>\${version.war.plugin}</version>
+                <configuration>
+                    <!-- Jakarta EE doesn't require web.xml, Maven needs to catch up! -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+
             <!-- The WildFly plugin deploys your war to a local JBoss AS container -->
             <plugin>
                 <groupId>org.wildfly.plugins</groupId>
@@ -219,7 +219,7 @@
                 <activeByDefault>true</activeByDefault>
             </activation>
         </profile>
-        
+
         <profile>
             <!-- An optional Arquillian testing profile that executes tests in your WildFly / JBoss EAP instance.
                  This profile will start a new WildFly / JBoss EAP instance, and execute the test, shutting it down when done.

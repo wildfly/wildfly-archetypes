@@ -4,7 +4,7 @@ WildFly archetype for blank WAR project
 [[introduction]]
 ==== Introduction
 
-This archetype creates a blank WAR project. 
+This archetype creates a blank WAR project.
 It is prepared for running Arquillian unit tests.
 More details can be found in the file "src/main/resources/archetype-resources/README.txt", which is end-user doc and added to the resulting project.
 

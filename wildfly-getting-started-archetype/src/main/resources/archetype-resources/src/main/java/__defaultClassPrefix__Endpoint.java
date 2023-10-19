@@ -14,15 +14,15 @@ import jakarta.ws.rs.core.Response;
 @Path("/")
 public class ${defaultClassPrefix}Endpoint {
 
-	@Inject
-	private ${defaultClassPrefix}Service service;
+    @Inject
+    private ${defaultClassPrefix}Service service;
 
-	@GET
-	@Path("/{name}")
-	@Produces(MediaType.TEXT_PLAIN)
-	public Response sayHello(final @PathParam("name") String name) {
-		String response = service.hello(name);
-		
-		return Response.ok(response).build();
-	}
+    @GET
+    @Path("/{name}")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response sayHello(final @PathParam("name") String name) {
+        String response = service.hello(name);
+
+        return Response.ok(response).build();
+    }
 }

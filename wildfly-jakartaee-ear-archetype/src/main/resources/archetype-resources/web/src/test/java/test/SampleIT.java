@@ -15,7 +15,7 @@ import org.junit.runner.RunWith;
 
 /**
  * Sample integration test: demonstrates how to create the EAR file using the ShrinkWrap API.
- * 
+ *
  * Delete this file if no integration test is required.
  */
 @RunWith(Arquillian.class)
@@ -23,7 +23,7 @@ public class SampleIT {
 
     /**
      * Creates the EAR file that is deployed to the server.
-     * 
+     *
      * @return EAR archive
      */
     @Deployment
@@ -59,7 +59,7 @@ public class SampleIT {
 
     /**
      * A sample test...
-     * 
+     *
      */
     @Test
     public void test() {

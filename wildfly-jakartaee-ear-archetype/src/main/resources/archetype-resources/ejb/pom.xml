@@ -44,8 +44,8 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- Bean Validation Implementation 
-             Provides portable constraints such as @Email 
+        <!-- Bean Validation Implementation
+             Provides portable constraints such as @Email
              Hibernate Validator is shipped in WildFly / JBoss EAP -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -91,13 +91,13 @@
     </dependencies>
 
     <build>
-        <!-- Tell Maven that the resulting file should not have a file name containing the version - 
-		     a non versioned name is required e.g. when building a deployable artifact using the ShrinkWrap API -->
+        <!-- Tell Maven that the resulting file should not have a file name containing the version -
+             a non versioned name is required e.g. when building a deployable artifact using the ShrinkWrap API -->
         <finalName>${project.artifactId}</finalName>
 
-        <plugins>			
-			<!--Configure the EJB plugin: we create EJB 4.0. If not specified, an error will arise because the plugin expects an Ejb-jar by default. -->
-			<plugin>
+        <plugins>
+            <!--Configure the EJB plugin: we create EJB 4.0. If not specified, an error will arise because the plugin expects an Ejb-jar by default. -->
+            <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-ejb-plugin</artifactId>
                     <version>${version.ejb.plugin}</version>

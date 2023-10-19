@@ -2,7 +2,7 @@
 # Creates a project from the archetype, copies some additional source files and runs an integration test
 # using the profile "arq-remote".
 # Prerequesites: a WildFly server corresponding to the archetyp version must be running on localhost.
-# The current archetype version must be the first argument to the batch file call. 
+# The current archetype version must be the first argument to the batch file call.
 
 if [ -z "$1" ]
   then

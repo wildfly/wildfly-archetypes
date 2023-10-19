@@ -28,9 +28,9 @@
     <description>Insert description for your project here.</description>
 
     <properties>
-        <!-- Explicitly declaring the source encoding eliminates the following 
+        <!-- Explicitly declaring the source encoding eliminates the following
             message: -->
-        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered 
+        <!-- [WARNING] Using platform encoding (UTF-8 actually) to copy filtered
             resources, i.e. build is platform dependent! -->
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 
@@ -78,8 +78,8 @@
     <dependencyManagement>
         <dependencies>
             <!-- JBoss distributes a complete set of Jakarta EE APIs including
-                a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or 
-                a collection) of artifacts. We use this here so that we always get the correct 
+                a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or
+                a collection) of artifacts. We use this here so that we always get the correct
                 versions of artifacts (you can read this as the WildFly stack of the Jakarta EE APIs,
                 with some extras tools for your project, such as Arquillian for testing) -->
             <dependency>

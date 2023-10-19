@@ -37,8 +37,8 @@
             <scope>provided</scope>
         </dependency>
 
-        <!-- Bean Validation Implementation 
-           Provides portable constraints such as @Email 
+        <!-- Bean Validation Implementation
+           Provides portable constraints such as @Email
            Hibernate Validator is shipped in WildFly / JBoss EAP -->
         <dependency>
             <groupId>org.hibernate.validator</groupId>
@@ -94,40 +94,40 @@
             <artifactId>jakarta.annotation-api</artifactId>
             <scope>provided</scope>
         </dependency>
-		 
+
         <!-- Test scope dependencies -->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <scope>test</scope>
         </dependency>
-        
+
         <!-- Optional, but highly recommended -->
-        <!-- Arquillian allows you to test enterprise code such as EJBs and 
+        <!-- Arquillian allows you to test enterprise code such as EJBs and
             Transactional(JTA) JPA from JUnit/TestNG -->
         <dependency>
             <groupId>org.jboss.arquillian.junit</groupId>
             <artifactId>arquillian-junit-container</artifactId>
             <scope>test</scope>
         </dependency>
-      
+
     </dependencies>
 
     <build>
-        <!-- Tell Maven that the resulting file should not have a file name containing the version - 
-			 a non versioned name is required e.g. when building a deployable artifact using the ShrinkWrap API -->
-		<finalName>${project.artifactId}</finalName>
+        <!-- Tell Maven that the resulting file should not have a file name containing the version -
+             a non versioned name is required e.g. when building a deployable artifact using the ShrinkWrap API -->
+        <finalName>${project.artifactId}</finalName>
 
         <plugins>
-			<!--Build configuration for the WAR plugin: -->
-			<plugin>
-				<artifactId>maven-war-plugin</artifactId>
-				<version>${version.war.plugin}</version>
-				<configuration>
-					<!-- Jakarta EE doesn't require web.xml, Maven needs to catch up! -->
-					<failOnMissingWebXml>false</failOnMissingWebXml>
-				</configuration>
-			</plugin>
+            <!--Build configuration for the WAR plugin: -->
+            <plugin>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>${version.war.plugin}</version>
+                <configuration>
+                    <!-- Jakarta EE doesn't require web.xml, Maven needs to catch up! -->
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
         </plugins>
     </build>
 </project>

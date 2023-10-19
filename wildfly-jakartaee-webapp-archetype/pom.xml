@@ -14,7 +14,7 @@
         <artifactId>wildfly-archetypes</artifactId>
         <version>30.0.1.Final-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
-    </parent>	
+    </parent>
 
     <artifactId>wildfly-jakartaee-webapp-archetype</artifactId>
     <packaging>maven-archetype</packaging>
