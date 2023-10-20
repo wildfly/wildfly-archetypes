@@ -18,13 +18,13 @@
         <version.junit>4.13.2</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <module.name>\${module}</module.name>
-		
-		
+
+
         <!-- other plugin versions -->
         <version.compiler.plugin>${version.compiler.plugin}</version.compiler.plugin>
         <version.surefire.plugin>${version.surefire.plugin}</version.surefire.plugin>
         <version.antrun.plugin>${version.antrun.plugin}</version.antrun.plugin>
-		
+
         <!-- maven-compiler-plugin -->
         <maven.compiler.release>${maven.compiler.release}</maven.compiler.release>
     </properties>
@@ -69,7 +69,7 @@
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-antrun-plugin</artifactId>
                 <inherited>false</inherited>
-				<version>\${version.antrun.plugin}</version>
+                <version>\${version.antrun.plugin}</version>
                 <executions>
                     <execution>
                         <id>build-dist</id>

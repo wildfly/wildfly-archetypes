@@ -6,10 +6,10 @@
 @REM 5) registers the subsystem using a CLI script
 @REM 6) waits for the user to check that the debugging output of the subsystem was printed
 @REM 7) finally unregisters the subsystem and stops WildFly
-@REM Prerequesites: 
+@REM Prerequesites:
 @REM -the environment variable JBOSS_HOME must point to the WildFly server corresponding to the archetyp version.
 @REM -the git tool "patch.exe" must be found in the path
-@REM The current archetype version must be the first argument to the batch file call. 
+@REM The current archetype version must be the first argument to the batch file call.
 
 @echo off
 
@@ -29,7 +29,7 @@ if ERRORLEVEL 1 (
 @REM We need the version of the archetype to create the test project from:
 @if "%1" == "" (
   echo Archetype version must be first argument to the call to the batch file.
-  set /p archetypeVersion=Please enter archetype version: 
+  set /p archetypeVersion=Please enter archetype version:
 ) else (
   set archetypeVersion=%1
 )

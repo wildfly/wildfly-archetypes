@@ -31,7 +31,7 @@
         dependencies and plugins that are references by the generated project
         are defined in the parent pom and evaluated when the archetype are built.
 
-        This project defines pluginManagment and dependencyManagemet to trigger 
+        This project defines pluginManagment and dependencyManagemet to trigger
         dependencies updates even though this project and its submodules does not
         actually use these dependencies.
     -->

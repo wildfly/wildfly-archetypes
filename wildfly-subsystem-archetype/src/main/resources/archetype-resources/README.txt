@@ -16,7 +16,7 @@ Register the extension in "standalone.xml" and add the subsystem configuration:
         ...
         <subsystem xmlns="urn:mycompany:mysubsystem:1.0">
         </subsystem>
-		
+
     </profile>
 
 Step 2:

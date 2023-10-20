@@ -6,7 +6,7 @@ Archetype is a Maven project templating toolkit
 Basic Steps
 -----------
 
-To contribute to the Archetypes, fork the Archetypes repository to your own Git, clone your fork, commit your work on topic branches, and make pull requests. 
+To contribute to the Archetypes, fork the Archetypes repository to your own Git, clone your fork, commit your work on topic branches, and make pull requests.
 
 If you don't have the Git client (`git`), get it from: <http://git-scm.com/>
 
@@ -58,7 +58,7 @@ Here are the steps in detail:
 
 9. Push your local topic branch to your github forked repository. This will create a branch on your Git fork repository with the same name as your local topic branch name.
 
-        git push origin HEAD            
+        git push origin HEAD
 
 10. Browse to the <topic-branch-name> branch on your forked Git repository and [open a Pull Request](http://help.github.com/send-pull-requests/). Give it a clear title and description.
 
@@ -70,7 +70,7 @@ General Guidelines
 License Information and Contributor Agreement
 ---------------------------------------------
 
-  JBoss Developer Framework is licensed under the Apache License 2.0, as we believe it is one of the most permissive Open Source license. This allows developers to easily make use of the code samples in JBoss Developer Framework. 
+  JBoss Developer Framework is licensed under the Apache License 2.0, as we believe it is one of the most permissive Open Source license. This allows developers to easily make use of the code samples in JBoss Developer Framework.
 
   There is no need to sign a contributor agreement to contribute to JBoss Developer Framework. You just need to explicitly license any contribution under the AL 2.0. If you add any new files to JBoss Developer Framework, make sure to add the correct header.
 
@@ -79,7 +79,7 @@ License Information and Contributor Agreement
       /*
        * JBoss, Home of Professional Open Source
        * Copyright <Year>, Red Hat, Inc. and/or its affiliates, and individual
-       * contributors by the @authors tag. See the copyright.txt in the 
+       * contributors by the @authors tag. See the copyright.txt in the
        * distribution for a full listing of individual contributors.
        *
        * Licensed under the Apache License, Version 2.0 (the "License");
@@ -87,7 +87,7 @@ License Information and Contributor Agreement
        * You may obtain a copy of the License at
        * http://www.apache.org/licenses/LICENSE-2.0
        * Unless required by applicable law or agreed to in writing, software
-       * distributed under the License is distributed on an "AS IS" BASIS,  
+       * distributed under the License is distributed on an "AS IS" BASIS,
        * WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
        * See the License for the specific language governing permissions and
        * limitations under the License.
@@ -98,7 +98,7 @@ License Information and Contributor Agreement
       <!--
        JBoss, Home of Professional Open Source
        Copyright <Year>, Red Hat, Inc. and/or its affiliates, and individual
-       contributors by the @authors tag. See the copyright.txt in the 
+       contributors by the @authors tag. See the copyright.txt in the
        distribution for a full listing of individual contributors.
 
        Licensed under the Apache License, Version 2.0 (the "License");
@@ -106,7 +106,7 @@ License Information and Contributor Agreement
        You may obtain a copy of the License at
        http://www.apache.org/licenses/LICENSE-2.0
        Unless required by applicable law or agreed to in writing, software
-       distributed under the License is distributed on an "AS IS" BASIS,  
+       distributed under the License is distributed on an "AS IS" BASIS,
        WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
        See the License for the specific language governing permissions and
        limitations under the License.
@@ -116,7 +116,7 @@ License Information and Contributor Agreement
 
        # JBoss, Home of Professional Open Source
        # Copyright <Year>, Red Hat, Inc. and/or its affiliates, and individual
-       # contributors by the @authors tag. See the copyright.txt in the 
+       # contributors by the @authors tag. See the copyright.txt in the
        # distribution for a full listing of individual contributors.
        #
        # Licensed under the Apache License, Version 2.0 (the "License");
@@ -124,7 +124,7 @@ License Information and Contributor Agreement
        # You may obtain a copy of the License at
        # http://www.apache.org/licenses/LICENSE-2.0
        # Unless required by applicable law or agreed to in writing, software
-       # distributed under the License is distributed on an "AS IS" BASIS,  
+       # distributed under the License is distributed on an "AS IS" BASIS,
        # WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
        # See the License for the specific language governing permissions and
        # limitations under the License.

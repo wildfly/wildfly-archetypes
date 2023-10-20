@@ -2,7 +2,7 @@
 # Creates a project from the archetype, copies some additional source files and runs an integration test
 # using the profile "arq-managed".
 # Prerequesites: the environment variable JBOSS_HOME must point to the WildFly server corresponding to the archetyp version.
-# The current archetype version must be the first argument to the batch file call. 
+# The current archetype version must be the first argument to the batch file call.
 
 if [ -z "$1" ]
   then

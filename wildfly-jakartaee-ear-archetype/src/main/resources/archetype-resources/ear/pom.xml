@@ -46,7 +46,7 @@
     <build>
         <finalName>${project.parent.artifactId}</finalName>
         <plugins>
-			<!--EAR plugin: format of output file -->
+            <!--EAR plugin: format of output file -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-ear-plugin</artifactId>

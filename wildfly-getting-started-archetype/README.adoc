@@ -10,7 +10,7 @@ service and a HTML page to call the web service.
 The generated project is configured to dynamically provision a WildFly server
 and run the web application on the provisoned server so no manual installation
 is required.
- 
+
 It is prepared for running Arquillian unit tests.
 More details can be found in the file "src/main/resources/archetype-resources/README.txt", which is end-user doc and added to the resulting project.
 

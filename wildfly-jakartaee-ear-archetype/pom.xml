@@ -15,7 +15,7 @@
         <version>30.0.1.Final-SNAPSHOT</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
-	
+
     <artifactId>wildfly-jakartaee-ear-archetype</artifactId>
     <packaging>maven-archetype</packaging>
 

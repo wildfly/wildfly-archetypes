@@ -1,13 +1,13 @@
 @REM Creates a project from the archetype, copies some additional source files and runs an integration test
 @REM using the profile "arq-remote".
 @REM Prerequesites: a WildFly server corresponding to the archetyp version must be running on localhost.
-@REM The current archetype version must be the first argument to the batch file call. 
+@REM The current archetype version must be the first argument to the batch file call.
 
 @echo off
 
 @if "%1" == "" (
   echo Archetype version must be first argument to the call to the batch file.
-  set /p archetypeVersion=Please enter archetype version: 
+  set /p archetypeVersion=Please enter archetype version:
 ) else (
   set archetypeVersion=%1
 )

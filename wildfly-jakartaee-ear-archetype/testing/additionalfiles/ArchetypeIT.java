@@ -16,10 +16,10 @@ public class ArchetypeIT extends SampleIT{
   @EJB
   private TestLocal testLocal;
 
-  
+
   /**
    * A sample test...
-   * 
+   *
    */
   @Test
   public void test() {
@@ -27,7 +27,7 @@ public class ArchetypeIT extends SampleIT{
     System.out.println("=================================================");
     System.out.println("Test is invoked...");
     System.out.println("=================================================");
-    
+
     this.testLocal.doTest ("test");
   }
 }
