@@ -140,8 +140,7 @@
         <finalName>ROOT</finalName>
 
         <plugins>
-            <!--Configuration
-            of the maven-compiler-plugin -->
+            <!--Configuration of the maven-compiler-plugin -->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>
@@ -149,9 +148,9 @@
                 <configuration></configuration>
             </plugin>
 
-            <!--Build
-            configuration for the WAR plugin: -->
+            <!--Build configuration for the WAR plugin: -->
             <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-war-plugin</artifactId>
                 <version>\${version.war.plugin}</version>
                 <configuration>
