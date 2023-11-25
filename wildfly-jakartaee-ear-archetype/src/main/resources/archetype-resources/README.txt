@@ -24,7 +24,7 @@ In case you don't want to use JSF, simply delete this file and "src/main/webapp/
 ==========================
 
 Testing:
-This sample is prepared for running unit tests with the Arquillian framework.
+This sample is prepared for running JUnit5 unit tests with the Arquillian framework.
 
 The configuration can be found in "${rootArtifactId}/pom.xml":
 

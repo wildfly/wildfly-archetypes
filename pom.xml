@@ -40,6 +40,11 @@
         <version.wildfly.core>22.0.1.Final</version.wildfly.core>
         <version.wildfly.maven.plugin>4.2.1.Final</version.wildfly.maven.plugin>
 
+        <!--Use JUnit 5 here - the WildFly bom still brings 4.x -->
+        <version.junit5>5.10.1</version.junit5>
+        <!--Only the subsystem archetype has to stick with JUnit 4-->
+        <version.junit4>4.13.2</version.junit4>
+
         <version.compiler.plugin>3.9.0</version.compiler.plugin>
         <version.surefire.plugin>3.0.0</version.surefire.plugin>
         <version.failsafe.plugin>3.2.2</version.failsafe.plugin>

@@ -39,6 +39,9 @@
         <!-- Define the version of the JBoss BOMs we want to import to specify tested stacks. -->
         <version.wildfly.bom>${version.wildfly.bom}</version.wildfly.bom>
 
+        <!--Use JUnit 5 here - the WildFly bom still brings 4.x -->
+        <version.junit5>${version.junit5}</version.junit5>
+
         <!-- other plugin versions -->
         <version.compiler.plugin>${version.compiler.plugin}</version.compiler.plugin>
         <version.surefire.plugin>${version.surefire.plugin}</version.surefire.plugin>
@@ -92,6 +95,15 @@
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-ee-with-tools</artifactId>
                 <version>\${version.wildfly.bom}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!--Define the JUnit5 bom. WildFly BOM still contains JUnit4, so we have to declare a version here -->
+            <dependency>
+                <groupId>org.junit</groupId>
+                <artifactId>junit-bom</artifactId>
+                <version>${version.junit5}</version>
                 <type>pom</type>
                 <scope>import</scope>
             </dependency>
@@ -159,8 +171,8 @@
 
         <!-- Test scope dependencies -->
         <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
             <scope>test</scope>
         </dependency>
 
@@ -168,8 +180,8 @@
         <!-- Arquillian allows you to test enterprise code such as EJBs and
             Transactional(JTA) JPA from JUnit/TestNG -->
         <dependency>
-            <groupId>org.jboss.arquillian.junit</groupId>
-            <artifactId>arquillian-junit-container</artifactId>
+            <groupId>org.jboss.arquillian.junit5</groupId>
+            <artifactId>arquillian-junit5-container</artifactId>
             <scope>test</scope>
         </dependency>
 
