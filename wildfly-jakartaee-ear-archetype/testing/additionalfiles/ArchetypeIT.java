@@ -1,8 +1,8 @@
 package foo.bar.multi.test;
 
-import org.jboss.arquillian.junit.Arquillian;
-import org.junit.Test;
-import org.junit.runner.RunWith;
+import org.jboss.arquillian.junit5.ArquillianExtension;
+import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.extension.ExtendWith;
 
 import jakarta.ejb.EJB;
 import foo.bar.multi.TestLocal;
@@ -10,7 +10,7 @@ import foo.bar.multi.TestLocal;
 /**
  * This integration test is used to validate the project created from the archetype.
  */
-@RunWith(Arquillian.class)
+@ExtendWith(ArquillianExtension.class)
 public class ArchetypeIT extends SampleIT{
 
   @EJB
