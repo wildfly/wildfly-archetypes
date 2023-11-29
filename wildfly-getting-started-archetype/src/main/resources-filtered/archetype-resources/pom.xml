@@ -142,7 +142,6 @@
         <dependency>
             <groupId>org.jboss.resteasy</groupId>
             <artifactId>resteasy-client</artifactId>
-            <version>6.2.4.Final</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
