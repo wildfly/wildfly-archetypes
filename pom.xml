@@ -36,7 +36,7 @@
         actually use these dependencies.
     -->
     <properties>
-        <version.wildfly.bom>30.0.0.Final</version.wildfly.bom>
+        <version.wildfly.bom>30.0.1.Final</version.wildfly.bom>
         <version.wildfly.core>22.0.2.Final</version.wildfly.core>
         <version.wildfly.maven.plugin>4.2.1.Final</version.wildfly.maven.plugin>
 
