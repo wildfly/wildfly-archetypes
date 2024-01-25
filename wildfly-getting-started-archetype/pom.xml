@@ -12,7 +12,7 @@
     <parent>
         <groupId>org.wildfly.archetype</groupId>
         <artifactId>wildfly-archetypes</artifactId>
-        <version>31.0.0.Beta1-SNAPSHOT</version>
+        <version>31.0.0.Final</version>
         <relativePath>../pom.xml</relativePath>
     </parent>
 
