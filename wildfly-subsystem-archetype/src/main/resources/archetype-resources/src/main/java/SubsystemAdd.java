@@ -19,7 +19,6 @@ class SubsystemAdd extends AbstractBoottimeAddStepHandler {
     static final SubsystemAdd INSTANCE = new SubsystemAdd();
 
     private SubsystemAdd() {
-        super(SubsystemDefinition.ATTRIBUTES);
     }
 
     /**
