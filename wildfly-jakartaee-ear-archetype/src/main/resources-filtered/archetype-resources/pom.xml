@@ -60,8 +60,27 @@
         <maven.compiler.release>${maven.compiler.release}</maven.compiler.release>
     </properties>
 
-    <!-- the JBoss community and Red Hat GA Maven repositories -->
+    <!--
+    Repositories are defined in the order that they should be used.
+    (1) Maven central, (2) JBoss community
+    By default maven central is used last, so it is redefined here to
+    force it to be used first.
+    -->
     <repositories>
+        <repository>
+            <id>central</id>
+            <name>Main Apache Maven Repository</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+            <layout>default</layout>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </repository>
         <repository>
             <releases>
                 <enabled>true</enabled>
@@ -78,6 +97,19 @@
         </repository>
     </repositories>
     <pluginRepositories>
+        <pluginRepository>
+            <id>central</id>
+            <name>Main Apache Maven Repository</name>
+            <url>https://repo.maven.apache.org/maven2/</url>
+            <releases>
+                <enabled>true</enabled>
+                <updatePolicy>never</updatePolicy>
+            </releases>
+            <snapshots>
+                <enabled>false</enabled>
+                <updatePolicy>never</updatePolicy>
+            </snapshots>
+        </pluginRepository>
         <pluginRepository>
             <releases>
                 <enabled>true</enabled>
