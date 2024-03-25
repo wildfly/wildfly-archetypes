@@ -45,7 +45,7 @@
         <!--Only the subsystem archetype has to stick with JUnit 4-->
         <version.junit4>4.13.2</version.junit4>
 
-        <version.compiler.plugin>3.12.1</version.compiler.plugin>
+        <version.compiler.plugin>3.13.0</version.compiler.plugin>
         <version.surefire.plugin>3.0.0</version.surefire.plugin>
         <version.failsafe.plugin>3.2.5</version.failsafe.plugin>
         <version.war.plugin>3.4.0</version.war.plugin>
