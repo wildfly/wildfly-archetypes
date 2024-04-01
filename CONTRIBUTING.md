@@ -28,7 +28,7 @@ Here are the steps in detail:
 
 5. Create a new topic branch to contain your features, changes, or fixes.
 
-        git checkout -b <topic-branch-name> upstream/master
+        git checkout -b <topic-branch-name> upstream/main
 
 6. Contribute new code or make changes to existing files. Make sure that you follow the General Guidelines below.
 
