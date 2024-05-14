@@ -28,7 +28,7 @@ Here are the steps in detail:
 
 5. Create a new topic branch to contain your features, changes, or fixes.
 
-        git checkout -b <topic-branch-name> upstream/master
+        git checkout -b <topic-branch-name> upstream/main
 
 6. Contribute new code or make changes to existing files. Make sure that you follow the General Guidelines below.
 
@@ -41,14 +41,6 @@ Here are the steps in detail:
 
     1. Navigate to the root of the archetype with the code changes and run `mvn test`.
     2. The project is created in the `target/` directory of the archteype.
-    3. Verify the generated project builds and runs as expected.
-
-8. Test the changes using JBoss Developer Studio.
-
-    1. In JDBS, choose `File` --> `New` --> `Maven Project` and click `Next`.
-    2. Select the Project Name and Location. Do NOT check `Create a simple project (skip archetype selection)`. Click `Next`.
-    3. Choose catalog `Default Local` and check `Include snapshot archetypes`. Select your modified archetype snapshot and click `Next`.
-    4. Enter the groupId, artifactId, and other information, then click 'Finish'.
     3. Verify the generated project builds and runs as expected.
 
 8. Commit your changes to your local topic branch. You must use `git add filename` for every file you create or change.
@@ -70,9 +62,9 @@ General Guidelines
 License Information and Contributor Agreement
 ---------------------------------------------
 
-  JBoss Developer Framework is licensed under the Apache License 2.0, as we believe it is one of the most permissive Open Source license. This allows developers to easily make use of the code samples in JBoss Developer Framework.
+  WildFly Archetypes is licensed under the Apache License 2.0.
 
-  There is no need to sign a contributor agreement to contribute to JBoss Developer Framework. You just need to explicitly license any contribution under the AL 2.0. If you add any new files to JBoss Developer Framework, make sure to add the correct header.
+  There is no need to sign a contributor agreement to contribute to WildFly Archetypes. You just need to explicitly license any contribution under the AL 2.0. If you add any new files to WildFly Archetypes, make sure to add the correct header.
 
 ### Java
 
