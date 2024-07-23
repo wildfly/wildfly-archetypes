@@ -108,6 +108,11 @@
         <dependency>
             <groupId>org.jboss.arquillian.junit5</groupId>
             <artifactId>arquillian-junit5-container</artifactId>
+            <!-- temporary overriding as the 1.8.1.Final version pulled by
+                 WildFly BOM does not work with JUnit 5
+                 https://github.com/arquillian/arquillian-core/issues/576
+            -->
+            <version>1.9.1.Final</version>
             <scope>test</scope>
         </dependency>
 
