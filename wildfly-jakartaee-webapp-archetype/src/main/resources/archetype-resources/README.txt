@@ -18,9 +18,9 @@ in "persistence.xml".
 If you don't use entity beans, you can delete "persistence.xml".
 ==========================
 
-JSF:
-The web application is prepared for JSF 4.0 by bundling an empty "faces-config.xml" in "src/main/webapp/WEB-INF".
-In case you don't want to use JSF, simply delete this file and "src/main/webapp/beans.xml".
+Jakarta Faces:
+The web application is prepared for Jakarta Faces 4.0 by bundling an empty "faces-config.xml" in "src/main/webapp/WEB-INF".
+In case you don't want to use Jakarta Faces, simply delete this file and "src/main/webapp/beans.xml".
 ==========================
 
 Testing:

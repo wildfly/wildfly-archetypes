@@ -6,7 +6,7 @@
         https://jakarta.ee/xml/ns/jakartaee
         https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd">
 
-   <!-- This descriptor activates the JSF Servlet -->
+   <!-- This descriptor activates the Jakarta Faces Servlet -->
 
    <!-- Write your navigation rules here. You are encouraged to use CDI for
       creating @Named managed beans. -->

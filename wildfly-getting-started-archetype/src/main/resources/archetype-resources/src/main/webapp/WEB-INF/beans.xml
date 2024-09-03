@@ -9,7 +9,7 @@
       https://jakarta.ee/xml/ns/jakartaee/beans_4_0.xsd"
    bean-discovery-mode="annotated">
 
-   <!-- This descriptor configures Context and Dependeny Injection.
-        Actually, CDI 1.1 does not require this file. But the archetype contains it anyway to avoid deloyment errors for blank projects (WFLY-13306)   -->
+   <!-- This descriptor configures Context and Dependeny Injection (CDI).
+        This file is optional.  -->
 
 </beans>
