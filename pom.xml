@@ -37,7 +37,7 @@
     -->
     <properties>
         <version.wildfly.bom>33.0.1.Final</version.wildfly.bom>
-        <version.wildfly.core>25.0.1.Final</version.wildfly.core>
+        <version.wildfly.core>25.0.2.Final</version.wildfly.core>
         <version.wildfly.maven.plugin>5.0.0.Final</version.wildfly.maven.plugin>
 
         <!--Use JUnit 5 here - the WildFly bom still brings 4.x -->
