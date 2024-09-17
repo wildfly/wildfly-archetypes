@@ -30,9 +30,9 @@
              Hibernate property instead:
              <property name="hibernate.hbm2ddl.auto" value="create-drop" />
          -->
-         <property name="javax.persistence.schema-generation.database.action" value="drop-and-create"/>
-         <property name="javax.persistence.schema-generation.create-source" value="metadata"/>
-         <property name="javax.persistence.schema-generation.drop-source" value="metadata"/>
+         <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/>
+         <property name="jakarta.persistence.schema-generation.create-source" value="metadata"/>
+         <property name="jakarta.persistence.schema-generation.drop-source" value="metadata"/>
 
          <!-- Properties for Hibernate -->
          <property name="hibernate.show_sql" value="false" />
