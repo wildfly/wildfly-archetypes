@@ -53,7 +53,7 @@
         <version.ejb.plugin>3.2.1</version.ejb.plugin>
         <version.antrun.plugin>3.1.0</version.antrun.plugin>
 
-        <maven.compiler.release>11</maven.compiler.release>
+        <maven.compiler.release>17</maven.compiler.release>
     </properties>
 
     <modules>
