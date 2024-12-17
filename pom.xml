@@ -99,6 +99,11 @@
                 </plugin>
                 <plugin>
                     <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-surefire-plugin</artifactId>
+                    <version>${version.surefire.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-ear-plugin</artifactId>
                     <version>${version.ear.plugin}</version>
                 </plugin>
@@ -111,6 +116,11 @@
                     <groupId>org.apache.maven.plugins</groupId>
                     <artifactId>maven-war-plugin</artifactId>
                     <version>${version.war.plugin}</version>
+                </plugin>
+                <plugin>
+                    <groupId>org.apache.maven.plugins</groupId>
+                    <artifactId>maven-antrun-plugin</artifactId>
+                    <version>${version.antrun.plugin}</version>
                 </plugin>
                 <!--Workaround: downgrade maven-archetype-plugin to 3.1.2, as 3.2.1 from jboss-parent 40 prints a warning when creating a project from this archetype.
                     For details see https://github.com/wildfly/wildfly-archetypes/issues/51 -->
