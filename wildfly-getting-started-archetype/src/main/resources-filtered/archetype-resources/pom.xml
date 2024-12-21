@@ -43,7 +43,6 @@
 
         <!-- other plugin versions -->
         <version.compiler.plugin>${version.compiler.plugin}</version.compiler.plugin>
-        <version.surefire.plugin>${version.surefire.plugin}</version.surefire.plugin>
         <version.failsafe.plugin>${version.failsafe.plugin}</version.failsafe.plugin>
         <version.war.plugin>${version.war.plugin}</version.war.plugin>
 

@@ -52,7 +52,6 @@
         <version.compiler.plugin>${version.compiler.plugin}</version.compiler.plugin>
         <version.ear.plugin>${version.ear.plugin}</version.ear.plugin>
         <version.ejb.plugin>${version.ejb.plugin}</version.ejb.plugin>
-        <version.surefire.plugin>${version.surefire.plugin}</version.surefire.plugin>
         <version.failsafe.plugin>${version.failsafe.plugin}</version.failsafe.plugin>
         <version.war.plugin>${version.war.plugin}</version.war.plugin>
 
@@ -145,11 +144,11 @@
                 <scope>compile</scope>
             </dependency>
 
-            <!-- JBoss distributes a complete set of Jakarta EE 8 APIs including
+            <!-- JBoss distributes a complete set of Jakarta EE APIs including
                 a Bill of Materials (BOM). A BOM specifies the versions of a "stack" (or
                 a collection) of artifacts. We use this here so that we always get the correct
-                versions of artifacts. Here we use the wildfly-jakartaee-8.0-with-tools stack
-                (you can read this as the WildFly stack of the Jakarta EE 8 APIs -->
+                versions of artifacts (you can read this as the WildFly stack of the Jakarta EE APIs,
+                with some extras tools for your project, such as Arquillian for testing) -->
             <dependency>
                 <groupId>org.wildfly.bom</groupId>
                 <artifactId>wildfly-ee-with-tools</artifactId>
