@@ -217,16 +217,6 @@
             <scope>test</scope>
         </dependency>
 
-        <dependency>
-            <groupId>org.jboss.arquillian.protocol</groupId>
-            <artifactId>arquillian-protocol-servlet-jakarta</artifactId>
-            <!-- temporary overriding as the 1.9.1.Final version pulled by
-                 WildFly BOM does not exist.
-            -->
-            <version>10.0.0.Final</version>
-            <scope>test</scope>
-        </dependency>
-
     </dependencies>
 
     <build>
