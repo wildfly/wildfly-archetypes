@@ -28,7 +28,7 @@
         <connection>scm:git:https://github.com/wildfly/archetypes.git</connection>
         <developerConnection>scm:git:https://github.com/wildfly/archetypes.git</developerConnection>
         <url>https://github.com/wildfly/archetypes/</url>
-      <tag>34.0.1.Final</tag>
+        <tag>HEAD</tag>
   </scm>
 
     <licenses>

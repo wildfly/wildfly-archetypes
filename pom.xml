@@ -23,7 +23,7 @@
         <connection>scm:git:git@github.com:wildfly/wildfly-archetypes.git</connection>
         <developerConnection>scm:git:git@github.com:wildfly/wildfly-archetypes.git</developerConnection>
         <url>https://github.com/wildfly/wildfly-archetypes</url>
-        <tag>34.0.1.Final</tag>
+        <tag>HEAD</tag>
     </scm>
 
     <!--
