@@ -186,6 +186,13 @@
             <scope>provided</scope>
         </dependency>
 
+        <!-- JSP API. Required by Eclipse in order to support taglibraries like JSTL. -->
+        <dependency>
+            <groupId>jakarta.servlet.jsp</groupId>
+            <artifactId>jakarta.servlet.jsp-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
         <!-- Import the EJB API, we use provided scope as the API is included in WildFly / JBoss EAP -->
         <dependency>
             <groupId>jakarta.ejb</groupId>
