@@ -18,8 +18,34 @@ To run the application, you use Maven:
 mvn clean package
 ----
 
-Maven will compile the application, provision a WildFly server
+Maven will compile the application and provision a WildFly server.
 The WildFly server is created in `target/server` with the application deployed in it.
+
+Provisioning is done by using WildFly Glow discovery: Glow parses the deployment and adds all necessary WildFly features.
+Discovery is configured in "pom.xml" for the "wildfly-maven-plugin":
+
+----
+<configuration>
+	<discover-provisioning-info>
+		<version>${version.wildfly.bom}</version>
+	</discover-provisioning-info>
+</configuration>
+----
+
+You could also configure the WildFly Glow provisioning yourself:
+
+----
+<configuration>
+	<feature-packs>
+		<feature-pack>
+			<location>org.wildfly:wildfly-galleon-pack:${version.wildfly.bom}</location>
+		</feature-pack>
+	</feature-packs>
+	<layers>
+		<layer>cloud-server</layer>
+	</layers>
+</configuration>
+----
 
 == Running the application
 
