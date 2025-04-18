@@ -47,10 +47,16 @@ jobs:
     - name: Run Jakarta EE Webapp Archetype Tests
       run: |-
         echo "* Jakarta EE Webapp Archetype" >> $GITHUB_STEP_SUMMARY
-
         cd wildfly-jakartaee-webapp-archetype/testing
+
+        ./runtest_provision.sh $ARCHETYPE_VERSION
+        echo "  * :white_check_mark: Provisioned Server" >> $GITHUB_STEP_SUMMARY
+
         ./runtest_managed.sh $ARCHETYPE_VERSION
         echo "  * :white_check_mark: Managed Tests" >> $GITHUB_STEP_SUMMARY
+
+        ./runtest_provisioned.sh $ARCHETYPE_VERSION
+        echo "  * :white_check_mark: Provisioned Tests" >> $GITHUB_STEP_SUMMARY
 
         $JBOSS_HOME/bin/standalone.sh &
         until `$JBOSS_HOME/bin/jboss-cli.sh -c ":read-attribute(name=server-state)" 2> /dev/null | grep -q running`; do
@@ -88,4 +94,5 @@ jobs:
         rm -rf wildfly-jakartaee-ear-archetype/testing/arq-managed
         rm -rf wildfly-jakartaee-webapp-archetype/testing/arq-remote
         rm -rf wildfly-jakartaee-webapp-archetype/testing/arq-managed
+        rm -rf wildfly-jakartaee-webapp-archetype/testing/arq-provisioned
         rm -rf wildfly-subsystem-archetype/testing/example-subsystem

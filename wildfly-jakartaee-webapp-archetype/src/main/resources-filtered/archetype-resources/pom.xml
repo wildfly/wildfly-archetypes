@@ -328,6 +328,121 @@
                 </plugins>
             </build>
         </profile>
+
+        <profile>
+            <!-- This profile will build the project and create a provisioned WildFly server in "target/server" of the war project.
+                 The provisioned server contains the war application of this project.
+                 The profile will not execute arquillian tests.
+                 Run with: mvn clean verify -provision -->
+            <id>provision</id>
+            <build>
+                <plugins>
+                    <!-- The WildFly Maven plugin is executed during the "package" goal and provisions a WildFly server. -->
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>\${version.wildfly.maven.plugin}</version>
+                        <configuration>
+                            <discover-provisioning-info>
+                                <version>\${version.wildfly.bom}</version>
+                                <!-- "persistence.xml" uses "java:comp/DefaultDataSource".
+                                     We tell Glow to create a H2 database similar to the one defined in the full WildFly download. -->
+                                <add-ons>
+                                    <add-on>h2-database:default</add-on>
+                                </add-ons>
+                            </discover-provisioning-info>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <!-- The "goal" must be "package" here so that the server is created. -->
+                                    <goal>package</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>\${version.failsafe.plugin}</version>
+                        <configuration>
+                            <!--Don't execute arquillian tests: -->
+                            <skipTests>true</skipTests>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
+
+        <profile>
+            <!-- An optional Arquillian testing profile that provisions a WildFly server containing your app and executes tests in this instance.
+                 The provisioned server does not contain the war application of this project, so that Arquillian can deploy the application enriched with server side tests.
+                 This profile will start a new WildFly / JBoss EAP instance, and execute the test, shutting it down when done.
+                 Run with: mvn clean verify -Parq-provisioned -->
+            <id>arq-provisioned</id>
+            <dependencies>
+                <dependency>
+                    <groupId>org.wildfly.arquillian</groupId>
+                    <artifactId>wildfly-arquillian-container-managed</artifactId>
+                    <scope>test</scope>
+                </dependency>
+            </dependencies>
+            <build>
+                <plugins>
+                    <!-- The WildFly Maven plugin is executed during the "package" goal and provisions a WildFly server. -->
+                    <plugin>
+                        <groupId>org.wildfly.plugins</groupId>
+                        <artifactId>wildfly-maven-plugin</artifactId>
+                        <version>\${version.wildfly.maven.plugin}</version>
+                        <configuration>
+                            <discover-provisioning-info>
+                                <version>\${version.wildfly.bom}</version>
+                                <!-- "persistence.xml" uses "java:comp/DefaultDataSource".
+                                     We tell Glow to create a H2 database similar to the one defined in the full WildFly download. -->
+                                <add-ons>
+                                    <add-on>h2-database:default</add-on>
+                                </add-ons>
+                            </discover-provisioning-info>
+                            <!--Don't add the war application as deployment to the provisioned server: -->
+                            <skipDeployment>true</skipDeployment>
+                            <!--Use a name that differs from the server name of the "provision" profile in order to avoid conflicts if this profile was run before
+                                and a provisioned server already exists in the default location that contains the deployment.
+                                The server is created in a subdir in "target". -->
+                            <provisioningDir>server_arquillian</provisioningDir>
+                        </configuration>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <!-- The "goal" must be "package" here so that the server is created. -->
+                                    <goal>package</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                    </plugin>
+                    <plugin>
+                        <groupId>org.apache.maven.plugins</groupId>
+                        <artifactId>maven-failsafe-plugin</artifactId>
+                        <version>\${version.failsafe.plugin}</version>
+                        <executions>
+                            <execution>
+                                <goals>
+                                    <goal>integration-test</goal>
+                                    <goal>verify</goal>
+                                </goals>
+                            </execution>
+                        </executions>
+                        <configuration>
+                            <!-- Configuration for Arquillian: -->
+                            <systemPropertyVariables>
+                                <!-- Defines the container qualifier in "arquillian.xml" -->
+                                <arquillian.launch>provisioned</arquillian.launch>
+                            </systemPropertyVariables>
+                        </configuration>
+                    </plugin>
+                </plugins>
+            </build>
+        </profile>
     </profiles>
 
 </project>
