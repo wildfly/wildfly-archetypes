@@ -15,12 +15,47 @@ a persistence unit "${rootArtifactId}PersistenceUnit" which uses the JakartaEE d
 In production environment, you should define a database in WildFly config and point to this database
 in "persistence.xml".
 
+If you change the datasource name and use provisioning (profile "arq-provisioned", see below),
+you have to update the provisioning config.
+
 If you don't use entity beans, you can delete "persistence.xml".
 ==========================
 
 Jakarta Faces:
 The web application is prepared for Jakarta Faces 4.0 by bundling an empty "faces-config.xml" in "src/main/webapp/WEB-INF".
 In case you don't want to use Jakarta Faces, simply delete this file and "src/main/webapp/beans.xml".
+
+==========================
+Provisioning:
+The project defines a profile "arq-provisioned" that creates a provisioned WildFly server (in "target/server") 
+by auto discovering features necessary to run this application.
+
+In this profile, the arquillian tests are run using this server.
+
+As "persistence.xml" uses the datasource "java:comp/DefaultDataSource", Glow must be configured to create 
+the datasource in the WildFly server config. Currently, the add-on "create default H2 database" is configured:
+
+    <add-ons>
+        <add-on>h2-database:default</add-on>
+    </add-ons>
+
+If you change the datasource name in "persistence.xml" or want to use a different datasource, you have to change the Glow configuration
+so that it creates the necessary snippets in the WildFly config.
+
+When using a provisioned server, you would probably deploy the app as root application, as the server provides only one application -
+no need to have a context path.
+You could change this by changing the "finalName" to "ROOT":
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        ...
+    </build>
+
+If you do so and use integration tests, you also have to change the line of code in "SampleIT.java" that opens the war file and create a new war file
+with arquillian test classes. It now should open "Root.war":
+
+        File f = new File("./target/${rootArtifactId}.war");
+
 ==========================
 
 Testing:
@@ -28,7 +63,7 @@ This sample is prepared for running JUnit5 unit tests with the Arquillian framew
 
 The configuration can be found in "${rootArtifactId}/pom.xml":
 
-Three profiles are defined:
+Four profiles are defined:
 -"default": no integration tests are executed.
 -"arq-remote": you have to start a WildFly server on your machine. The tests are executed by deploying
  the application to this server.
@@ -39,14 +74,25 @@ Three profiles are defined:
  Instead of using this environment variable, you can also define the path in "arquillian.xml".
  Here the "maven-failsafe-plugin" is enabled so that integration tests can be run.
  Run maven with these arguments: "clean verify -Parq-managed"
+-"arq-provisioned": the tests are executed by deploying the application to the
+ server that is created during the provisioning step (in "target/server").
 
 The Arquillian test runner is configured with the file "src/test/resources/arquillian.xml"
 (duplicated in EJB and WEB project, depending where your tests are placed).
 The profile "arq-remote" uses the container qualifier "remote" in this file.
 The profile "arq-managed" uses the container qualifier "managed" in this file.
+The profile "arq-provisioned" uses the container qualifier "provisioned" in this file, which sets
+JBOSS_HOME to "target/server".
 
 The project contains an integration test "SampleIT" which shows how to create the deployable WAR file using the ShrinkWrap API.
 You can delete this test file if no tests are necessary.
+
+There is one peculiarity in the step of creating a deployable war file during the test run: 
+Normally, it works to re-use the name of the project output war (${rootArtifactId}.war). 
+But the profile "arq-provisioned" requires a change to this step: Here, the app is already deployed to the 
+provisioned server, so the arquillian test would fail to deploy another app with the same name. 
+Thus, the test deployment has the name "${rootArtifactId}Tests.war". In case you don't need provisioning,
+you could switch the normal war file name.
 
 Why integration tests instead of the "maven-surefire-plugin" testrunner?
 The Arquillian test runner deploys the WAR file to the WildFly server and thus you have to build it yourself with the ShrinkWrap API.
