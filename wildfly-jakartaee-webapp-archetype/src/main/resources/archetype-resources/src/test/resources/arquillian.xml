@@ -32,4 +32,11 @@
             <property name="password">admin</property> -->
         </configuration>
     </container>
+
+	<!-- Example configuration for a WildFly server provisioned by WildFly Glow. The server is found in the subdir "target/server" -->
+	<container qualifier="provisioned">
+        <configuration>
+            <property name="jbossHome">target/server</property>
+        </configuration>
+    </container>
 </arquillian>
