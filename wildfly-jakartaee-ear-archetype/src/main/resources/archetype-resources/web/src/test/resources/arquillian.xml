@@ -32,4 +32,12 @@
             <property name="password">admin</property> -->
         </configuration>
     </container>
+
+    <!-- Example configuration for a WildFly server provisioned by WildFly Glow.
+         The server is found in the maven build output of the ear project - "../ear/target/server" -->
+    <container qualifier="provisioned">
+        <configuration>
+            <property name="jbossHome">../ear/target/server</property>
+        </configuration>
+    </container>
 </arquillian>
