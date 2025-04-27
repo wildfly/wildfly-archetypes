@@ -1,7 +1,7 @@
 #!/bin/bash
 # Creates a project from the archetype, copies some additional source files and runs an integration test
-# using the profile "arq-remote".
-# Prerequesites: a WildFly server corresponding to the archetyp version must be running on localhost.
+# using the profile "arq-managed".
+# Prerequesites: the environment variable JBOSS_HOME must point to the WildFly server corresponding to the archetyp version.
 # The current archetype version must be the first argument to the batch file call.
 
 if [ -z "$1" ]
@@ -12,21 +12,21 @@ if [ -z "$1" ]
     archetypeVersion=$1
 fi
 
-if [ -d "arq-remote" ]; then
+if [ -d "arq-managed" ]; then
   echo "delete old test project"
-  rm -rf arq-remote
+  rm -rf arq-managed
 fi
 
 
 # if directory still exists then fail
-if [ -d "arq-remote" ]; then
-  echo "[ERROR] directory 'arq-remote' could not be deleted"
+if [ -d "arq-managed" ]; then
+  echo "[ERROR] directory 'arq-managed' could not be deleted"
   exit 1
 fi
 
 echo "creating test project directory"
-mkdir arq-remote
-cd arq-remote
+mkdir arq-managed
+cd arq-managed
 
 echo "generate project from archetype."
 mvn archetype:generate -DarchetypeCatalog=local -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=$archetypeVersion -DinteractiveMode=false
@@ -46,7 +46,7 @@ cp ../additionalfiles/ArchetypeIT.java ./multi/integration-tests/src/test/java/f
 
 cd multi
 echo "run test"
-mvn verify -Parq-remote
+mvn verify -Parq-provisioned
 retVal=$?
 cd ../..
 exit $retVal

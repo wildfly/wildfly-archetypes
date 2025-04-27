@@ -1,6 +1,6 @@
 @REM Creates a project from the archetype, copies some additional source files and runs an integration test
-@REM using the profile "arq-remote".
-@REM Prerequesites: a WildFly server corresponding to the archetyp version must be running on localhost.
+@REM using the profile "arq-provisioned".
+@REM Prerequesites: none, the tests are run on a WildFly server that is created as part of the build process.
 @REM The current archetype version must be the first argument to the batch file call.
 
 @echo off
@@ -12,19 +12,19 @@
   set archetypeVersion=%1
 )
 
-if exist arq-remote (
+if exist arq-provisioned (
   @ECHO delete old test project
-  rmdir /S /Q arq-remote
+  rmdir /S /Q arq-provisioned
 )
 @REM if directory still exists then fail
-if exist arq-remote (
-  @echo [ERROR] directory 'arq-remote' could not be deleted
+if exist arq-provisioned (
+  @echo [ERROR] directory 'arq-provisioned' could not be deleted
   goto :exit
 )
 
 @ECHO creating test project directory
-mkdir arq-remote
-cd arq-remote
+mkdir arq-provisioned
+cd arq-provisioned
 
 @ECHO generate project from archetype.
 call mvn archetype:generate -DarchetypeCatalog=local -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=%archetypeVersion% -DinteractiveMode=false
@@ -42,7 +42,8 @@ copy ..\additionalfiles\ArchetypeIT.java .\multi\integration-tests\src\test\java
 
 cd multi
 @ECHO run test
-call mvn verify -Parq-remote
+call mvn verify -Parq-provisioned
+
 cd ..\..
 
 

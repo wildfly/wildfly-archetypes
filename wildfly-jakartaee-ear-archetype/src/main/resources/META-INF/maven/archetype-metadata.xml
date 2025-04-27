@@ -74,6 +74,19 @@
                 </fileSet>
             </fileSets>
         </module>
+        <module id="integration-tests" dir="integration-tests" name="integration-tests">
+            <fileSets>
+                <fileSet filtered="true" packaged="true" encoding="UTF-8">
+                    <directory>src/test/java</directory>
+                </fileSet>
+                <fileSet filtered="true" encoding="UTF-8">
+                    <directory>src/test/resources</directory>
+                    <includes>
+                        <include>**/*.xml</include>
+                    </includes>
+                </fileSet>
+            </fileSets>
+        </module>
         <module id="ear" dir="ear" name="ear">
             <fileSets>
                 <fileSet filtered="true" encoding="UTF-8">
