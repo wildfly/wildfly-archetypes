@@ -1,7 +1,7 @@
 #!/bin/bash
-# Creates a project from the archetype, copies some additional source files and runs an integration test
-# using the profile "arq-remote".
-# Prerequesites: a WildFly server corresponding to the archetyp version must be running on localhost.
+# Creates a project from the archetype and creates a provisioned server
+# using the profile "provision".
+# Prerequesites: none.
 # The current archetype version must be the first argument to the batch file call.
 
 if [ -z "$1" ]
@@ -12,21 +12,21 @@ if [ -z "$1" ]
     archetypeVersion=$1
 fi
 
-if [ -d "arq-remote" ]; then
+if [ -d "provision" ]; then
   echo "delete old test project"
-  rm -rf arq-remote
+  rm -rf provision
 fi
 
 
 # if directory still exists then fail
-if [ -d "arq-remote" ]; then
-  echo "[ERROR] directory 'arq-remote' could not be deleted"
+if [ -d "provision" ]; then
+  echo "[ERROR] directory 'provision' could not be deleted"
   exit 1
 fi
 
 echo "creating test project directory"
-mkdir arq-remote
-cd arq-remote
+mkdir provision
+cd provision
 
 echo "generate project from archetype."
 mvn archetype:generate -DarchetypeCatalog=local -DgroupId=foo.bar -DartifactId=multi -Dversion=0.1-SNAPSHOT -Dpackage=foo.bar.multi -DarchetypeGroupId=org.wildfly.archetype -DarchetypeArtifactId=wildfly-jakartaee-ear-archetype -DarchetypeVersion=$archetypeVersion -DinteractiveMode=false
@@ -37,16 +37,9 @@ if [ $retVal -ne 0 ]; then
   exit $retVal
 fi
 
-
-echo "copy additional files required for test."
-cp ../additionalfiles/TestBean.java ./multi/ejb/src/main/java/foo/bar/multi/
-cp ../additionalfiles/TestLocal.java ./multi/ejb/src/main/java/foo/bar/multi/
-cp ../additionalfiles/TestRemote.java ./multi/ejb/src/main/java/foo/bar/multi/
-cp ../additionalfiles/ArchetypeIT.java ./multi/integration-tests/src/test/java/foo/bar/multi/test/
-
 cd multi
 echo "run test"
-mvn verify -Parq-remote
+mvn verify -Pprovision
 retVal=$?
 cd ../..
 exit $retVal
