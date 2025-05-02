@@ -42,26 +42,11 @@ echo "copy additional files required for test."
 cp ../additionalfiles/TestBean.java ./multi/ejb/src/main/java/foo/bar/multi/
 cp ../additionalfiles/TestLocal.java ./multi/ejb/src/main/java/foo/bar/multi/
 cp ../additionalfiles/TestRemote.java ./multi/ejb/src/main/java/foo/bar/multi/
-cp ../additionalfiles/ArchetypeIT.java ./multi/web/src/test/java/foo/bar/multi/test/
+cp ../additionalfiles/ArchetypeIT.java ./multi/integration-tests/src/test/java/foo/bar/multi/test/
 
 cd multi
 echo "run test"
-
-# We need two steps: first we build a provisioned server, then we execute the arquillian tests using this server:
-# Step 1: provision a server. No arquillian tests are executed in this profile.
-echo "provisioning server..."
-mvn clean install -Pprovision
-retVal=$?
-if [ $retVal -ne 0 ]; then
-  echo "[ERROR] Maven project provisioning failed. Errorcode: $retVal"
-  cd ..
-  exit $retVal
-fi
-
-@REM Step 2: execute the arquillian tests using the provisioned server. No 'clean' is allowed here, as this would delete the provisioned server.
-echo "running test..."
 mvn verify -Parq-provisioned
 retVal=$?
-
 cd ../..
 exit $retVal
