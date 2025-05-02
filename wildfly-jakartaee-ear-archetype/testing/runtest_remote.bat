@@ -38,7 +38,7 @@ if %ERRORLEVEL% NEQ 0 (
 copy ..\additionalfiles\TestBean.java .\multi\ejb\src\main\java\foo\bar\multi\
 copy ..\additionalfiles\TestLocal.java .\multi\ejb\src\main\java\foo\bar\multi\
 copy ..\additionalfiles\TestRemote.java .\multi\ejb\src\main\java\foo\bar\multi\
-copy ..\additionalfiles\ArchetypeIT.java .\multi\web\src\test\java\foo\bar\multi\test\
+copy ..\additionalfiles\ArchetypeIT.java .\multi\integration-tests\src\test\java\foo\bar\multi\test\
 
 cd multi
 @ECHO run test
