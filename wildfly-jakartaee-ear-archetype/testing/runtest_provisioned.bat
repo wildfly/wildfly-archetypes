@@ -38,17 +38,10 @@ if %ERRORLEVEL% NEQ 0 (
 copy ..\additionalfiles\TestBean.java .\multi\ejb\src\main\java\foo\bar\multi\
 copy ..\additionalfiles\TestLocal.java .\multi\ejb\src\main\java\foo\bar\multi\
 copy ..\additionalfiles\TestRemote.java .\multi\ejb\src\main\java\foo\bar\multi\
-copy ..\additionalfiles\ArchetypeIT.java .\multi\web\src\test\java\foo\bar\multi\test\
+copy ..\additionalfiles\ArchetypeIT.java .\multi\integration-tests\src\test\java\foo\bar\multi\test\
 
 cd multi
-
-@REM We need two steps: first we build a provisioned server, then we execute the arquillian tests using this server:
-@REM Step 1: provision a server. No arquillian tests are executed in this profile.
-@ECHO provisioning server...
-call mvn clean install -Pprovision
-
-@REM Step 2: execute the arquillian tests using the provisioned server. No "clean" is allowed here, as this would delete the provisioned server.
-@ECHO running test...
+@ECHO run test
 call mvn verify -Parq-provisioned
 
 cd ..\..
