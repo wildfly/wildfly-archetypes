@@ -44,6 +44,19 @@ the datasource in the WildFly server config. Currently, the add-on "create defau
 If you change the datasource name in "persistence.xml" or want to use a different datasource, you have to change the Glow configuration
 so that it creates the necessary snippets in the WildFly config.
 
+When using a provisioned server, you would probably deploy the app as root application, as the server provides only one application -
+no need to have a context path.
+You could change this by changing the "finalName" to "ROOT":
+
+    <build>
+        <finalName>${project.artifactId}</finalName>
+        ...
+    </build>
+
+If you do so and use integration tests, you also have to change this line of code in "SampleIT.java" that opens the war file and create a new war file
+with arquillian test classes. It now should open "Root.war":
+
+        File f = new File("./target/${rootArtifactId}.war");
 ==========================
 
 Testing:
