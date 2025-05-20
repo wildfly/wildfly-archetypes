@@ -68,8 +68,8 @@
                 </configuration>
             </plugin>
 
-			<!-- As we skipped jar packaging, nothing can be installed 
-			     (error: "The packaging plugin for project ${rootArtifactId}-integration-tests did not assign a file to the build artifact") -->
+            <!-- As we skipped jar packaging, nothing can be installed
+                (error: "The packaging plugin for project ${rootArtifactId}-integration-tests did not assign a file to the build artifact") -->
             <plugin>
     		    <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-install-plugin</artifactId>
