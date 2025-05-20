@@ -30,12 +30,12 @@ Provisioning:
 The project defines two profiles "provision" and "arq-provisioned" that create a provisioned WildFly server (in "target/server" or "target/server_arquillian")
 by auto discovering features necessary to run this application.
 
-The profile "provision" is meant to build to build a server that contains this web application as deployment.
-The profile "arq-provisioned" also builds a server, then runs t he arquillian tests. This profile does not add the deployment, so that the arquillian
+The profile "provision" is meant to build a server that contains this web application as deployment.
+The profile "arq-provisioned" also builds a server, then runs the arquillian tests. This profile does not add the deployment, so that the arquillian
 tests can deploy the app themselves enriched with additional test classes.
 
 As "persistence.xml" uses the datasource "java:comp/DefaultDataSource", Glow must be configured to create 
-the datasource in the WildFly server config. Currently, the add-on "create default H2 database" is configured:
+the datasource in the WildFly server config. Currently, the default H2 datasource is configured:
 
     <add-ons>
         <add-on>h2-database:default</add-on>
