@@ -64,6 +64,10 @@ jobs:
         echo "* Jakarta EE EAR Archetype" >> $GITHUB_STEP_SUMMARY
 
         cd wildfly-jakartaee-ear-archetype/testing
+
+        ./runtest_provision.sh $ARCHETYPE_VERSION
+        echo "  * :white_check_mark: Provisioned Server" >> $GITHUB_STEP_SUMMARY
+
         ./runtest_managed.sh $ARCHETYPE_VERSION
         echo "  * :white_check_mark: Managed Tests" >> $GITHUB_STEP_SUMMARY
 
