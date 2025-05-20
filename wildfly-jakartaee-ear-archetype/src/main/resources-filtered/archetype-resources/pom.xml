@@ -266,7 +266,7 @@
         </profile>
 
         <profile>
-            <!-- This profile will build the project and created a provisioned WildFly server in "target/server" of the ear project.
+            <!-- This profile will build the project and create a provisioned WildFly server in "target/server" of the ear project.
                  The provisioned server contains the ear application of this project.
                  The profile will not execute arquillian tests.
                  Run with: mvn clean verify -provision -->
