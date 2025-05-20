@@ -83,7 +83,7 @@ The Arquillian test runner is configured with the file "src/test/resources/arqui
 The profile "arq-remote" uses the container qualifier "remote" in this file.
 The profile "arq-managed" uses the container qualifier "managed" in this file.
 The profile "arq-provisioned" uses the container qualifier "provisioned" in this file, which sets
-JBOSS_HOME to "target/server".
+JBOSS_HOME to "target/server_arquillian".
 
 The project contains an integration test "SampleIT" which shows how to create the deployable WAR file using the ShrinkWrap API.
 You can delete this test file if no tests are necessary.
