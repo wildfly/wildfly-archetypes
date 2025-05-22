@@ -80,17 +80,26 @@ Five profiles are defined:
 
 The Arquillian test runner is configured with the file "src/test/resources/arquillian.xml"
 (duplicated in EJB and WEB project, depending where your tests are placed).
-The profile "arq-remote" uses the container qualifier "remote" in this file.
-The profile "arq-managed" uses the container qualifier "managed" in this file.
-The profile "arq-provisioned" uses the container qualifier "provisioned" in this file, which sets
+-The profile "arq-remote" uses the container qualifier "remote" in this file.
+-The profile "arq-managed" uses the container qualifier "managed" in this file.
+-The profile "arq-provisioned" uses the container qualifier "provisioned" in this file, which sets
 JBOSS_HOME to "target/server_arquillian".
 
 The project contains an integration test "SampleIT" which shows how to create the deployable WAR file using the ShrinkWrap API.
 You can delete this test file if no tests are necessary.
 
 Why integration tests instead of the "maven-surefire-plugin" testrunner?
+There are two reasons for this:
+Reason 1:
 The Arquillian test runner deploys the WAR file to the WildFly server and thus you have to build it yourself with the ShrinkWrap API.
 The goal "verify" (which triggers the maven-surefire-plugin) is executed later in the maven build lifecyle than the "test" goal so that the target
 artifact ("${rootArtifactId}.war") is already built. You can build
 the final WAR by including those files. The "maven-surefire-plugin" is executed before the WAR file
-are created, so this WAR files would have to be built in the "@Deployment" method, too.
+is created, so this WAR files would have to be built in the "@Deployment" method, too.
+
+Reason 2:
+Basically, you can run Arquillian tests using the "maven-surefire-plugin". But due to the structure of the project,
+this does not work here. The project provides several profiles, each defines a different way for Arquillian to connect to a WildFly server and
+deploy the test application. The "default" profile thus does not have any Arquillian configuration.
+As it also does not attach the "maven-failsafe-plugin" to any goal, no integration tests are executed and Arquillian is not invoked.
+The "maven-surefire-plugin" test execution is automatically activated, and those test would fail here as no server for Arquillian is configured.
