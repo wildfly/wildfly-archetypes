@@ -56,10 +56,17 @@ This sample is prepared for running JUnit5 unit tests with the Arquillian framew
 
 The configuration can be found in "${rootArtifactId}/pom.xml":
 
-The test code is contained in a separate module "integration_tests". Reason: the Arquillian tests
-pick the ear file, add additional server side test classes and deploy this modified ear. By
+The test code is contained in a separate module "integration_tests".
+There are two reasons to do so:
+Reason 1:
+The Arquillian tests pick the ear file, add additional server side test classes and deploy this modified ear. By
 placing the tests in their own module, they are run after the ear project was built and thus
 can grab the resulting ear file.
+Reason 2:
+When executing the profile "arq_provisioned", Arquillian deploys the test ear file to the provisioned server.
+This server is created when the ear project is built, so the tests have to be run after the project was built.
+It is not possible to place test code in the ear project. So they are placed in a separate module that is built
+after the ear project build.
 
 Five profiles are defined:
 -"default" and "provision": no integration tests are executed.
