@@ -75,10 +75,10 @@ Five profiles are defined:
  -"arq-provisioned": the tests are executed by deploying the application to the
  server that is created during the provisioning step (in "target/server").
 
-The Arquillian test runner is configured with the file "integration-tests/src/test/resources/arquillian.xml".
-The profile "arq-remote" uses the container qualifier "remote" in this file.
-The profile "arq-managed" uses the container qualifier "managed" in this file.
-The profile "arq-provisioned" uses the container qualifier "provisioned" in this file, which sets
+The Arquillian test runner is configured with the file "integration-tests/src/test/resources/arquillian.xml":
+-The profile "arq-remote" uses the container qualifier "remote" in this file.
+-The profile "arq-managed" uses the container qualifier "managed" in this file.
+-The profile "arq-provisioned" uses the container qualifier "provisioned" in this file, which sets
 JBOSS_HOME to "../ear/target/server_arquillian" (note the relative path, as we have to move from the "integration_tests"
 project to the "ear" project, where the provisioned server is placed).
 
@@ -88,11 +88,8 @@ The "integration-tests" project contains an integration test "SampleIT" which sh
 You can delete this test file if no tests are necessary.
 
 Why integration tests instead of the "maven-surefire-plugin" testrunner?
-This is not actually required here, as the Arquillian tests are placed in their own module. 
-But if you want to add server side Arquillian tests also to the web module or the ejb module (which would mean that you deploy the web application or ejb jar as 
-a standalone module), it is necessary to execute those tests as integration tests. The Arquillian test runner deploys the WAR or EJB jar file to the 
-WildFly server and thus you have to build it yourself with the help of the ShrinkWrap API.
-The goal "verify" (which triggers the maven-surefire-plugin) is executed later in the maven build lifecyle than the "test" goal so that the target
-artifacts ("${rootArtifactId}-ejb.jar" and "${rootArtifactId}-web.war") are already built. You can build
-the final WAR/JAR by adding test classes to those files. The "maven-surefire-plugin" is executed before the JAR/WAR files
-are created, so those JAR/WAR files would have to be built in the "@Deployment" method, too.
+Basically, you can run Arquillian tests using the "maven-surefire-plugin". But due to the structure of the project,
+this does not work here. The project provides several profiles, each defines a different way for Arquillian to connect to a WildFly server and
+deploy the test application. The "default" profile thus does not have any Arquillian configuration.
+As it also does not attach the "maven-failsafe-plugin" to any goal, no integration tests are executed and Arquillian is not invoked.
+The "maven-surefire-plugin" test execution is automatically activated, and those test would fail here as no server for Arquillian is configured.
