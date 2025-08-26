@@ -22,23 +22,6 @@
     <name>WildFly Archetypes: Jakarta EE Webapp</name>
     <description>An archetype that generates a starter Jakarta EE project for JBoss WildFly. The project is a WAR archive. It is prepared for Arquillian driven unit tests.</description>
 
-    <url>http://www.wildfly.org</url>
-
-    <developers>
-        <developer>
-            <name>Wolfgang Knauf</name>
-            <email>wolfgang.knauf@gmx.de</email>
-        </developer>
-    </developers>
-
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
     <build>
         <resources>
             <resource>

@@ -22,14 +22,6 @@
     <name>WildFly Archetypes: Getting Started</name>
     <description>An archetype that generates a starter Jakarta EE project for the WildFly application server.</description>
 
-    <licenses>
-        <license>
-            <name>The Apache Software License, Version 2.0</name>
-            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
     <build>
         <resources>
             <resource>
