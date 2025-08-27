@@ -22,23 +22,6 @@
     <name>WildFly Archetypes: Subsystem Archetype</name>
     <description>An archetype that generates a Subsystem for JBoss WildFly.</description>
 
-    <url>http://www.wildfly.org</url>
-
-    <scm>
-        <connection>scm:git:https://github.com/wildfly/archetypes.git</connection>
-        <developerConnection>scm:git:https://github.com/wildfly/archetypes.git</developerConnection>
-        <url>https://github.com/wildfly/archetypes/</url>
-        <tag>HEAD</tag>
-  </scm>
-
-    <licenses>
-        <license>
-            <name>LGPL 2.1</name>
-            <url>http://www.gnu.org/licenses/lgpl-2.1.html</url>
-            <distribution>repo</distribution>
-        </license>
-    </licenses>
-
     <build>
         <resources>
             <resource>
