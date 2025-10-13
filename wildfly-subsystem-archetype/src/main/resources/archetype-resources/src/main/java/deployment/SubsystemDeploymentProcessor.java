@@ -1,7 +1,6 @@
 #set( $hash = '#' )
 package ${package}.deployment;
 
-import org.jboss.as.server.AbstractDeploymentChainStep;
 import org.jboss.as.server.deployment.DeploymentPhaseContext;
 import org.jboss.as.server.deployment.DeploymentUnit;
 import org.jboss.as.server.deployment.DeploymentUnitProcessingException;
@@ -11,14 +10,15 @@ import org.jboss.logging.Logger;
 
 /**
  * An example deployment unit processor that does nothing. To add more deployment
- * processors copy this class, and add to the {@link AbstractDeploymentChainStep}
- * {@link ${package}.SubsystemAdd${hash}performBoottime(org.jboss.as.controller.OperationContext, org.jboss.dmr.ModelNode, org.jboss.as.controller.registry.Resource)}
+ * processors copy this class, and register it with the deployment chain via
+ * {@link ${package}.SubsystemResourceDefinitionRegistrar${hash}accept(org.jboss.as.server.DeploymentProcessorTarget)}
  *
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
  */
-public class SubsystemDeploymentProcessor implements DeploymentUnitProcessor {
+public enum SubsystemDeploymentProcessor implements DeploymentUnitProcessor {
+    INSTANCE;
 
-    Logger log = Logger.getLogger(SubsystemDeploymentProcessor.class);
+    private final Logger logger = Logger.getLogger(SubsystemDeploymentProcessor.class);
 
     /**
      * See {@link Phase} for a description of the different phases
@@ -34,11 +34,11 @@ public class SubsystemDeploymentProcessor implements DeploymentUnitProcessor {
 
     @Override
     public void deploy(DeploymentPhaseContext phaseContext) throws DeploymentUnitProcessingException {
-        log.info("Deploy");
+        this.logger.infof("Deploying %s", phaseContext.getDeploymentUnit().getName());
     }
 
     @Override
-    public void undeploy(DeploymentUnit context) {
+    public void undeploy(DeploymentUnit unit) {
+        this.logger.infof("Undeploying %s", unit.getName());
     }
-
 }
