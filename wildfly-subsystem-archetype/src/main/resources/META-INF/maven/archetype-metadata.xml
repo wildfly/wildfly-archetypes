@@ -31,12 +31,16 @@
 
         <fileSet filtered="true" packaged="true" encoding="UTF-8">
             <directory>src/main/java</directory>
+            <!-- Workaround for https://github.com/wildfly/wildfly-archetypes/issues/51 - adding a "include" filter fixes a false warning -->
+            <includes>
+                <include>**/*.java</include>
+            </includes>
         </fileSet>
         <fileSet encoding="UTF-8" packaged="true" filtered="true">
             <directory>src/test/java</directory>
-        </fileSet>
-        <fileSet encoding="UTF-8">
-            <directory>src/main/webapp</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
         </fileSet>
         <fileSet encoding="UTF-8" filtered="true" packaged="true">
             <!--"LocalDescriptions.properties" is placed in a package directory structure-->
