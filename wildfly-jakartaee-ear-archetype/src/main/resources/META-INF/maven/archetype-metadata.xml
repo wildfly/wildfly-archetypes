@@ -78,6 +78,10 @@
             <fileSets>
                 <fileSet filtered="true" packaged="true" encoding="UTF-8">
                     <directory>src/test/java</directory>
+                    <!-- Same workaround: the directory contains files, so include all java files. -->
+                    <includes>
+                        <include>**/*.java</include>
+                    </includes>
                 </fileSet>
                 <fileSet filtered="true" encoding="UTF-8">
                     <directory>src/test/resources</directory>
