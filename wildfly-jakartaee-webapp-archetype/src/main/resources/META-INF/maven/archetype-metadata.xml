@@ -29,9 +29,17 @@
         </fileSet>
         <fileSet encoding="UTF-8" packaged="true" filtered="true">
             <directory>src/test/java</directory>
+            <!-- Workaround for https://github.com/wildfly/wildfly-archetypes/issues/51 - adding a "include" filter fixes a false warning -->
+            <includes>
+                <include>**/*.java</include>
+            </includes>
         </fileSet>
         <fileSet encoding="UTF-8">
             <directory>src/main/webapp</directory>
+            <!-- Same workaround: the directory contains files, so include all xml files. -->
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
         </fileSet>
         <fileSet encoding="UTF-8" filtered="true">
             <!--"persistence.xml" -->
