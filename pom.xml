@@ -72,7 +72,7 @@
         <version.war.plugin>3.4.0</version.war.plugin>
         <version.ear.plugin>3.4.0</version.ear.plugin>
         <version.ejb.plugin>3.2.1</version.ejb.plugin>
-        <version.antrun.plugin>3.1.0</version.antrun.plugin>
+        <version.antrun.plugin>3.2.0</version.antrun.plugin>
         <version.archetype.plugin>3.4.1</version.archetype.plugin>
 
         <maven.compiler.release>17</maven.compiler.release>
