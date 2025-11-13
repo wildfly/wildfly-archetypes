@@ -10,7 +10,9 @@ import java.util.List;
 
 import org.jboss.as.controller.PathAddress;
 import org.jboss.as.controller.PathElement;
+import org.jboss.as.controller.capability.RuntimeCapability;
 import org.jboss.as.subsystem.test.AbstractSubsystemTest;
+import org.jboss.as.subsystem.test.AdditionalInitialization;
 import org.jboss.as.subsystem.test.KernelServices;
 import org.jboss.dmr.ModelNode;
 import org.junit.Assert;
@@ -26,9 +28,10 @@ import org.junit.Test;
  * @author <a href="kabir.khan@jboss.com">Kabir Khan</a>
  */
 public class SubsystemParsingTestCase extends AbstractSubsystemTest {
+    private final AdditionalInitialization initialization = AdditionalInitialization.withCapabilities(RuntimeCapability.resolveCapabilityName(Bar.SERVICE_DESCRIPTOR, "test"));
 
     public SubsystemParsingTestCase() {
-        super(SubsystemExtension.SUBSYSTEM_NAME, new SubsystemExtension());
+        super(SubsystemResourceDefinitionRegistrar.REGISTRATION.getName(), new SubsystemExtension());
     }
 
     /**
@@ -37,9 +40,8 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testParseSubsystem() throws Exception {
         //Parse the subsystem xml into operations
-        String subsystemXml =
-                "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                        "</subsystem>";
+        String subsystemXml = """
+<subsystem xmlns="urn:mycompany:mysubsystem:1.0" bar="test"/>""";
         List<ModelNode> operations = super.parse(subsystemXml);
 
         ///Check that we have the expected number of operations
@@ -52,7 +54,7 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
         Assert.assertEquals(1, addr.size());
         PathElement element = addr.getElement(0);
         Assert.assertEquals(SUBSYSTEM, element.getKey());
-        Assert.assertEquals(SubsystemExtension.SUBSYSTEM_NAME, element.getValue());
+        Assert.assertEquals(SubsystemResourceDefinitionRegistrar.REGISTRATION.getName(), element.getValue());
     }
 
     /**
@@ -61,14 +63,13 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testInstallIntoController() throws Exception {
         //Parse the subsystem xml and install into the controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                        "</subsystem>";
-        KernelServices services = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
+        String subsystemXml = """
+<subsystem xmlns="urn:mycompany:mysubsystem:1.0" bar="test"/>""";
+        KernelServices services = super.createKernelServicesBuilder(this.initialization).setSubsystemXml(subsystemXml).build();
 
         //Read the whole model and make sure it looks as expected
         ModelNode model = services.readWholeModel();
-        Assert.assertTrue(model.get(SUBSYSTEM).hasDefined(SubsystemExtension.SUBSYSTEM_NAME));
+        Assert.assertTrue(model.get(SUBSYSTEM).hasDefined(SubsystemResourceDefinitionRegistrar.REGISTRATION.getName()));
     }
 
     /**
@@ -78,16 +79,15 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testParseAndMarshalModel() throws Exception {
         //Parse the subsystem xml and install into the first controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                        "</subsystem>";
-        KernelServices servicesA = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
+        String subsystemXml = """
+<subsystem xmlns="urn:mycompany:mysubsystem:1.0" bar="test"/>""";
+        KernelServices servicesA = super.createKernelServicesBuilder(this.initialization).setSubsystemXml(subsystemXml).build();
         //Get the model and the persisted xml from the first controller
         ModelNode modelA = servicesA.readWholeModel();
         String marshalled = servicesA.getPersistedSubsystemXml();
 
         //Install the persisted xml from the first controller into a second controller
-        KernelServices servicesB = super.createKernelServicesBuilder(null).setSubsystemXml(marshalled).build();
+        KernelServices servicesB = super.createKernelServicesBuilder(this.initialization).setSubsystemXml(marshalled).build();
         ModelNode modelB = servicesB.readWholeModel();
 
         //Make sure the models from the two controllers are identical
@@ -100,10 +100,9 @@ public class SubsystemParsingTestCase extends AbstractSubsystemTest {
     @Test
     public void testSubsystemRemoval() throws Exception {
         //Parse the subsystem xml and install into the first controller
-        String subsystemXml =
-                "<subsystem xmlns=\"" + SubsystemExtension.NAMESPACE + "\">" +
-                        "</subsystem>";
-        KernelServices services = super.createKernelServicesBuilder(null).setSubsystemXml(subsystemXml).build();
+        String subsystemXml = """
+<subsystem xmlns="urn:mycompany:mysubsystem:1.0" bar="test"/>""";
+        KernelServices services = super.createKernelServicesBuilder(this.initialization).setSubsystemXml(subsystemXml).build();
         //Checks that the subsystem was removed from the model
         super.assertRemoveSubsystemResources(services);
 
