@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module xmlns="urn:jboss:module:1.9" name="${package}">
+    <resources>
+        <artifact name="#[[${]]#${groupId}:${artifactId}-extension}"/>
+    </resources>
+
+    <dependencies>
+        <module name="javax.api"/>
+        <module name="org.jboss.staxmapper"/>
+        <module name="org.jboss.as.controller"/>
+        <module name="org.jboss.as.server"/>
+        <module name="org.jboss.modules"/>
+        <module name="org.jboss.logging"/>
+        <module name="org.jboss.vfs"/>
+        <module name="org.wildfly.common"/>
+        <module name="org.wildfly.service"/>
+        <module name="org.wildfly.subsystem"/>
+
+        <!-- required to access the Jakarta EE concurrent API -->
+        <module name="jakarta.enterprise.concurrent.api"/>
+    </dependencies>
+</module>

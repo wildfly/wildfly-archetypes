@@ -1,70 +1,124 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!-- Licensed under the Apache License, Version 2.0 (the "License"); you
-    may not use this file except in compliance with the License. You may obtain
-    a copy of the License at http://www.apache.org/licenses/LICENSE-2.0 Unless
-    required by applicable law or agreed to in writing, software distributed
-    under the License is distributed on an "AS IS" BASIS, WITHOUT WARRANTIES
-    OR CONDITIONS OF ANY KIND, either express or implied. See the License for
-    the specific language governing permissions and limitations under the License. -->
-<archetype-descriptor name="wildfly-jakartaee-webapp-archetype">
+<archetype-descriptor xmlns="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0"
+                      xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+                      xsi:schemaLocation="http://maven.apache.org/plugins/maven-archetype-plugin/archetype-descriptor/1.1.0
+                      https://maven.apache.org/xsd/archetype-descriptor-1.1.0.xsd"
+                      name="wildfly-extension-archetype">
 
     <requiredProperties>
-        <requiredProperty key="name">
-            <defaultValue>WildFly subsystem project</defaultValue>
+        <requiredProperty key="groupId">
+            <defaultValue>com.acme</defaultValue>
         </requiredProperty>
-        <requiredProperty key="module"/>
+        <requiredProperty key="artifactId">
+            <defaultValue>tracker</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="version">
+            <defaultValue>1.0-SNAPSHOT</defaultValue>
+        </requiredProperty>
+        <requiredProperty key="package">
+            <defaultValue>${groupId}.${artifactId}</defaultValue>
+        </requiredProperty>
     </requiredProperties>
 
     <fileSets>
+        <!-- Root POM -->
         <fileSet filtered="true" packaged="false">
             <directory></directory>
             <includes>
-                <include>README.txt</include>
-            </includes>
-        </fileSet>
-        <fileSet filtered="false" packaged="false">
-            <directory></directory>
-            <includes>
-                <include>.gitignore</include>
+                <include>pom.xml</include>
+                <include>README.md</include>
             </includes>
         </fileSet>
 
-        <fileSet filtered="true" packaged="true" encoding="UTF-8">
-            <directory>src/main/java</directory>
-            <!-- Workaround for https://github.com/wildfly/wildfly-archetypes/issues/51 - adding a "include" filter fixes a false warning -->
+        <!-- Extension module -->
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-extension</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true">
+            <directory>__artifactId__-extension/src/main/java</directory>
             <includes>
                 <include>**/*.java</include>
             </includes>
         </fileSet>
-        <fileSet encoding="UTF-8" packaged="true" filtered="true">
-            <directory>src/test/java</directory>
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-extension/src/main/resources</directory>
             <includes>
-                <include>**/*.java</include>
+                <include>**/*.xml</include>
             </includes>
         </fileSet>
-        <fileSet encoding="UTF-8" filtered="true" packaged="true">
-            <!--"LocalDescriptions.properties" is placed in a package directory structure-->
-            <directory>src/main/resources</directory>
+        <fileSet filtered="true" packaged="true">
+            <directory>__artifactId__-extension/src/main/resources</directory>
             <includes>
                 <include>LocalDescriptions.properties</include>
             </includes>
         </fileSet>
-        <!--Non-packaged filed: -->
-        <fileSet encoding="UTF-8" filtered="true" packaged="false">
-            <!--"LocalDescriptions.properties" is placed in a package directory structure-->
-            <directory>src/main/resources</directory>
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-extension/src/main/resources/META-INF/services</directory>
             <includes>
-                <include>META-INF/**/*.*</include>
-                <include>module/**/*.*</include>
-                <include>schema/*.*</include>
+                <include>org.jboss.as.controller.Extension</include>
             </includes>
         </fileSet>
-        <fileSet encoding="UTF-8" filtered="true">
-            <directory>src/test/resources</directory>
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-extension/src/main/resources/schema</directory>
+            <includes>
+                <include>*.xsd</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true">
+            <directory>__artifactId__-extension/src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+
+        <!-- Feature pack module -->
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-feature-pack</directory>
+            <includes>
+                <include>pom.xml</include>
+                <include>wildfly-feature-pack-build.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-feature-pack/src/main/resources/feature_groups</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-feature-pack/src/main/resources/layers</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true">
+            <directory>__artifactId__-feature-pack/src/main/resources/modules/system/layers/base/</directory>
+            <includes>
+                <include>**/*.xml</include>
+            </includes>
+        </fileSet>
+
+        <!-- Test suite module -->
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-testsuite</directory>
+            <includes>
+                <include>pom.xml</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="true">
+            <directory>__artifactId__-testsuite/src/test/java</directory>
+            <includes>
+                <include>**/*.java</include>
+            </includes>
+        </fileSet>
+        <fileSet filtered="true" packaged="false">
+            <directory>__artifactId__-testsuite/src/test/resources</directory>
             <includes>
                 <include>**/*.xml</include>
             </includes>
         </fileSet>
     </fileSets>
-
 </archetype-descriptor>
