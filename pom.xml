@@ -11,7 +11,7 @@
 
     <groupId>org.wildfly.archetype</groupId>
     <artifactId>wildfly-archetypes</artifactId>
-    <version>38.0.1.Final-SNAPSHOT</version>
+    <version>38.0.1.Final</version>
 
     <packaging>pom</packaging>
 
@@ -44,7 +44,7 @@
         <connection>scm:git:git@github.com:wildfly/wildfly-archetypes.git</connection>
         <developerConnection>scm:git:git@github.com:wildfly/wildfly-archetypes.git</developerConnection>
         <url>https://github.com/wildfly/wildfly-archetypes</url>
-        <tag>38.0.0.Final</tag>
+        <tag>38.0.1.Final</tag>
     </scm>
 
     <!--
