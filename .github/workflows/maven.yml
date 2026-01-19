@@ -40,8 +40,8 @@ jobs:
         echo "## Testing archetypes ${ARCHETYPE_VERSION} with WildFly ${WILDFLY_VERSION}" >> $GITHUB_STEP_SUMMARY
     - name: Download WildFly
       run: |-
-        wget -q https://repository.jboss.org/org/wildfly/wildfly-dist/$WILDFLY_VERSION/wildfly-dist-$WILDFLY_VERSION.zip
-        unzip -q wildfly-dist-${WILDFLY_VERSION}.zip
+        wget -q https://github.com/wildfly/wildfly/releases/download/$WILDFLY_VERSION/wildfly-$WILDFLY_VERSION.zip
+        unzip -q wildfly-${WILDFLY_VERSION}.zip
         JBOSS_HOME=$(pwd)/wildfly-${WILDFLY_VERSION}
         echo "JBOSS_HOME=$JBOSS_HOME" >> "$GITHUB_ENV"
     - name: Run Jakarta EE Webapp Archetype Tests
