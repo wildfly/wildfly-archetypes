@@ -28,25 +28,13 @@ public class SampleIT {
      */
     @Deployment
     public static Archive<?> getEarArchive() {
-        // Create the EAR archive:
-        EnterpriseArchive ear = ShrinkWrap.create(EnterpriseArchive.class, "${rootArtifactId}-ear.ear");
 
-        // Current directory is the root of the "${rootArtifactId}-web" project. Go up one level
-        // and enter the "ejb" project.
-        // The ejb jar is found in the "target" directory:
-        File f = new File("../ejb/target/${rootArtifactId}-ejb.jar");
-        JavaArchive ejbJar = ShrinkWrap.create(ZipImporter.class, "${rootArtifactId}-ejb.jar").importFrom(f).as(JavaArchive.class);
-        ear.addAsModule(ejbJar);
+        // Open the existing EAR archive:
+        File f = new File("../ear/target/${rootArtifactId}.ear");
+        EnterpriseArchive ear = ShrinkWrap.create(ZipImporter.class, "${rootArtifactId}.ear").importFrom(f).as(EnterpriseArchive.class);
 
         // Now grab the web archive:
-        f = new File("./target/${rootArtifactId}-web.war");
-        if (f.exists() == false) {
-            throw new RuntimeException("File " + f.getAbsolutePath() + " does not exist.");
-        }
-        WebArchive war = ShrinkWrap.create(ZipImporter.class, "${rootArtifactId}-web.war").importFrom(f).as(WebArchive.class);
-        ear.addAsModule(war);
-
-        // The manifest file is auto created by the Maven EAR plugin - we don't have it here.
+        WebArchive war = ear.getAsType(WebArchive.class, "${rootArtifactId}-web.war");
 
         // Add the package containing the test classes:
         war.addPackage("${package}.test");
