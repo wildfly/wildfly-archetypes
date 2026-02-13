@@ -1,0 +1,30 @@
+Maven archetype for WildFly extension
+---------------------------------------
+
+==== Introduction
+
+This archetype creates a simple Maven project to create an extension for WildFly.
+It also creates the feature pack to provision the extension in a WildFly installation.
+
+More details can be found in the file "src/main/resources/archetype-resources/README.txt", which is end-user doc and added to the resulting project.
+
+==== Build
+
+To build the archetype, you need at least Java 17. Run this command:
+
+[source,options="nowrap"]
+----
+$ mvn clean install
+----
+
+==== Create project from archetype
+
+To create a new project from this archetype, use this maven command (replace dummy values for "groupId", "artifactId" and "version" with correct values):
+----
+$ mvn archetype:generate -DgroupId=my.project.org \
+ -DartifactId=sampleproject \
+ -Dversion=1.0-SNAPSHOT \
+ -DarchetypeGroupId=org.wildfly.archetype \
+ -DarchetypeArtifactId=wildfly-subsystem-archetype \
+ -DarchetypeVersion=36.0.0.Final-SNAPSHOT
+----

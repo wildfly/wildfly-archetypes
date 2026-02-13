@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<feature-group-spec name="${artifactId}" xmlns="urn:jboss:galleon:feature-group:1.0">
+    <feature spec="subsystem.${artifactId}">
+        <param name="tick" value="5"/>
+        <param name="executor" value="default"/>
+    </feature>
+</feature-group-spec>
