@@ -5,7 +5,7 @@
     <parent>
         <groupId>org.jboss</groupId>
         <artifactId>jboss-parent</artifactId>
-        <version>51</version>
+        <version>52</version>
         <relativePath />
     </parent>
 
@@ -76,6 +76,8 @@
         <version.archetype.plugin>3.4.1</version.archetype.plugin>
 
         <maven.compiler.release>17</maven.compiler.release>
+        <!-- Also redefine the JDK version for the maven-enforcer-plugin: jboss-parent 52 sets it to "25". -->
+        <jdk.min.version>${maven.compiler.release}</jdk.min.version>
 
         <!-- Repository Deployment Settings -->
         <nexus.repository.staging>wildfly-staging</nexus.repository.staging>
