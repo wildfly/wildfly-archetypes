@@ -1,9 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<persistence version="3.0"
+<persistence version="3.2"
    xmlns="https://jakarta.ee/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="
         https://jakarta.ee/xml/ns/persistence
-        https://jakarta.ee/xml/ns/persistence/persistence_3_0.xsd">
+        https://jakarta.ee/xml/ns/persistence/persistence_3_2.xsd">
    <persistence-unit name="${rootArtifactId}PersistenceUnit">
       <!-- If you are running in a production environment, add a managed
          data source, this configuration uses the JakartaEE default data source is just for development and testing! -->

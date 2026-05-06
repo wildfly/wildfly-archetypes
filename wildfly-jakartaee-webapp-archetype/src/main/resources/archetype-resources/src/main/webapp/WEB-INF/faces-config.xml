@@ -1,10 +1,10 @@
 <?xml version="1.0"?>
 <!-- This file is not required if you don't need any extra configuration. -->
-<faces-config version="4.0" xmlns="https://jakarta.ee/xml/ns/jakartaee"
+<faces-config version="4.1" xmlns="https://jakarta.ee/xml/ns/jakartaee"
    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
    xsi:schemaLocation="
         https://jakarta.ee/xml/ns/jakartaee
-        https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_0.xsd">
+        https://jakarta.ee/xml/ns/jakartaee/web-facesconfig_4_1.xsd">
 
    <!-- This descriptor activates the Jakarta Faces Servlet -->
 
