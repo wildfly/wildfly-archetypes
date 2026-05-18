@@ -1,34 +1,86 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>\${groupId}</groupId>
-    <artifactId>\${artifactId}</artifactId>
+    <artifactId>\${artifactId}-parent</artifactId>
     <version>\${version}</version>
-    <packaging>jar</packaging>
+    <packaging>pom</packaging>
 
-    <name>\${name}</name>
-
-    <description>This is your WildFly subsystem</description>
-
+    <name>\${artifactId} extension parent</name>
 
     <properties>
-        <version.wildfly.core>${version.wildfly.core}</version.wildfly.core>
-        <!--Stay with JUnit 4, as "org.wildfly.core:wildfly-subsystem-test-framework" does not support JUnit 5-->
-        <version.junit>${version.junit4}</version.junit>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <module.name>\${module}</module.name>
 
+        <version.wildfly>${version.wildfly.bom}</version.wildfly>
+        <version.wildfly.common>${version.wildfly.common}</version.wildfly.common>
+        <version.wildfly.core>${version.wildfly.core}</version.wildfly.core>
+        <version.wildfly.galleon.plugins>${version.wildfly.galleon.plugins}</version.wildfly.galleon.plugins>
+        <version.wildfly.maven.plugin>${version.wildfly.maven.plugin}</version.wildfly.maven.plugin>
 
         <!-- other plugin versions -->
         <version.compiler.plugin>${version.compiler.plugin}</version.compiler.plugin>
+        <version.resources.plugin>${version.resources.plugin}</version.resources.plugin>
         <version.surefire.plugin>${version.surefire.plugin}</version.surefire.plugin>
-        <version.antrun.plugin>${version.antrun.plugin}</version.antrun.plugin>
-
-        <!-- maven-compiler-plugin -->
         <maven.compiler.release>${maven.compiler.release}</maven.compiler.release>
     </properties>
+
+    <modules>
+        <module>\${artifactId}-extension</module>
+        <module>\${artifactId}-feature-pack</module>
+        <module>\${artifactId}-testsuite</module>
+    </modules>
+
+    <dependencyManagement>
+        <dependencies>
+            <dependency>
+                <groupId>org.wildfly.bom</groupId>
+                <artifactId>wildfly-ee-with-tools</artifactId>
+                <version>\${version.wildfly}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- WildFly Core Dependencies -->
+            <dependency>
+                <groupId>org.wildfly.core</groupId>
+                <artifactId>wildfly-subsystem</artifactId>
+                <version>\${version.wildfly.core}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.core</groupId>
+                <artifactId>wildfly-controller</artifactId>
+                <version>\${version.wildfly.core}</version>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.core</groupId>
+                <artifactId>wildfly-subsystem-test</artifactId>
+                <version>\${version.wildfly.core}</version>
+                <type>pom</type>
+                <scope>test</scope>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly.core</groupId>
+                <artifactId>wildfly-embedded</artifactId>
+                <version>\${version.wildfly.core}</version>
+            </dependency>
+
+            <!-- WildFly Feature Packs -->
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-galleon-pack</artifactId>
+                <version>\${version.wildfly}</version>
+                <type>zip</type>
+            </dependency>
+            <dependency>
+                <groupId>org.wildfly</groupId>
+                <artifactId>wildfly-ee-galleon-pack</artifactId>
+                <version>\${version.wildfly}</version>
+                <type>zip</type>
+            </dependency>
+        </dependencies>
+    </dependencyManagement>
 
     <!--
     Repositories are defined in the order that they should be used.
@@ -94,125 +146,5 @@
             </snapshots>
         </pluginRepository>
     </pluginRepositories>
-
-    <build>
-        <!-- Maven will append the version to the finalName (which is the name
-           given to the generated war, and hence the context root) -->
-        <finalName>\${project.artifactId}</finalName>
-        <plugins>
-            <plugin>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>\${version.compiler.plugin}</version>
-                <configuration>
-                    <source>\${maven.compiler.release}</source>
-                    <target>\${maven.compiler.release}</target>
-                    <!-- put your configurations here -->
-                </configuration>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-surefire-plugin</artifactId>
-                <version>\${version.surefire.plugin}</version>
-                <!--
-                <configuration>
-                    <redirectTestOutputToFile>true</redirectTestOutputToFile>
-                    <enableAssertions>true</enableAssertions>
-                    <argLine>-Xmx512m</argLine>
-                    <systemProperties>
-                        <property>
-                            <name>jboss.home</name>
-                            <value>${jboss.home}</value>
-                        </property>
-                    </systemProperties>
-                    <includes>
-                        <include>**/*TestCase.java</include>
-                    </includes>
-                    <forkMode>once</forkMode>
-                </configuration> -->
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-antrun-plugin</artifactId>
-                <inherited>false</inherited>
-                <version>\${version.antrun.plugin}</version>
-                <executions>
-                    <execution>
-                        <id>build-dist</id>
-                        <goals>
-                            <goal>run</goal>
-                        </goals>
-                        <phase>package</phase>
-                        <configuration>
-                            <target>
-                                <!-- Replace the '.' in ${module.name} with '/' to get its path  -->
-                                <tempfile property="temp.file"/>
-                                <echo message="${module.name}" file="${temp.file}"/>
-                                <replace file="${temp.file}" token="." value="/"/>
-                                <loadfile srcfile="${temp.file}" property="module.path"/>
-                                <delete file="${temp.file}"/>
-
-                                <delete dir="target/module"/>
-                                <property name="module.dir" value="target/module/${module.path}/main"/>
-
-                                <copy file="src/main/resources/module/main/module.xml" tofile="${module.dir}/module.xml"/>
-                                <copy file="target/\${project.artifactId}.jar" todir="${module.dir}/"/>
-                                <echo>Module ${module.name} has been created in the target/module directory. Copy to your WildFly installation.</echo>
-                            </target>
-                        </configuration>
-                    </execution>
-                </executions>
-            </plugin>
-        </plugins>
-    </build>
-
-    <dependencyManagement>
-        <dependencies>
-            <dependency>
-                <groupId>org.wildfly.core</groupId>
-                <artifactId>wildfly-controller</artifactId>
-                <version>\${version.wildfly.core}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wildfly.core</groupId>
-                <artifactId>wildfly-server</artifactId>
-                <version>\${version.wildfly.core}</version>
-            </dependency>
-            <dependency>
-                <groupId>org.wildfly.core</groupId>
-                <artifactId>wildfly-subsystem-test</artifactId>
-                <type>pom</type>
-                <scope>test</scope>
-                <version>\${version.wildfly.core}</version>
-            </dependency>
-            <dependency>
-                <groupId>junit</groupId>
-                <artifactId>junit</artifactId>
-                <scope>test</scope>
-                <version>\${version.junit}</version>
-            </dependency>
-        </dependencies>
-    </dependencyManagement>
-
-    <dependencies>
-        <dependency>
-            <groupId>org.wildfly.core</groupId>
-            <artifactId>wildfly-controller</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly.core</groupId>
-            <artifactId>wildfly-server</artifactId>
-        </dependency>
-        <dependency>
-            <groupId>org.wildfly.core</groupId>
-            <artifactId>wildfly-subsystem-test</artifactId>
-            <type>pom</type>
-            <scope>test</scope>
-        </dependency>
-        <dependency>
-            <groupId>junit</groupId>
-            <artifactId>junit</artifactId>
-            <scope>test</scope>
-        </dependency>
-    </dependencies>
 
 </project>

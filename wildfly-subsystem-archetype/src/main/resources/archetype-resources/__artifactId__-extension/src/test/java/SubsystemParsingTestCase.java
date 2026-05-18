@@ -1,0 +1,112 @@
+package ${package};
+
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.ADD;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.OP_ADDR;
+import static org.jboss.as.controller.descriptions.ModelDescriptionConstants.SUBSYSTEM;
+
+import java.util.List;
+
+import org.jboss.as.controller.PathAddress;
+import org.jboss.as.controller.PathElement;
+import org.jboss.as.controller.capability.RuntimeCapability;
+import org.jboss.as.subsystem.test.AbstractSubsystemTest;
+import org.jboss.as.subsystem.test.AdditionalInitialization;
+import org.jboss.as.subsystem.test.KernelServices;
+import org.jboss.dmr.ModelNode;
+import org.junit.Assert;
+import org.junit.Test;
+
+/**
+ * Tests all management expects for subsystem, parsing, marshaling, model definition and other
+ * Here is an example that allows you a fine grained controler over what is tested and how. So it can give you ideas what can be done and tested.
+ * If you have no need for advanced testing of subsystem you look at {@link SubsystemBaseParsingTestCase} that testes same stuff but most of the code
+ * is hidden inside of test harness
+ */
+public class SubsystemParsingTestCase extends AbstractSubsystemTest {
+    private final AdditionalInitialization initialization = AdditionalInitialization.withCapabilities(
+            RuntimeCapability.resolveCapabilityName(SubsystemResourceDefinitionRegistrar.EXECUTOR_SERVICE, "default"));
+
+    public SubsystemParsingTestCase() {
+        super(SubsystemResourceDefinitionRegistrar.REGISTRATION.getName(), new Extension());
+    }
+
+    /**
+     * Tests that the xml is parsed into the correct operations
+     */
+    @Test
+    public void testParseSubsystem() throws Exception {
+        //Parse the subsystem xml into operations
+        String subsystemXml = """
+                <subsystem xmlns="urn:${groupId}:${artifactId}:1.0"
+                     executor="default" />""";
+        List<ModelNode> operations = super.parse(subsystemXml);
+
+        ///Check that we have the expected number of operations
+        Assert.assertEquals(1, operations.size());
+
+        //Check that each operation has the correct content
+        ModelNode addSubsystem = operations.get(0);
+        Assert.assertEquals(ADD, addSubsystem.get(OP).asString());
+        PathAddress addr = PathAddress.pathAddress(addSubsystem.get(OP_ADDR));
+        Assert.assertEquals(1, addr.size());
+        PathElement element = addr.getElement(0);
+        Assert.assertEquals(SUBSYSTEM, element.getKey());
+        Assert.assertEquals(SubsystemResourceDefinitionRegistrar.REGISTRATION.getName(), element.getValue());
+    }
+
+    /**
+     * Test that the model created from the xml looks as expected
+     */
+    @Test
+    public void testInstallIntoController() throws Exception {
+        //Parse the subsystem xml and install into the controller
+        String subsystemXml = """
+                <subsystem xmlns="urn:${groupId}:${artifactId}:1.0"
+                    tick="4"
+                    executor="default" />""";
+        KernelServices services = super.createKernelServicesBuilder(this.initialization).setSubsystemXml(subsystemXml).build();
+
+        //Read the whole model and make sure it looks as expected
+        ModelNode model = services.readWholeModel();
+        Assert.assertTrue(model.get(SUBSYSTEM).hasDefined(SubsystemResourceDefinitionRegistrar.REGISTRATION.getName()));
+    }
+
+    /**
+     * Starts a controller with a given subsystem xml and then checks that a second
+     * controller started with the xml marshalled from the first one results in the same model
+     */
+    @Test
+    public void testParseAndMarshalModel() throws Exception {
+        //Parse the subsystem xml and install into the first controller
+        String subsystemXml = """
+                <subsystem xmlns="urn:${groupId}:${artifactId}:1.0"
+                     tick="4"
+                     executor="default" />""";
+        KernelServices servicesA = super.createKernelServicesBuilder(this.initialization).setSubsystemXml(subsystemXml).build();
+        //Get the model and the persisted xml from the first controller
+        ModelNode modelA = servicesA.readWholeModel();
+        String marshalled = servicesA.getPersistedSubsystemXml();
+
+        //Install the persisted xml from the first controller into a second controller
+        KernelServices servicesB = super.createKernelServicesBuilder(this.initialization).setSubsystemXml(marshalled).build();
+        ModelNode modelB = servicesB.readWholeModel();
+
+        //Make sure the models from the two controllers are identical
+        super.compare(modelA, modelB);
+    }
+
+    /**
+     * Tests that the subsystem can be removed
+     */
+    @Test
+    public void testSubsystemRemoval() throws Exception {
+        //Parse the subsystem xml and install into the first controller
+        String subsystemXml = """
+                <subsystem xmlns="urn:${groupId}:${artifactId}:1.0"
+                    executor="default"/>""";
+        KernelServices services = super.createKernelServicesBuilder(this.initialization).setSubsystemXml(subsystemXml).build();
+        //Checks that the subsystem was removed from the model
+        assertRemoveSubsystemResources(services);
+    }
+}

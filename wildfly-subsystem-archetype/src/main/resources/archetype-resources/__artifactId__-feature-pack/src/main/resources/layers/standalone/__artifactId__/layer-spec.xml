@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<layer-spec xmlns="urn:jboss:galleon:layer-spec:2.0" name="${artifactId}">
+    <props>
+        <prop name="org.wildfly.category" value="XXX"/>
+        <prop name="org.wildfly.description" value="This layer can be used to provide the ${artifactId}."/>
+    </props>
+    <dependencies>
+        <layer name="ee-concurrency"/>
+    </dependencies>
+    <feature-group name="${artifactId}"/>
+</layer-spec>
