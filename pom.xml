@@ -68,7 +68,7 @@
 
         <version.compiler.plugin>3.15.0</version.compiler.plugin>
         <version.surefire.plugin>3.5.5</version.surefire.plugin>
-        <version.failsafe.plugin>3.5.5</version.failsafe.plugin>
+        <version.failsafe.plugin>3.5.6</version.failsafe.plugin>
         <version.war.plugin>3.5.1</version.war.plugin>
         <version.ear.plugin>3.4.0</version.ear.plugin>
         <version.ejb.plugin>3.3.0</version.ejb.plugin>
