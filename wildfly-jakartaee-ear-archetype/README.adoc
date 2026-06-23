@@ -6,6 +6,7 @@ WildFly archetype for blank EAR project
 
 This archetype creates a blank EAR project with EJB and Web module.
 It is prepared for running Arquillian unit tests.
+Optionally, it can provision a WildFly server.
 More details can be found in the file "src/main/resources/archetype-resources/README.txt", which is end-user doc and added to the resulting project.
 
 [[newwildflyversion]]
@@ -31,12 +32,19 @@ $ mvn archetype:generate -DgroupId=my.project.org -DartifactId=sample-jakartaee-
 
 [[testing]]
 ==== Test the archetype
-After having built the archetype, check whether both profiles "arq-remote" and "arq-managed" work. This is done by using scripts found in the directory "testing".
+After having built the archetype, check whether all four profiles "arq-remote", "arq-managed", "provision" and "arq-provisioned" work. This is done by using scripts found in the directory "testing".
+
+The four profiles are executed as part of the Github CI
 
 * Profile "arq-managed": set variable JBOSS_HOME, then execute "runtest_managed.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
 * Profile "arq-remote": start WildFly server, then execute "runtest_remote.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
+* Profile "provision": execute "runtest_provision.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
+* Profile "arq-provisioned": execute "runtest_provisioned.bat/.sh <archetypeVersion>" (replace "<archetypeVersion>" with the current archetype version)
 
-Both files create a project from the archetype (in "testing/arq-managed" or "testing/arq-remote"), copy an Arquillian unit test class and an EJB in this project, then build and deploy it to WildFly and execute
-the test using the Arquillian profile "arq-managed" or "arq-remote").
+The three "arq-....bat/.sh" files create a project from the archetype (in "testing/arq-managed", "testing/arq-remote" or "testing/arq-provisioned"),
+copy an Arquillian unit test class and an EJB into this project, then build and deploy it to WildFly and execute
+the test using the Arquillian profile "arq-managed", "arq-remote" or "arq-provisioned").
 
 After the test is executed, check the server log for error outputs. In case of success, the outputs "Test is invoked..." and "doTest is invoked..." will be printed in the server console.
+
+The "provison.bat/.sh" files just builds the project and provisions a server.
