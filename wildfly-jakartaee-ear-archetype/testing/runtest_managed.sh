@@ -42,7 +42,7 @@ echo "copy additional files required for test."
 cp ../additionalfiles/TestBean.java ./multi/ejb/src/main/java/foo/bar/multi/
 cp ../additionalfiles/TestLocal.java ./multi/ejb/src/main/java/foo/bar/multi/
 cp ../additionalfiles/TestRemote.java ./multi/ejb/src/main/java/foo/bar/multi/
-cp ../additionalfiles/ArchetypeIT.java ./multi/web/src/test/java/foo/bar/multi/test/
+cp ../additionalfiles/ArchetypeIT.java ./multi/integration-tests/src/test/java/foo/bar/multi/test/
 
 cd multi
 echo "run test"

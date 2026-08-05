@@ -1,0 +1,83 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/maven-v4_0_0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <parent>
+        <groupId>${groupId}</groupId>
+        <artifactId>${rootArtifactId}</artifactId>
+        <version>${version}</version>
+    </parent>
+    <artifactId>${rootArtifactId}-integration-tests</artifactId>
+    <packaging>jar</packaging>
+    <name>${rootArtifactId} - integration-tests</name>
+    <description>This module contains the arquillian integration tests for the enterprise application.</description>
+
+    <dependencies>
+
+        <!-- Import the CDI API, we use provided scope as the API is included in WildFly / JBoss EAP -->
+        <dependency>
+            <groupId>jakarta.enterprise</groupId>
+            <artifactId>jakarta.enterprise.cdi-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!-- Test scope dependencies -->
+        <dependency>
+            <groupId>org.junit.jupiter</groupId>
+            <artifactId>junit-jupiter</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+        <!-- Declare the APIs we depend on and need for compilation. All of
+            them are provided by WildFly / JBoss EAP -->
+
+        <!-- Import the EJB API, we use provided scope as the API is included in WildFly / JBoss EAP -->
+        <dependency>
+            <groupId>jakarta.ejb</groupId>
+            <artifactId>jakarta.ejb-api</artifactId>
+            <scope>provided</scope>
+        </dependency>
+        
+        <!-- Arquillian allows you to test enterprise code such as EJBs and
+            Transactional(JTA) JPA from JUnit/TestNG -->
+        <dependency>
+            <groupId>org.jboss.arquillian.junit5</groupId>
+            <artifactId>arquillian-junit5-container</artifactId>
+            <scope>test</scope>
+        </dependency>
+        
+        <!-- Dependency on the EJB module so we can use it's services if needed -->
+        <dependency>
+            <groupId>${project.groupId}</groupId>
+            <artifactId>${rootArtifactId}-ejb</artifactId>
+            <type>ejb</type>
+            <scope>provided</scope>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+        	<!-- This project contains only tests, so avoid this warning "JAR will be empty - no content was marked for inclusion!"
+        	     by skipping the jar packaging step. -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-jar-plugin</artifactId>
+                <version>${version.jar.plugin}</version>
+                <configuration>
+                    <skipIfEmpty>true</skipIfEmpty>
+                </configuration>
+            </plugin>
+
+            <!-- As we skipped jar packaging, nothing can be installed
+                (error: "The packaging plugin for project ${rootArtifactId}-integration-tests did not assign a file to the build artifact") -->
+            <plugin>
+    		    <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-install-plugin</artifactId>
+                <version>${version.install.plugin}</version>
+                <configuration>
+                    <skip>true</skip>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+</project>
