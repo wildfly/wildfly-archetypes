@@ -57,7 +57,7 @@
         actually use these dependencies.
     -->
     <properties>
-        <version.wildfly.bom>41.0.0.Final</version.wildfly.bom>
+        <version.wildfly.bom>41.0.1.Final</version.wildfly.bom>
         <version.wildfly.core>33.0.0.Final</version.wildfly.core>
         <version.wildfly.maven.plugin>6.0.1.Final</version.wildfly.maven.plugin>
 
