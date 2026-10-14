@@ -20,7 +20,8 @@
     <packaging>maven-archetype</packaging>
 
     <name>WildFly Archetypes: Jakarta EE Webapp</name>
-    <description>An archetype that generates a starter Jakarta EE project for JBoss WildFly. The project is a WAR archive. It is prepared for Arquillian driven unit tests.</description>
+    <description>An archetype that generates a starter Jakarta EE project for JBoss WildFly. The project is a WAR archive. It is prepared for Arquillian driven unit tests.
+	Optionally, a "ready to run your app" provisioned WildFly server can be created using WildFly Glow.</description>
 
     <build>
         <resources>
